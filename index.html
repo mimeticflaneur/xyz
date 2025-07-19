@@ -1,42 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>zapatera.xyz</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #000000;
-      text-align: center;
-      padding: 20vh 2rem;
-      margin: 0;
-    }
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      font-size: 1.2rem;
-      margin: 0.2rem 0;
-    }
-    a {
-      display: block;
-      font-size: 1.1rem;
-      color: #000000;
-      text-decoration: none;
-      margin: 0.5rem 0;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián Zapatera - Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        header h1:hover {
+            color: #007bff;
+        }
+        header p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        nav {
+            background-color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007bff;
+            cursor: pointer;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .asset {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .asset-info {
+            flex: 1;
+        }
+        .asset-return {
+            font-weight: bold;
+            color: #28a745; /* Green for positive or zero */
+        }
+        .asset-return.negative {
+            color: #dc3545; /* Red for negative */
+        }
+        .reading-item {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        @media (max-width: 768px) {
+            .asset {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Adrián Zapatera</h1>
-  <p>Writer | Analyst</p>
-  <a href="https://cortandoelnudo.substack.com" target="_blank">Link to my Substack</a>
-  <a href="mailto:adrian@zapatera.xyz">Write to adrian@zapatera.xyz</a>
+    <header>
+        <h1 onclick="goHome()">Adrián Zapatera</h1>
+        <p>Writer | Analyst</p>
+    </header>
+    <nav>
+        <a href="#substack">Substack</a>
+        <a href="#contact">Contact me</a>
+        <a onclick="showSection('assets')">Assets</a>
+        <a onclick="showSection('reading')">Reading</a>
+    </nav>
+    <section id="assets">
+        <h2>Assets Portfolio</h2>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>RKLB (Rocket Lab USA Inc.)</h3>
+                <p>28.59%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Leading pure-play space logistics company with strong competitive moats in small satellite launch market. Expanding into space systems and Neutron rocket development positions them for next phase of space economy growth.</p>
+                </details>
+            </div>
+            <span class="asset-return">+102.76%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>HOOD (Robinhood)</h3>
+                <p>25.15%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Democratizing finance through zero-commission trading. Strong user engagement, expanding into crypto and international markets. AI-driven features and younger demographic provide long-term growth potential.</p>
+                </details>
+            </div>
+            <span class="asset-return">+78.31%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>EL (Estée Lauder Cos., Inc.)</h3>
+                <p>18.56%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Premium beauty brand portfolio with strong presence in high-growth Asian markets, particularly China. Travel retail recovery and skincare premiumization trends support long-term value creation.</p>
+                </details>
+            </div>
+            <span class="asset-return">+31.64%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>DASH (DoorDash Inc. - Class A)</h3>
+                <p>10.70%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Leading on-demand food delivery platform with strong network effects in local commerce. Expanding into groceries, retail, and international markets while improving unit economics and operational efficiency.</p>
+                </details>
+            </div>
+            <span class="asset-return">+0.00%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>RBLX (Roblox Corporation - Class A)</h3>
+                <p>9.00%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>User-generated content platform revolutionizing gaming and social experiences. Strong engagement from Gen Z users, creator economy, and metaverse potential drive long-term growth in digital entertainment.</p>
+                </details>
+            </div>
+            <span class="asset-return">+0.00%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>TSLA (Tesla)</h3>
+                <p>4.00%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Leading EV manufacturer with vertical integration advantages. Energy storage business and Full Self-Driving technology represent significant optionality beyond automotive manufacturing.</p>
+                </details>
+            </div>
+            <span class="asset-return negative">-3.59%</span>
+        </div>
+        <div class="asset">
+            <div class="asset-info">
+                <h3>UBER (Uber Technologies Inc.)</h3>
+                <p>4.00%</p>
+                <details>
+                    <summary>Investment thesis</summary>
+                    <p>Platform network effects in mobility and delivery. Path to profitability through operational leverage and autonomous vehicle partnerships. Dominant market position in key metropolitan areas globally.</p>
+                </details>
+            </div>
+            <span class="asset-return negative">-0.01%</span>
+        </div>
+    </section>
+    <section id="reading">
+        <h2>Reading</h2>
+        <div class="reading-item">
+            <h3>Man and Technics & Other Essays — Oswald Spengler</h3>
+            <p>A prophetic warning about technical civilization, its inevitable decline, and the need for a heroic attitude toward destiny. Brief, forceful, and somberly relevant today.</p>
+        </div>
+        <div class="reading-item">
+            <h3>Genghis Khan and the Making of the Modern World — Jack Weatherford</h3>
+            <p>An insightful history revealing how Genghis Khan's conquests connected civilizations, fostered global trade, and laid foundations for the modern world. Engaging, revisionist, and eye-opening.</p>
+        </div>
+        <div class="reading-item">
+            <h3>The Myth of Sisyphus — Albert Camus</h3>
+            <p>A profound exploration of life's absurdity and the human response to it, advocating rebellion through passionate living. Philosophical, introspective, and timelessly challenging.</p>
+        </div>
+        <div class="reading-item">
+            <h3>Don Juan — Gregorio Marañón</h3>
+            <p>An analytical essay on the origins and psychological depths of the Don Juan legend, examining themes of seduction, identity, and human desire. Thought-provoking and culturally rich.</p>
+        </div>
+    </section>
+    <script>
+        function showSection(id) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+        function goHome() {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+        }
+    </script>
 </body>
 </html>
