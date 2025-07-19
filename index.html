@@ -3,217 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Zapatera - Portfolio</title>
+    <title>Adrián Zapatera - Writer | Analyst</title>
+    <meta name="description" content="Portfolio of Adrián Zapatera - Writer and Analyst. Investment insights and curated reading.">
+    <meta name="author" content="Adrián Zapatera">
+    <meta property="og:title" content="Adrián Zapatera - Portfolio">
+    <meta property="og:description" content="Writer and Analyst sharing investment insights and curated reading.">
+    <meta property="og:type" content="website">
+    
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #fff;
-            padding: 20px;
+
+        :root {
+            --primary-color: #000000;
+            --primary-hover: #333333;
+            --text-dark: #000000;
+            --text-light: #666666;
+            --bg-white: #ffffff;
+            --border-light: #e5e7eb;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            min-height: 100vh;
+        }
+
+        /* Main Landing Page */
+        .landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            padding: 2rem;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2em;
+
+        .landing h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .landing-subtitle {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 3rem;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--text-dark);
+            background: transparent;
+            color: var(--text-dark);
+            font-size: 1rem;
+            font-weight: 500;
             cursor: pointer;
-        }
-        header h1:hover {
-            color: #007bff;
-        }
-        header p {
-            margin: 5px 0 0;
-            color: #666;
-        }
-        nav {
-            background-color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 10px;
+            transition: all 0.3s ease;
             text-decoration: none;
-            color: #007bff;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+
+        .btn:hover {
+            background: var(--text-dark);
+            color: var(--bg-white);
+        }
+
+        /* Resources Section */
+        .resources {
+            min-height: 100vh;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--text-dark);
+        }
+
+        .resources-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .resources-list {
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .resource-item {
+            border-bottom: 1px solid var(--border-light);
+            padding: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .resource-item:last-child {
+            border-bottom: none;
+        }
+
+        .resource-item:hover {
+            padding-left: 1rem;
+        }
+
+        .resource-link {
+            display: block;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
             cursor: pointer;
         }
-        nav a:hover {
-            text-decoration: underline;
+
+        .resource-link:hover {
+            color: var(--text-light);
         }
-        section {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+        /* Reading Section */
+        .reading {
+            min-height: 100vh;
             display: none;
+            padding: 4rem 2rem;
         }
-        h2 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+
+        .reading-container {
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .asset {
+
+        .reading-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .reading-list {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .book-item {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 2rem;
+        }
+
+        .book-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .book-item h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .book-item .author {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .book-item .description {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Investment Thesis Section */
+        .thesis {
+            min-height: 100vh;
+            display: none;
+            padding: 4rem 2rem;
+        }
+
+        .thesis-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .thesis-title {
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .asset-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .asset-item {
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 2rem;
+        }
+
+        .asset-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .asset-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        .asset-info {
-            flex: 1;
+
+        .asset-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
+
+        .asset-allocation {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
         .asset-return {
-            font-weight: bold;
-            color: #28a745; /* Green for positive or zero */
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
         }
-        .asset-return.negative {
-            color: #dc3545; /* Red for negative */
+
+        .asset-thesis {
+            color: var(--text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
-        .reading-item {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .asset {
+            .cta-buttons {
                 flex-direction: column;
+                align-items: center;
+                gap: 1rem;
             }
+
+            .btn {
+                width: 200px;
+                text-align: center;
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            .asset-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1 onclick="goHome()">Adrián Zapatera</h1>
-        <p>Writer | Analyst</p>
-    </header>
-    <nav>
-        <a href="#substack">Substack</a>
-        <a href="#contact">Contact me</a>
-        <a onclick="showSection('assets')">Assets</a>
-        <a onclick="showSection('reading')">Reading</a>
-    </nav>
-    <section id="assets">
-        <h2>Assets Portfolio</h2>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>RKLB (Rocket Lab USA Inc.)</h3>
-                <p>28.59%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Leading pure-play space logistics company with strong competitive moats in small satellite launch market. Expanding into space systems and Neutron rocket development positions them for next phase of space economy growth.</p>
-                </details>
+    <!-- Main Landing -->
+    <div class="landing" id="landing">
+        <h1>Adrián Zapatera</h1>
+        <p class="landing-subtitle">Writer | Analyst</p>
+        <div class="cta-buttons">
+            <button class="btn" onclick="showResources()">Resources</button>
+            <a href="mailto:adrian@zapatera.xyz" class="btn">Contact</a>
+        </div>
+    </div>
+
+    <!-- Resources Section -->
+    <div class="resources" id="resources">
+        <div class="back-link" onclick="showLanding()">← Back</div>
+        <h2 class="resources-title">Resources</h2>
+        <div class="resources-list">
+            <div class="resource-item">
+                <a href="https://cortandoelnudo.substack.com/" target="_blank" class="resource-link">Substack</a>
             </div>
-            <span class="asset-return">+102.76%</span>
-        </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>HOOD (Robinhood)</h3>
-                <p>25.15%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Democratizing finance through zero-commission trading. Strong user engagement, expanding into crypto and international markets. AI-driven features and younger demographic provide long-term growth potential.</p>
-                </details>
+            <div class="resource-item">
+                <div class="resource-link" onclick="showReading()">Readings 2025</div>
             </div>
-            <span class="asset-return">+78.31%</span>
-        </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>EL (Estée Lauder Cos., Inc.)</h3>
-                <p>18.56%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Premium beauty brand portfolio with strong presence in high-growth Asian markets, particularly China. Travel retail recovery and skincare premiumization trends support long-term value creation.</p>
-                </details>
+            <div class="resource-item">
+                <div class="resource-link" onclick="showThesis()">Investment Thesis</div>
             </div>
-            <span class="asset-return">+31.64%</span>
         </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>DASH (DoorDash Inc. - Class A)</h3>
-                <p>10.70%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Leading on-demand food delivery platform with strong network effects in local commerce. Expanding into groceries, retail, and international markets while improving unit economics and operational efficiency.</p>
-                </details>
+    </div>
+
+    <!-- Reading Section -->
+    <div class="reading" id="reading">
+        <div class="back-link" onclick="showResources()">← Back to Resources</div>
+        <div class="reading-container">
+            <h2 class="reading-title">Readings 2025</h2>
+            <div class="reading-list">
+                <div class="book-item">
+                    <h3>Man and Technics & Other Essays</h3>
+                    <p class="author">Oswald Spengler</p>
+                    <p class="description">A prophetic warning about technical civilization, its inevitable decline, and the need for a heroic attitude toward destiny.</p>
+                </div>
+
+                <div class="book-item">
+                    <h3>Genghis Khan and the Making of the Modern World</h3>
+                    <p class="author">Jack Weatherford</p>
+                    <p class="description">An insightful history revealing how Genghis Khan's conquests connected civilizations and fostered global trade.</p>
+                </div>
+
+                <div class="book-item">
+                    <h3>The Myth of Sisyphus</h3>
+                    <p class="author">Albert Camus</p>
+                    <p class="description">A profound exploration of life's absurdity and the human response to it, advocating rebellion through passionate living.</p>
+                </div>
+
+                <div class="book-item">
+                    <h3>Don Juan</h3>
+                    <p class="author">Gregorio Marañón</p>
+                    <p class="description">An analytical essay on the origins and psychological depths of the Don Juan legend.</p>
+                </div>
             </div>
-            <span class="asset-return">+0.00%</span>
         </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>RBLX (Roblox Corporation - Class A)</h3>
-                <p>9.00%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>User-generated content platform revolutionizing gaming and social experiences. Strong engagement from Gen Z users, creator economy, and metaverse potential drive long-term growth in digital entertainment.</p>
-                </details>
+    </div>
+
+    <!-- Investment Thesis Section -->
+    <div class="thesis" id="thesis">
+        <div class="back-link" onclick="showResources()">← Back to Resources</div>
+        <div class="thesis-container">
+            <h2 class="thesis-title">Investment Thesis</h2>
+            <div class="asset-list">
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">RKLB (Rocket Lab USA Inc.)</div>
+                        <div class="asset-allocation">28.59%</div>
+                        <div class="asset-return">+102.76%</div>
+                    </div>
+                    <p class="asset-thesis">Leading pure-play space logistics company with strong competitive moats in small satellite launch market. Expanding into space systems and Neutron rocket development positions them for next phase of space economy growth.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">HOOD (Robinhood)</div>
+                        <div class="asset-allocation">25.15%</div>
+                        <div class="asset-return">+78.31%</div>
+                    </div>
+                    <p class="asset-thesis">Democratizing finance through zero-commission trading. Strong user engagement, expanding into crypto and international markets. AI-driven features and younger demographic provide long-term growth potential.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">EL (Estée Lauder Cos., Inc.)</div>
+                        <div class="asset-allocation">18.56%</div>
+                        <div class="asset-return">+31.64%</div>
+                    </div>
+                    <p class="asset-thesis">Premium beauty brand portfolio with strong presence in high-growth Asian markets, particularly China. Travel retail recovery and skincare premiumization trends support long-term value creation.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">DASH (DoorDash Inc. - Class A)</div>
+                        <div class="asset-allocation">10.70%</div>
+                        <div class="asset-return">0.00%</div>
+                    </div>
+                    <p class="asset-thesis">Leading on-demand food delivery platform with strong network effects in local commerce. Expanding into groceries, retail, and international markets while improving unit economics and operational efficiency.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">RBLX (Roblox Corporation - Class A)</div>
+                        <div class="asset-allocation">9.00%</div>
+                        <div class="asset-return">0.00%</div>
+                    </div>
+                    <p class="asset-thesis">User-generated content platform revolutionizing gaming and social experiences. Strong engagement from Gen Z users, creator economy, and metaverse potential drive long-term growth in digital entertainment.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">TSLA (Tesla)</div>
+                        <div class="asset-allocation">4.00%</div>
+                        <div class="asset-return">-3.59%</div>
+                    </div>
+                    <p class="asset-thesis">Leading EV manufacturer with vertical integration advantages. Energy storage business and Full Self-Driving technology represent significant optionality beyond automotive manufacturing.</p>
+                </div>
+
+                <div class="asset-item">
+                    <div class="asset-header">
+                        <div class="asset-name">UBER (Uber Technologies Inc.)</div>
+                        <div class="asset-allocation">4.00%</div>
+                        <div class="asset-return">-0.01%</div>
+                    </div>
+                    <p class="asset-thesis">Platform network effects in mobility and delivery. Path to profitability through operational leverage and autonomous vehicle partnerships. Dominant market position in key metropolitan areas globally.</p>
+                </div>
             </div>
-            <span class="asset-return">+0.00%</span>
         </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>TSLA (Tesla)</h3>
-                <p>4.00%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Leading EV manufacturer with vertical integration advantages. Energy storage business and Full Self-Driving technology represent significant optionality beyond automotive manufacturing.</p>
-                </details>
-            </div>
-            <span class="asset-return negative">-3.59%</span>
-        </div>
-        <div class="asset">
-            <div class="asset-info">
-                <h3>UBER (Uber Technologies Inc.)</h3>
-                <p>4.00%</p>
-                <details>
-                    <summary>Investment thesis</summary>
-                    <p>Platform network effects in mobility and delivery. Path to profitability through operational leverage and autonomous vehicle partnerships. Dominant market position in key metropolitan areas globally.</p>
-                </details>
-            </div>
-            <span class="asset-return negative">-0.01%</span>
-        </div>
-    </section>
-    <section id="reading">
-        <h2>Reading</h2>
-        <div class="reading-item">
-            <h3>Man and Technics & Other Essays — Oswald Spengler</h3>
-            <p>A prophetic warning about technical civilization, its inevitable decline, and the need for a heroic attitude toward destiny. Brief, forceful, and somberly relevant today.</p>
-        </div>
-        <div class="reading-item">
-            <h3>Genghis Khan and the Making of the Modern World — Jack Weatherford</h3>
-            <p>An insightful history revealing how Genghis Khan's conquests connected civilizations, fostered global trade, and laid foundations for the modern world. Engaging, revisionist, and eye-opening.</p>
-        </div>
-        <div class="reading-item">
-            <h3>The Myth of Sisyphus — Albert Camus</h3>
-            <p>A profound exploration of life's absurdity and the human response to it, advocating rebellion through passionate living. Philosophical, introspective, and timelessly challenging.</p>
-        </div>
-        <div class="reading-item">
-            <h3>Don Juan — Gregorio Marañón</h3>
-            <p>An analytical essay on the origins and psychological depths of the Don Juan legend, examining themes of seduction, identity, and human desire. Thought-provoking and culturally rich.</p>
-        </div>
-    </section>
+    </div>
+
     <script>
-        function showSection(id) {
-            var sections = document.querySelectorAll('section');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-            });
-            document.getElementById(id).style.display = 'block';
+        function showLanding() {
+            document.getElementById('landing').style.display = 'flex';
+            document.getElementById('resources').style.display = 'none';
+            document.getElementById('reading').style.display = 'none';
+            document.getElementById('thesis').style.display = 'none';
+            document.getElementById('landing').classList.add('fade-in');
         }
-        function goHome() {
-            var sections = document.querySelectorAll('section');
-            sections.forEach(function(section) {
-                section.style.display = 'none';
-            });
+
+        function showResources() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('resources').style.display = 'flex';
+            document.getElementById('reading').style.display = 'none';
+            document.getElementById('thesis').style.display = 'none';
+            document.getElementById('resources').classList.add('fade-in');
         }
+
+        function showReading() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('resources').style.display = 'none';
+            document.getElementById('reading').style.display = 'block';
+            document.getElementById('thesis').style.display = 'none';
+            document.getElementById('reading').classList.add('fade-in');
+        }
+
+        function showThesis() {
+            document.getElementById('landing').style.display = 'none';
+            document.getElementById('resources').style.display = 'none';
+            document.getElementById('reading').style.display = 'none';
+            document.getElementById('thesis').style.display = 'block';
+            document.getElementById('thesis').classList.add('fade-in');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                showLanding();
+            }
+        });
     </script>
 </body>
 </html>
