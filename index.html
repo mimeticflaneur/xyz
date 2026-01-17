@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Zapatera - Writer | Analyst</title>
-    <meta name="description" content="Portfolio of Adrián Zapatera - Writer and Analyst. Investment insights and curated reading.">
+    <title>Adrián Zapatera - Asset Manager</title>
+    <meta name="description" content="Adrián Zapatera - Asset Manager. Investments, analysis and projects.">
     <meta name="author" content="Adrián Zapatera">
-    <meta property="og:title" content="Adrián Zapatera - Portfolio">
-    <meta property="og:description" content="Writer and Analyst sharing investment insights and curated reading.">
+    <meta property="og:title" content="Adrián Zapatera - Asset Manager">
+    <meta property="og:description" content="Asset Manager. Investments, analysis and projects.">
     <meta property="og:type" content="website">
-    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Z</text></svg>">
+
     <style>
         * {
             margin: 0;
@@ -18,24 +19,72 @@
         }
 
         :root {
-            --primary-color: #000000;
-            --primary-hover: #333333;
-            --text-dark: #000000;
-            --text-light: #666666;
-            --bg-white: #ffffff;
-            --border-light: #e5e7eb;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --border: #222222;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--bg-white);
+            color: var(--text-primary);
+            background: var(--bg-primary);
             min-height: 100vh;
         }
 
-        /* Main Landing Page */
-        .landing {
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -45,266 +94,345 @@
             padding: 2rem;
         }
 
-        .landing h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 400;
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-dark);
-            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
         }
 
-        .landing-subtitle {
-            font-size: clamp(1rem, 3vw, 1.3rem);
-            margin-bottom: 3rem;
-            color: var(--text-light);
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
             font-weight: 300;
         }
 
-        .cta-buttons {
+        .hero-cta {
             display: flex;
-            gap: 2rem;
-            justify-content: center;
+            gap: 1rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            border: 2px solid var(--text-dark);
+            padding: 0.875rem 2rem;
+            border: 1px solid var(--border);
             background: transparent;
-            color: var(--text-dark);
-            font-size: 1rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
             font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            letter-spacing: 0.02em;
+            border-radius: 4px;
         }
 
         .btn:hover {
-            background: var(--text-dark);
-            color: var(--bg-white);
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
         }
 
-        /* Resources Section */
-        .resources {
-            min-height: 100vh;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
         }
 
-        .back-link {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            color: var(--text-light);
-            text-decoration: none;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            color: white;
         }
 
-        .back-link:hover {
-            color: var(--text-dark);
-        }
-
-        .resources-title {
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 400;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
-            letter-spacing: -0.02em;
-        }
-
-        .resources-list {
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .resource-item {
-            border-bottom: 1px solid var(--border-light);
-            padding: 2rem 0;
-            transition: all 0.3s ease;
-        }
-
-        .resource-item:last-child {
-            border-bottom: none;
-        }
-
-        .resource-item:hover {
-            padding-left: 1rem;
-        }
-
-        .resource-link {
-            display: block;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 400;
-            cursor: pointer;
-        }
-
-        .resource-link:hover {
-            color: var(--text-light);
-        }
-
-        /* Reading Section */
-        .reading {
-            min-height: 100vh;
-            display: none;
-            padding: 4rem 2rem;
-        }
-
-        .reading-container {
-            max-width: 700px;
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 900px;
             margin: 0 auto;
         }
 
-        .reading-title {
-            font-size: clamp(2rem, 6vw, 3rem);
-            font-weight: 400;
-            margin-bottom: 3rem;
-            color: var(--text-dark);
+        section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
             letter-spacing: -0.02em;
+        }
+
+        /* About Section */
+        #about {
+            border-top: 1px solid var(--border);
+        }
+
+        .about-content {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        #projects {
+            border-top: 1px solid var(--border);
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-tertiary);
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* CV Section */
+        #cv {
+            border-top: 1px solid var(--border);
+        }
+
+        .cv-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2rem;
             text-align: center;
         }
 
-        .reading-list {
+        .cv-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-links {
             display: flex;
-            flex-direction: column;
-            gap: 3rem;
+            gap: 1.5rem;
+            flex-wrap: wrap;
         }
 
-        .book-item {
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 2rem;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .book-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
+        .contact-item:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
         }
 
-        .book-item h3 {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
         }
 
-        .book-item .author {
-            font-size: 1rem;
-            color: var(--text-light);
-            font-style: italic;
-            margin-bottom: 0.75rem;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
         }
 
-        .book-item .description {
-            color: var(--text-light);
-            line-height: 1.6;
-            font-size: 0.95rem;
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
         }
-    <!-- Main Landing -->
-    <div class="landing" id="landing">
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1, .hero-subtitle, .hero-cta {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .hero-subtitle {
+            animation-delay: 0.1s;
+        }
+
+        .hero-cta {
+            animation-delay: 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">AZ</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
         <h1>Adrián Zapatera</h1>
-        <p class="landing-subtitle">Writer | Analyst</p>
-        <div class="cta-buttons">
-            <button class="btn" onclick="showResources()">Resources</button>
-            <a href="mailto:adrian@zapatera.xyz" class="btn">Contact</a>
+        <p class="hero-subtitle">Asset Manager</p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn">Contact</a>
         </div>
-    </div>
+    </section>
 
-    <!-- Resources Section -->
-    <div class="resources" id="resources">
-        <div class="back-link" onclick="showLanding()">← Back</div>
-        <h2 class="resources-title">Resources</h2>
-        <div class="resources-list">
-            <div class="resource-item">
-                <a href="https://cortandoelnudo.substack.com/" target="_blank" class="resource-link">Substack</a>
-            </div>
-            <div class="resource-item">
-                <div class="resource-link" onclick="showReading()">Readings 2025</div>
-            </div>
-            <div class="resource-item">
-                <div class="resource-link" onclick="showThesis()">Investment Thesis</div>
-            </div>
+    <!-- About -->
+    <section id="about">
+        <h2>About</h2>
+        <div class="about-content">
+            <p>
+                Asset Manager with experience in investment analysis and portfolio management.
+                Passionate about understanding financial markets and finding value opportunities.
+            </p>
         </div>
-    </div>
+    </section>
 
-    <!-- Reading Section -->
-    <div class="reading" id="reading">
-        <div class="back-link" onclick="showResources()">← Back to Resources</div>
-        <div class="reading-container">
-            <h2 class="reading-title">Readings 2025</h2>
-            <div class="reading-list">
-                <div class="book-item">
-                    <h3>Man and Technics & Other Essays</h3>
-                    <p class="author">Oswald Spengler</p>
-                    <p class="description">A prophetic warning about technical civilization, its inevitable decline, and the need for a heroic attitude toward destiny.</p>
-                </div>
-
-                <div class="book-item">
-                    <h3>Genghis Khan and the Making of the Modern World</h3>
-                    <p class="author">Jack Weatherford</p>
-                    <p class="description">An insightful history revealing how Genghis Khan's conquests connected civilizations and fostered global trade.</p>
-                </div>
-
-                <div class="book-item">
-                    <h3>The Myth of Sisyphus</h3>
-                    <p class="author">Albert Camus</p>
-                    <p class="description">A profound exploration of life's absurdity and the human response to it, advocating rebellion through passionate living.</p>
-                </div>
-
-                <div class="book-item">
-                    <h3>Don Juan</h3>
-                    <p class="author">Gregorio Marañón</p>
-                    <p class="description">An analytical essay on the origins and psychological depths of the Don Juan legend.</p>
-                </div>
+    <!-- Projects -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Investment Thesis</h3>
+                <p>In-depth investment thesis and opportunity analysis.</p>
+                <span class="project-tag">Coming soon</span>
+            </div>
+            <div class="project-card">
+                <h3>Readings</h3>
+                <p>Curated reading recommendations on investing, history and philosophy.</p>
+                <span class="project-tag">Coming soon</span>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- CV -->
+    <section id="cv">
+        <h2>Resume</h2>
+        <div class="cv-content">
+            <p>Download my CV to learn about my professional experience and background.</p>
+            <a href="cv.pdf" class="btn btn-primary" download>Download CV (PDF)</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-links">
+            <a href="mailto:adrian@zapatera.xyz" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                adrian@zapatera.xyz
+            </a>
+            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Adrián Zapatera. All rights reserved.</p>
+    </footer>
 
     <script>
-        function showLanding() {
-            document.getElementById('landing').style.display = 'flex';
-            document.getElementById('resources').style.display = 'none';
-            document.getElementById('reading').style.display = 'none';
-            document.getElementById('thesis').style.display = 'none';
-            document.getElementById('landing').classList.add('fade-in');
-        }
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-        function showResources() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('resources').style.display = 'flex';
-            document.getElementById('reading').style.display = 'none';
-            document.getElementById('thesis').style.display = 'none';
-            document.getElementById('resources').classList.add('fade-in');
-        }
-
-        function showReading() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('resources').style.display = 'none';
-            document.getElementById('reading').style.display = 'block';
-            document.getElementById('thesis').style.display = 'none';
-            document.getElementById('reading').classList.add('fade-in');
-        }
-
-        function showThesis() {
-            document.getElementById('landing').style.display = 'none';
-            document.getElementById('resources').style.display = 'none';
-            document.getElementById('reading').style.display = 'none';
-            document.getElementById('thesis').style.display = 'block';
-            document.getElementById('thesis').classList.add('fade-in');
-        }
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                showLanding();
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.9)';
             }
         });
     </script>
