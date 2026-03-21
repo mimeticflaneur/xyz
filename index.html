@@ -3,87 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Zapatera - Asset Manager</title>
-    <meta name="description" content="Adrián Zapatera - Asset Manager. Investments, analysis and projects.">
+    <title>Adrián Zapatera</title>
+    <meta name="description" content="Adrián Zapatera — Asset Manager. Investments, analysis and projects.">
     <meta name="author" content="Adrián Zapatera">
-    <meta property="og:title" content="Adrián Zapatera - Asset Manager">
+    <meta property="og:title" content="Adrián Zapatera">
     <meta property="og:description" content="Asset Manager. Investments, analysis and projects.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Z</text></svg>">
+    <meta property="og:url" content="https://zapatera.xyz">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%23111'/><text x='50' y='68' font-size='60' font-family='system-ui' font-weight='600' fill='%23fff' text-anchor='middle'>AZ</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-tertiary: #1a1a1a;
-            --text-primary: #ffffff;
-            --text-secondary: #a0a0a0;
-            --text-muted: #666666;
-            --accent: #3b82f6;
-            --accent-hover: #60a5fa;
-            --border: #222222;
+            --bg: #fafafa;
+            --bg-card: #ffffff;
+            --text: #111111;
+            --text-secondary: #555555;
+            --text-muted: #999999;
+            --border: #e5e5e5;
+            --accent: #111111;
+            --accent-hover: #333333;
+            --radius: 12px;
+            --max-width: 720px;
+            --nav-height: 64px;
         }
 
         html {
             scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
+            color: var(--text);
+            background: var(--bg);
             min-height: 100vh;
         }
 
-        /* Navigation */
+        ::selection {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        /* ─── Navigation ─── */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 1.5rem 2rem;
+            height: var(--nav-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
+            padding: 0 clamp(1.5rem, 5vw, 3rem);
+            background: rgba(250, 250, 250, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
             border-bottom: 1px solid var(--border);
         }
 
         .logo {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--text);
             text-decoration: none;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.75rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
+            font-size: 0.85rem;
+            font-weight: 400;
+            transition: color 0.2s ease;
+            letter-spacing: 0.01em;
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--text);
         }
 
-        /* Hero Section */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+        }
+
+        .lang-btn {
+            padding: 0.35rem 0.6rem;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            letter-spacing: inherit;
+        }
+
+        .lang-btn.active {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        .lang-btn:not(.active):hover {
+            color: var(--text);
+        }
+
+        /* ─── Hero ─── */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -92,207 +149,269 @@
             justify-content: center;
             text-align: center;
             padding: 2rem;
+            position: relative;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-size: clamp(2.5rem, 7vw, 4rem);
             font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
             margin-bottom: 1rem;
-            color: var(--text-primary);
-            letter-spacing: -0.03em;
         }
 
         .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.4rem);
-            margin-bottom: 2rem;
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
             color: var(--text-secondary);
             font-weight: 300;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
         }
 
         .hero-cta {
             display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 0.75rem;
         }
 
+        .scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 32px;
+            background: var(--text-muted);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ─── Buttons ─── */
         .btn {
-            padding: 0.875rem 2rem;
+            padding: 0.75rem 1.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: inherit;
             border: 1px solid var(--border);
             background: transparent;
-            color: var(--text-primary);
-            font-size: 0.9rem;
-            font-weight: 500;
+            color: var(--text);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             text-decoration: none;
-            display: inline-block;
-            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 8px;
+            letter-spacing: 0.01em;
         }
 
         .btn:hover {
-            background: var(--text-primary);
-            color: var(--bg-primary);
-            border-color: var(--text-primary);
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
         }
 
         .btn-primary {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
+            background: var(--text);
+            color: var(--bg);
+            border-color: var(--text);
         }
 
         .btn-primary:hover {
             background: var(--accent-hover);
             border-color: var(--accent-hover);
-            color: white;
         }
 
-        /* Sections */
+        .btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ─── Sections ─── */
         section {
             padding: 6rem 2rem;
-            max-width: 900px;
+            max-width: var(--max-width);
             margin: 0 auto;
         }
 
+        .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
         section h2 {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 600;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
-        /* About Section */
-        #about {
+        /* ─── Dividers ─── */
+        .divider {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            border: none;
             border-top: 1px solid var(--border);
         }
 
-        .about-content {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .about-content p {
-            color: var(--text-secondary);
+        /* ─── About ─── */
+        .about-text {
             font-size: 1.1rem;
-            line-height: 1.8;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
-        /* Projects Section */
-        #projects {
-            border-top: 1px solid var(--border);
-        }
-
+        /* ─── Projects ─── */
         .projects-grid {
             display: grid;
-            gap: 1.5rem;
+            gap: 1rem;
         }
 
         .project-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1.5rem;
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: all 0.25s ease;
         }
 
         .project-card:hover {
             border-color: var(--text-muted);
-            transform: translateY(-2px);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         }
 
-        .project-card h3 {
-            font-size: 1.2rem;
+        .project-info h3 {
+            font-size: 1rem;
             font-weight: 500;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
+            margin-bottom: 0.25rem;
         }
 
-        .project-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+        .project-info p {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 300;
         }
 
         .project-tag {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            background: var(--bg-tertiary);
-            border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
             color: var(--text-muted);
-        }
-
-        /* CV Section */
-        #cv {
-            border-top: 1px solid var(--border);
-        }
-
-        .cv-content {
-            background: var(--bg-secondary);
+            padding: 0.35rem 0.75rem;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
+            border-radius: 100px;
+            white-space: nowrap;
         }
 
-        .cv-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contact Section */
-        #contact {
-            border-top: 1px solid var(--border);
-        }
-
-        .contact-links {
+        /* ─── CV ─── */
+        .cv-card {
             display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .cv-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* ─── Contact ─── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            background: var(--bg-secondary);
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            border-radius: var(--radius);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
         }
 
         .contact-item:hover {
-            border-color: var(--accent);
-            color: var(--text-primary);
+            border-color: var(--text);
         }
 
         .contact-item svg {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: color 0.2s ease;
         }
 
-        /* Footer */
+        .contact-item:hover svg {
+            color: var(--text);
+        }
+
+        /* ─── Footer ─── */
         footer {
             text-align: center;
             padding: 3rem 2rem;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.02em;
         }
 
-        /* Mobile */
-        @media (max-width: 768px) {
+        /* ─── Fade-in Animation ─── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── Mobile ─── */
+        @media (max-width: 640px) {
             nav {
-                padding: 1rem;
+                padding: 0 1.25rem;
             }
 
             .nav-links {
-                gap: 1rem;
+                gap: 1.25rem;
             }
 
             .nav-links a {
@@ -303,107 +422,131 @@
                 padding: 4rem 1.5rem;
             }
 
-            .contact-links {
-                flex-direction: column;
+            .hero h1 {
+                font-size: 2.25rem;
             }
 
-            .contact-item {
+            .hero-cta {
+                flex-direction: column;
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .hero-cta .btn {
                 justify-content: center;
             }
-        }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+            .cv-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.25rem;
+            }
 
-        .hero h1, .hero-subtitle, .hero-cta {
-            animation: fadeIn 0.6s ease forwards;
-        }
+            .project-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
 
-        .hero-subtitle {
-            animation-delay: 0.1s;
-        }
-
-        .hero-cta {
-            animation-delay: 0.2s;
+            .scroll-hint {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+
     <!-- Navigation -->
     <nav>
         <a href="#" class="logo">AZ</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#cv">CV</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+                <li><a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a></li>
+                <li><a href="#cv" data-en="CV" data-es="CV">CV</a></li>
+                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="home">
         <h1>Adrián Zapatera</h1>
-        <p class="hero-subtitle">Asset Manager</p>
+        <p class="hero-subtitle" data-en="Asset Manager" data-es="Gestor de Inversiones">Asset Manager</p>
         <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#contact" class="btn">Contact</a>
+            <a href="#projects" class="btn btn-primary" data-en="View Projects" data-es="Ver Proyectos">View Projects</a>
+            <a href="#contact" class="btn" data-en="Get in Touch" data-es="Contactar">Get in Touch</a>
         </div>
+        <div class="scroll-hint" data-en="Scroll" data-es="Scroll">Scroll</div>
     </section>
+
+    <hr class="divider">
 
     <!-- About -->
-    <section id="about">
-        <h2>About</h2>
-        <div class="about-content">
-            <p>
-                Asset Manager with experience in investment analysis and portfolio management.
-                Passionate about understanding financial markets and finding value opportunities.
-            </p>
-        </div>
+    <section id="about" class="fade-in">
+        <span class="section-label" data-en="About" data-es="Sobre mí">About</span>
+        <h2 data-en="Investment analysis &amp; portfolio management" data-es="Análisis de inversiones &amp; gestión de carteras">Investment analysis &amp; portfolio management</h2>
+        <p class="about-text" data-en="Asset Manager with experience in investment analysis and portfolio management. Passionate about understanding financial markets, identifying value opportunities, and building long-term strategies that compound." data-es="Gestor de inversiones con experiencia en análisis de inversiones y gestión de carteras. Apasionado por entender los mercados financieros, identificar oportunidades de valor y construir estrategias a largo plazo con efecto compuesto.">
+            Asset Manager with experience in investment analysis and portfolio management. Passionate about understanding financial markets, identifying value opportunities, and building long-term strategies that compound.
+        </p>
     </section>
+
+    <hr class="divider">
 
     <!-- Projects -->
-    <section id="projects">
-        <h2>Projects</h2>
+    <section id="projects" class="fade-in">
+        <span class="section-label" data-en="Projects" data-es="Proyectos">Projects</span>
+        <h2 data-en="Work &amp; ideas" data-es="Trabajo &amp; ideas">Work &amp; ideas</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Investment Thesis</h3>
-                <p>In-depth investment thesis and opportunity analysis.</p>
-                <span class="project-tag">Coming soon</span>
+                <div class="project-info">
+                    <h3 data-en="Investment Thesis" data-es="Tesis de Inversión">Investment Thesis</h3>
+                    <p data-en="In-depth analysis and opportunity research" data-es="Análisis en profundidad e investigación de oportunidades">In-depth analysis and opportunity research</p>
+                </div>
+                <span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span>
             </div>
             <div class="project-card">
-                <h3>Readings</h3>
-                <p>Curated reading recommendations on investing, history and philosophy.</p>
-                <span class="project-tag">Coming soon</span>
+                <div class="project-info">
+                    <h3 data-en="Readings" data-es="Lecturas">Readings</h3>
+                    <p data-en="Curated recommendations on investing, history &amp; philosophy" data-es="Recomendaciones sobre inversión, historia y filosofía">Curated recommendations on investing, history &amp; philosophy</p>
+                </div>
+                <span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span>
             </div>
         </div>
     </section>
 
+    <hr class="divider">
+
     <!-- CV -->
-    <section id="cv">
-        <h2>Resume</h2>
-        <div class="cv-content">
-            <p>Download my CV to learn about my professional experience and background.</p>
-            <a href="cv.pdf" class="btn btn-primary" download>Download CV (PDF)</a>
+    <section id="cv" class="fade-in">
+        <span class="section-label" data-en="Resume" data-es="Currículum">Resume</span>
+        <h2 data-en="Background &amp; experience" data-es="Formación &amp; experiencia">Background &amp; experience</h2>
+        <div class="cv-card">
+            <p data-en="Download my CV to learn more about my professional background." data-es="Descarga mi CV para conocer más sobre mi trayectoria profesional.">Download my CV to learn more about my professional background.</p>
+            <a href="cv.pdf" class="btn" download>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>
+                <span data-en="Download CV" data-es="Descargar CV">Download CV</span>
+            </a>
         </div>
     </section>
 
+    <hr class="divider">
+
     <!-- Contact -->
-    <section id="contact">
-        <h2>Contact</h2>
-        <div class="contact-links">
+    <section id="contact" class="fade-in">
+        <span class="section-label" data-en="Contact" data-es="Contacto">Contact</span>
+        <h2 data-en="Let's connect" data-es="Conectemos">Let's connect</h2>
+        <div class="contact-grid">
             <a href="mailto:adrian@zapatera.xyz" class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
                 adrian@zapatera.xyz
             </a>
-            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
         </div>
@@ -411,30 +554,52 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Adrián Zapatera. All rights reserved.</p>
+        <p>&copy; 2026 Adrián Zapatera</p>
     </footer>
 
     <script>
-        // Smooth scroll for navigation
+        // ─── Language Toggle ───
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const translatables = document.querySelectorAll('[data-en]');
+        let currentLang = 'en';
+
+        function setLang(lang) {
+            currentLang = lang;
+            langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+            translatables.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) el.textContent = text;
+            });
+            document.documentElement.lang = lang;
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => setLang(btn.dataset.lang));
+        });
+
+        // ─── Smooth Scroll ───
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 64;
+                    const y = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
                 }
             });
         });
 
-        // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 10, 0.98)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.9)';
-            }
-        });
+        // ─── Fade-in on Scroll ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
