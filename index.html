@@ -3,361 +3,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Zapatera — Asset Manager</title>
-    <meta name="description" content="Adrián Zapatera — Asset Manager. Finance, technology, and complex systems.">
+    <title>Adrián Zapatera</title>
+    <meta name="description" content="Adrián Zapatera — Asset Manager & Real Estate Finance Consultant. AI, investments, analysis and projects.">
     <meta name="author" content="Adrián Zapatera">
-    <meta property="og:title" content="Adrián Zapatera — Asset Manager">
-    <meta property="og:description" content="Asset Manager. Finance, technology, and complex systems.">
+    <meta property="og:title" content="Adrián Zapatera">
+    <meta property="og:description" content="Asset Manager & Real Estate Finance. AI-driven analysis and projects.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>Z</text></svg>">
+    <meta property="og:url" content="https://zapatera.xyz">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%23111'/><text x='50' y='68' font-size='60' font-family='system-ui' font-weight='600' fill='%23fff' text-anchor='middle'>AZ</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --bg: #fafafa; --bg-card: #ffffff; --text: #111111; --text-secondary: #555555; --text-muted: #999999; --border: #e5e5e5; --accent: #111111; --accent-hover: #333333; --radius: 12px; --max-width: 720px; --nav-height: 64px; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); min-height: 100vh; }
+        ::selection { background: var(--text); color: var(--bg); }
+        nav { position: fixed; top: 0; left: 0; right: 0; height: var(--nav-height); display: flex; justify-content: space-between; align-items: center; padding: 0 clamp(1.5rem, 5vw, 3rem); background: rgba(250,250,250,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; border-bottom: 1px solid var(--border); }
+        .logo { font-size: 1rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.05em; }
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 400; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--text); }
+        .lang-toggle { display: flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.03em; }
+        .lang-btn { padding: 0.35rem 0.6rem; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: all 0.2s; font-family: inherit; font-size: inherit; font-weight: inherit; }
+        .lang-btn.active { background: var(--text); color: var(--bg); }
+        .lang-btn:not(.active):hover { color: var(--text); }
+        .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; }
+        .hero h1 { font-size: clamp(2.5rem, 7vw, 4rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-subtitle { font-size: clamp(1rem, 2.5vw, 1.15rem); color: var(--text-secondary); font-weight: 300; margin-bottom: 0.75rem; }
+        .hero-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
+        .hero-tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); padding: 0.3rem 0.7rem; border: 1px solid var(--border); border-radius: 100px; }
+        .hero-cta { display: flex; gap: 0.75rem; }
+        .scroll-hint { position: absolute; bottom: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .scroll-hint::after { content: ''; width: 1px; height: 32px; background: var(--text-muted); animation: scrollPulse 2s ease-in-out infinite; }
+        @keyframes scrollPulse { 0%, 100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+        .btn { padding: 0.75rem 1.75rem; font-size: 0.85rem; font-weight: 500; font-family: inherit; border: 1px solid var(--border); background: transparent; color: var(--text); cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-radius: 8px; }
+        .btn:hover { background: var(--text); color: var(--bg); border-color: var(--text); }
+        .btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+        .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+        .btn svg { width: 16px; height: 16px; }
+        .btn-sm { padding: 0.5rem 1rem; font-size: 0.8rem; }
+        section { padding: 5rem 2rem; max-width: var(--max-width); margin: 0 auto; }
+        .section-label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1.25rem; }
+        section h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 1.5rem; line-height: 1.2; }
+        .divider { max-width: var(--max-width); margin: 0 auto; border: none; border-top: 1px solid var(--border); }
+        .about-text { font-size: 1.05rem; line-height: 1.85; color: var(--text-secondary); font-weight: 300; }
+        .timeline { display: grid; gap: 0; }
+        .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-date { font-size: 0.78rem; color: var(--text-muted); font-weight: 400; padding-top: 0.15rem; line-height: 1.5; }
+        .timeline-content h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.15rem; }
+        .timeline-content .role { font-size: 0.85rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 0.35rem; }
+        .timeline-content .desc { font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6; }
+        .timeline-tag { display: inline-block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); padding: 0.2rem 0.5rem; border: 1px solid var(--border); border-radius: 100px; margin-top: 0.35rem; margin-right: 0.25rem; }
+        .edu-grid { display: grid; gap: 0; }
+        .edu-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+        .edu-item:last-child { border-bottom: none; }
+        .edu-date { font-size: 0.78rem; color: var(--text-muted); font-weight: 400; padding-top: 0.1rem; }
+        .edu-content h3 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.1rem; }
+        .edu-content .school { font-size: 0.82rem; color: var(--text-secondary); font-weight: 400; }
+        .edu-content .note { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; font-style: italic; margin-top: 0.2rem; }
+        .certs { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+        .cert-tag { font-size: 0.72rem; font-weight: 400; color: var(--text-secondary); padding: 0.35rem 0.7rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; }
+        .projects-grid { display: grid; gap: 1rem; }
+        .project-card { padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.25s; }
+        .project-card:hover { border-color: var(--text-muted); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+        .project-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+        .project-header h3 { font-size: 1rem; font-weight: 500; }
+        .project-link { font-size: 0.78rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; }
+        .project-link:hover { color: var(--text); }
+        .project-link svg { width: 14px; height: 14px; }
+        .project-card p { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; margin-bottom: 0.75rem; line-height: 1.5; }
+        .project-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+        .project-tag { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-muted); padding: 0.25rem 0.6rem; border: 1px solid var(--border); border-radius: 100px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+        .contact-item { display: flex; align-items: center; gap: 0.75rem; padding: 1.25rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text); text-decoration: none; font-size: 0.9rem; transition: all 0.2s; }
+        .contact-item:hover { border-color: var(--text); }
+        .contact-item svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--text-muted); transition: color 0.2s; }
+        .contact-item:hover svg { color: var(--text); }
+        .vcard-section { margin-top: 1.5rem; }
+        footer { text-align: center; padding: 3rem 2rem; color: var(--text-muted); font-size: 0.8rem; font-weight: 300; }
+        .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        @media (max-width: 640px) {
+            nav { padding: 0 1.25rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: 0.78rem; }
+            section { padding: 3.5rem 1.5rem; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero-cta { flex-direction: column; width: 100%; max-width: 280px; }
+            .hero-cta .btn { justify-content: center; }
+            .timeline-item, .edu-item { grid-template-columns: 1fr; gap: 0.25rem; }
+            .timeline-date, .edu-date { font-size: 0.72rem; }
+            .project-header { flex-direction: column; gap: 0.35rem; }
+            .scroll-hint { display: none; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <a href="#" class="logo">AZ</a>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#notes">Notes</a></li>
-            <li><a href="#cv">Resume</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+                <li><a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a></li>
+                <li><a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+            </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
     </nav>
-    <div class="nav-overlay"></div>
 
-    <!-- Hero -->
     <section class="hero" id="home">
         <h1>Adrián Zapatera</h1>
-        <p class="hero-subtitle">Asset Manager</p>
+        <p class="hero-subtitle" data-en="Real Estate Finance &amp; Asset Management" data-es="Finanzas Inmobiliarias &amp; Gestión de Activos">Real Estate Finance &amp; Asset Management</p>
+        <div class="hero-tags">
+            <span class="hero-tag" data-en="AI &amp; Technology" data-es="IA &amp; Tecnología">AI &amp; Technology</span>
+            <span class="hero-tag" data-en="Investment Analysis" data-es="Análisis de Inversión">Investment Analysis</span>
+            <span class="hero-tag" data-en="Portfolio Management" data-es="Gestión de Carteras">Portfolio Management</span>
+        </div>
         <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary">Projects</a>
-            <a href="#contact" class="btn">Contact</a>
+            <a href="#projects" class="btn btn-primary" data-en="View Projects" data-es="Ver Proyectos">View Projects</a>
+            <a href="#contact" class="btn" data-en="Get in Touch" data-es="Contactar">Get in Touch</a>
+        </div>
+        <div class="scroll-hint" data-en="Scroll" data-es="Scroll">Scroll</div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="about" class="fade-in">
+        <span class="section-label" data-en="About" data-es="Sobre mí">About</span>
+        <h2 data-en="Finance meets technology" data-es="Finanzas y tecnología">Finance meets technology</h2>
+        <p class="about-text" data-en="Real Estate Finance and Asset Management consultant with experience across luxury residential developments, hospitality, and venture capital. Currently managing a portfolio exceeding €480M in value. Passionate about applying artificial intelligence and data-driven tools to investment analysis—building technology that enhances financial decision-making." data-es="Consultor de Finanzas Inmobiliarias y Gestión de Activos con experiencia en desarrollos residenciales de lujo, hostelería y capital riesgo. Actualmente gestionando una cartera que supera los 480M€. Apasionado por aplicar la inteligencia artificial y herramientas data-driven al análisis de inversiones, construyendo tecnología que mejora la toma de decisiones financieras.">
+            Real Estate Finance and Asset Management consultant with experience across luxury residential developments, hospitality, and venture capital. Currently managing a portfolio exceeding €480M in value. Passionate about applying artificial intelligence and data-driven tools to investment analysis—building technology that enhances financial decision-making.
+        </p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="experience" class="fade-in">
+        <span class="section-label" data-en="Experience" data-es="Experiencia">Experience</span>
+        <h2 data-en="Professional background" data-es="Trayectoria profesional">Professional background</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2022 — <span data-en="Present" data-es="Actualidad">Present</span></div>
+                <div class="timeline-content">
+                    <h3>Single Home &amp; Finca Cortesín</h3>
+                    <div class="role" data-en="Senior Project Developer &amp; RE Financing Manager" data-es="Director de Proyectos &amp; Responsable de Financiación Inmobiliaria">Senior Project Developer &amp; RE Financing Manager</div>
+                    <div class="desc" data-en="Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort." data-es="Gestión financiera directa de activos residenciales, hoteleros y de golf por valor superior a 480M€. Enlace principal con fondos de private equity internacionales. Consultor financiero de Finca Cortesín, Hotel &amp; Resort Nº1 de Europa.">Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort.</div>
+                    <span class="timeline-tag" data-en="Real Estate" data-es="Inmobiliario">Real Estate</span>
+                    <span class="timeline-tag" data-en="Asset Mgmt" data-es="Gestión de Activos">Asset Mgmt</span>
+                    <span class="timeline-tag" data-en="PE Relations" data-es="Relaciones PE">PE Relations</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024 — <span data-en="Present" data-es="Actualidad">Present</span></div>
+                <div class="timeline-content">
+                    <h3>ISSEP</h3>
+                    <div class="role" data-en="Adjunct Professor — Economics" data-es="Profesor Asociado — Economía">Adjunct Professor — Economics</div>
+                    <div class="desc" data-en="Lecturing on Public Economics, Housing Market, and the Generational Gap." data-es="Docencia en Economía Pública, Mercado Inmobiliario y Brecha Generacional.">Lecturing on Public Economics, Housing Market, and the Generational Gap.</div>
+                    <span class="timeline-tag" data-en="Academia" data-es="Academia">Academia</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-content">
+                    <h3>Itnig</h3>
+                    <div class="role" data-en="Financial &amp; Accounting Manager" data-es="Responsable Financiero y Contable">Financial &amp; Accounting Manager</div>
+                    <div class="desc" data-en="VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation)." data-es="Gestión de fondo VC y holding de startups. Control de servicios financieros de HoldCo a Factorial (unicornio, valoración c. 1.000M€).">VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation).</div>
+                    <span class="timeline-tag" data-en="Venture Capital" data-es="Capital Riesgo">Venture Capital</span>
+                    <span class="timeline-tag">Fintech</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3>Accenture</h3>
+                    <div class="role" data-en="Financial Management Consultant — Prague" data-es="Consultor de Gestión Financiera — Praga">Financial Management Consultant — Prague</div>
+                    <div class="desc" data-en="US-GAAP accounting specialist. Managed profitability of international government contracts." data-es="Especialista contable US-GAAP. Gestión de rentabilidad de contratos gubernamentales internacionales.">US-GAAP accounting specialist. Managed profitability of international government contracts.</div>
+                    <span class="timeline-tag" data-en="Consulting" data-es="Consultoría">Consulting</span>
+                    <span class="timeline-tag">US-GAAP</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2019 — 2020</div>
+                <div class="timeline-content">
+                    <h3>Fundeen</h3>
+                    <div class="role" data-en="Financial Analyst" data-es="Analista Financiero">Financial Analyst</div>
+                    <div class="desc" data-en="First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months." data-es="Primera fintech española de proyectos fotovoltaicos financiados por crowdfunding. Promoción de becario a analista en 2 meses.">First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months.</div>
+                    <span class="timeline-tag">Fintech</span>
+                    <span class="timeline-tag" data-en="Renewables" data-es="Renovables">Renewables</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about">
-        <h2 class="animate-on-scroll">About</h2>
-        <div class="about-grid animate-on-scroll">
-            <div class="about-content">
-                <p>
-                    Asset Manager with experience in investment analysis and portfolio management. Passionate about understanding financial markets and finding value opportunities through rigorous research and data-driven approaches.
-                </p>
-                <p>
-                    Increasingly focused and interested on the intersection of finance, technology and the bridge with the real world — passionate about complex systems. Amateur writer.
-                </p>
+    <hr class="divider">
+
+    <section id="education" class="fade-in">
+        <span class="section-label" data-en="Education" data-es="Formación">Education</span>
+        <h2 data-en="Academic background" data-es="Formación académica">Academic background</h2>
+        <div class="edu-grid">
+            <div class="edu-item">
+                <div class="edu-date">2023 — 2024</div>
+                <div class="edu-content">
+                    <h3 data-en="Real Estate, Economics &amp; Finance" data-es="Inmobiliaria, Economía y Finanzas">Real Estate, Economics &amp; Finance</h3>
+                    <div class="school">London School of Economics</div>
+                </div>
             </div>
-            <div class="at-glance">
-                <h3>At a Glance</h3>
-                <div class="at-glance-item">
-                    <div class="at-glance-label">Focus</div>
-                    <div class="at-glance-value">Asset Management</div>
+            <div class="edu-item">
+                <div class="edu-date">2022 — 2023</div>
+                <div class="edu-content">
+                    <h3 data-en="Master in Leadership &amp; Governance" data-es="Máster en Liderazgo y Gobernanza">Master in Leadership &amp; Governance</h3>
+                    <div class="school">ISSEP — Madrid</div>
+                    <div class="note" data-en="Best academic record · Nominee best thesis" data-es="Mejor expediente · Nominado mejor tesis">Best academic record · Nominee best thesis</div>
                 </div>
-                <div class="at-glance-item">
-                    <div class="at-glance-label">Areas</div>
-                    <div class="at-glance-value">Finance, Technology, Complex Systems</div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-date">2015 — 2019</div>
+                <div class="edu-content">
+                    <h3 data-en="Bachelor in Business Administration" data-es="Grado en ADE">Bachelor in Business Administration</h3>
+                    <div class="school">Universidad Católica de Ávila</div>
                 </div>
-                <div class="at-glance-item">
-                    <div class="at-glance-label">Approach</div>
-                    <div class="at-glance-value">Research-Driven</div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-date">2018</div>
+                <div class="edu-content">
+                    <h3 data-en="International Scholarship" data-es="Beca Internacional">International Scholarship</h3>
+                    <div class="school">San Diego State University</div>
+                    <div class="note" data-en="Ranked 1st in private international scholarship program" data-es="1º clasificado en programa de becas internacionales">Ranked 1st in private international scholarship program</div>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-date">2017</div>
+                <div class="edu-content">
+                    <h3 data-en="Erasmus Scholarship" data-es="Beca Erasmus">Erasmus Scholarship</h3>
+                    <div class="school">Technische Hochschule Köln</div>
                 </div>
             </div>
         </div>
+        <div class="certs">
+            <span class="cert-tag">Economics of Money &amp; Banking — Columbia</span>
+            <span class="cert-tag">Financial Markets — Yale</span>
+            <span class="cert-tag">Narrative Economics — Yale</span>
+            <span class="cert-tag">AI &amp; Machine Learning</span>
+            <span class="cert-tag">Excel for Finance — CFI</span>
+            <span class="cert-tag">Philosophy — Edinburgh</span>
+        </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects">
-        <h2 class="animate-on-scroll">Projects</h2>
-        <div class="projects-page-grid animate-on-scroll">
-            <div class="project-card-full">
+    <hr class="divider">
+
+    <section id="projects" class="fade-in">
+        <span class="section-label" data-en="Projects" data-es="Proyectos">Projects</span>
+        <h2 data-en="Work &amp; ideas" data-es="Trabajo &amp; ideas">Work &amp; ideas</h2>
+        <div class="projects-grid">
+            <div class="project-card">
                 <div class="project-header">
-                    <h3><a href="https://pagamenos-eight.vercel.app" target="_blank" rel="noopener">Pagamenos</a></h3>
-                    <span class="status-badge live">Live</span>
+                    <h3 data-en="RE Investment Analyzer" data-es="Analizador de Inversión Inmobiliaria">RE Investment Analyzer</h3>
+                    <a href="https://github.com/mimeticflaneur/re_financial_calculator" target="_blank" rel="noopener" class="project-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                        GitHub
+                    </a>
                 </div>
-                <p>Spanish consumer savings tool that helps users find the best prices and cut everyday expenses. Comparison engine covering supermarkets, utilities, and recurring costs.</p>
+                <p data-en="Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios." data-es="Calculadora de rentabilidad apalancada para inversiones inmobiliarias en España. TIR, Cash-on-Cash, DSCR, proyección de cashflows y simulación de venta anticipada con tres escenarios.">Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios.</p>
                 <div class="project-tags">
-                    <span class="project-tag">Next.js</span>
-                    <span class="project-tag">Product</span>
-                    <span class="project-tag">Consumer</span>
-                    <span class="project-tag">Spain</span>
-                </div>
-            </div>
-            <div class="project-card-full">
-                <div class="project-header">
-                    <h3><a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">RE Financial Calculator</a></h3>
-                    <span class="status-badge live">Live</span>
-                </div>
-                <p>Real estate financial modelling tool for analysing property investment returns, financing structures, and cash flow projections. Built for practitioners who need fast, rigorous numbers.</p>
-                <div class="project-tags">
-                    <span class="project-tag">Finance</span>
-                    <span class="project-tag">Real Estate</span>
-                    <span class="project-tag">Tool</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">Tailwind</span>
                     <span class="project-tag">Vite</span>
+                    <span class="project-tag" data-en="Financial Modeling" data-es="Modelado Financiero">Financial Modeling</span>
                 </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>pagamenos.es</h3>
+                    <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener" class="project-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                        Web
+                    </a>
+                </div>
+                <p data-en="Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases." data-es="Herramienta de comparación de ahorro para el consumidor español. Ayuda a los usuarios a encontrar los mejores precios y ahorrar en sus compras diarias.">Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases.</p>
+                <div class="project-tags">
+                    <span class="project-tag" data-en="Consumer Tech" data-es="Tech Consumo">Consumer Tech</span>
+                    <span class="project-tag" data-en="Savings" data-es="Ahorro">Savings</span>
+                    <span class="project-tag" data-en="AI-Powered" data-es="Potenciado por IA">AI-Powered</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 data-en="Investment Thesis" data-es="Tesis de Inversión">Investment Thesis</h3>
+                </div>
+                <p data-en="In-depth investment thesis and opportunity analysis. Deep dives into specific sectors and companies." data-es="Tesis de inversión y análisis de oportunidades en profundidad. Inmersiones en sectores y compañías específicas.">In-depth investment thesis and opportunity analysis. Deep dives into specific sectors and companies.</p>
+                <div class="project-tags"><span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 data-en="Readings" data-es="Lecturas">Readings</h3>
+                </div>
+                <p data-en="Curated reading recommendations on investing, history, philosophy, and artificial intelligence." data-es="Recomendaciones de lectura sobre inversión, historia, filosofía e inteligencia artificial.">Curated reading recommendations on investing, history, philosophy, and artificial intelligence.</p>
+                <div class="project-tags"><span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span></div>
             </div>
         </div>
     </section>
 
-    <!-- Public Notes -->
-    <section id="notes">
-        <h2 class="animate-on-scroll">Public Notes</h2>
-        <div class="coming-soon-card animate-on-scroll">
-            <p>Coming soon</p>
-        </div>
-    </section>
+    <hr class="divider">
 
-    <!-- Resume -->
-    <section id="cv">
-        <h2 class="animate-on-scroll">Resume</h2>
-        <div class="cv-inline animate-on-scroll">
-            <!-- Header -->
-            <div class="cv-header">
-                <h3>Adrián Zapatera Rollán</h3>
-                <p class="cv-headline">Luxury Real Estate Finance & Asset Management Consultant</p>
-                <div class="cv-contact-info">
-                    <span>Madrid, Spain</span>
-                    <span>adrian@zapatera.xyz</span>
-                </div>
-            </div>
-
-            <!-- Professional Experience -->
-            <div class="cv-section">
-                <h4>Professional Experience</h4>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Single Home & Finca Cortesín</div>
-                            <div class="cv-role">Senior Project Developer and Real Estate Financing Manager</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Madrid, Spain</div>
-                            <div class="cv-dates">July 2022 – Present</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Managed departmental operations, leading strategic planning, budgeting, and stakeholder communications to ensure continuity and performance</li>
-                        <li>Promoted to Project Manager, overseeing luxury residential, construction, and hospitality developments</li>
-                        <li>Direct financial management of a portfolio of residential, hospitality, and golf course assets worth over €180M</li>
-                        <li>Foster investor relations as primary liaison with international private equity firms, securing strategic partnerships</li>
-                        <li>Oversee senior management functions for a wellness and hospitality development with a €100M budget</li>
-                        <li>Serve as financial consultant for Finca Cortesin Hotels (named Europe's No.1 Hotel & Resort)</li>
-                        <li>Manage financial operations across projects totaling €480M in value</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Instituto Superior de Sociología, Economía y Política</div>
-                            <div class="cv-role">Adjunct Professor</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Madrid, Spain</div>
-                            <div class="cv-dates">Fall 2024 – Present</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Lectured in economics department about Public Economics, Housing Market and Generational Gap</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Itnig</div>
-                            <div class="cv-role">Financial and Accounting Manager</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Barcelona, Spain</div>
-                            <div class="cv-dates">January 2022 – June 2022</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Start-Up Holding Management in a Venture Capital Fund investing up to €100k in early-stage projects</li>
-                        <li>Controlled Financial and consulting services from HoldCo to Factorial, unicorn start-up valued at c. €1,000m</li>
-                        <li>Managed Treasury and Tax compliance with several companies under Holdco</li>
-                        <li>Produced and designed marketing materials and podcast production</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Accenture</div>
-                            <div class="cv-role">Financial Management Consultant</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Prague, Czech Republic</div>
-                            <div class="cv-dates">January 2021 – December 2021</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Acted as accountant specialist under US-GAAP and responsible of National Governments' clients</li>
-                        <li>Monitored profitability of international contracts while managing contracts operations</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Fundeen</div>
-                            <div class="cv-role">Financial Analyst</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Ávila, Spain</div>
-                            <div class="cv-dates">February 2019 – January 2020</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Modelled financial projects in the first fintech based in photovoltaic projects financed by crowdfunding</li>
-                        <li>Started as intern financial analyst and promoted to full-time analyst in 2 months</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Education -->
-            <div class="cv-section">
-                <h4>Education</h4>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Instituto Superior de Sociología, Economía y Política</div>
-                            <div class="cv-role">Master in Leadership and Governance</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Madrid, Spain</div>
-                            <div class="cv-dates">September 2022 – June 2023</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Honorary mention for best academic record</li>
-                        <li>Nominee for best master thesis: "Economic and Social Analysis of the Generational Gap in Spain"</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Universidad Católica de Ávila</div>
-                            <div class="cv-role">Bachelor in Business Administration</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Ávila, Spain</div>
-                            <div class="cv-dates">September 2015 – June 2019</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Founded the "Economics Reading Club"</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">San Diego State University</div>
-                            <div class="cv-role">International Scholarship, Economics & Business Administration</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">San Diego, US</div>
-                            <div class="cv-dates">January – June 2018</div>
-                        </div>
-                    </div>
-                    <ul class="cv-bullets">
-                        <li>Ranked 1st for the private international scholarship program</li>
-                    </ul>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">Technische Hochschule Köln</div>
-                            <div class="cv-role">Erasmus Scholarship</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Cologne, Germany</div>
-                            <div class="cv-dates">January – June 2017</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cv-entry">
-                    <div class="cv-entry-header">
-                        <div>
-                            <div class="cv-company">London School of Economics</div>
-                            <div class="cv-role">Real Estate, Economics and Finance Course</div>
-                        </div>
-                        <div class="cv-meta">
-                            <div class="cv-location">Online</div>
-                            <div class="cv-dates">September 2023 – January 2024</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Information -->
-            <div class="cv-section">
-                <h4>Additional Information</h4>
-                <div class="cv-info-grid">
-                    <div class="cv-info-item">
-                        <strong>Languages:</strong> <span>Spanish (Native), English (C1), German (A2), Catalan (B2)</span>
-                    </div>
-                    <div class="cv-info-item">
-                        <strong>Certifications:</strong> <span>Economics of Money & Banking (Columbia) | Financial Markets (Yale) | Excel for Finance (CFI) | Financial Mathematics (Escuela de Empresa) | Narrative Economics (Yale) | Philosophy (Edinburgh)</span>
-                    </div>
-                    <div class="cv-info-item">
-                        <strong>Interests:</strong> <span>Sports (Gym, Boxing, Football), Philosophy & History, Media production, Technology and LLMs</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Download -->
-            <div class="cv-download">
-                <a href="cv.pdf" class="btn btn-primary" download>Download CV (PDF)</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-        <h2 class="animate-on-scroll">Contact</h2>
-        <div class="contact-links animate-on-scroll">
+    <section id="contact" class="fade-in">
+        <span class="section-label" data-en="Contact" data-es="Contacto">Contact</span>
+        <h2 data-en="Let's connect" data-es="Conectemos">Let's connect</h2>
+        <div class="contact-grid">
             <a href="mailto:adrian@zapatera.xyz" class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
                 adrian@zapatera.xyz
             </a>
-            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
+            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener" class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
             </a>
-            <a href="https://github.com/adrianzapatera" target="_blank" class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                </svg>
-                GitHub
+        </div>
+        <div class="vcard-section">
+            <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AAdri%C3%A1n%20Zapatera%0AN%3AZapatera%3BAdri%C3%A1n%0ATITLE%3AReal%20Estate%20Finance%20%26%20Asset%20Management%0AEMAIL%3Aadrian%40zapatera.xyz%0AURL%3Ahttps%3A%2F%2Fzapatera.xyz%0AURL%3Ahttps%3A%2F%2Flinkedin.com%2Fin%2Fadrianzapatera%0AEND%3AVCARD" download="Adrian_Zapatera.vcf" class="btn btn-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                <span data-en="Save Contact (vCard)" data-es="Guardar Contacto (vCard)">Save Contact (vCard)</span>
             </a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; <span id="footer-year">2025</span> Adrián Zapatera. All rights reserved.</p>
+        <p>&copy; 2026 Adrián Zapatera</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const translatables = document.querySelectorAll('[data-en]');
+        let currentLang = 'en';
+        function setLang(lang) {
+            currentLang = lang;
+            langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+            translatables.forEach(el => { const t = el.getAttribute('data-' + lang); if (t) el.textContent = t; });
+            document.documentElement.lang = lang;
+        }
+        langBtns.forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) { const y = t.getBoundingClientRect().top + window.pageYOffset - 64; window.scrollTo({ top: y, behavior: 'smooth' }); }
+            });
+        });
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
