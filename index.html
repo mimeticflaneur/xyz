@@ -96,6 +96,20 @@
         footer{text-align:center;padding:3rem 2rem;color:var(--text-muted);font-size:.8rem;font-weight:300}
         .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
         .fade-in.visible{opacity:1;transform:translateY(0)}
+        .term-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:2rem}
+        .term-overlay.open{display:flex}
+        .term{width:100%;max-width:640px;max-height:60vh;background:#0d1117;border:1px solid #30363d;border-radius:12px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:.82rem;color:#c9d1d9;overflow:hidden;display:flex;flex-direction:column}
+        .term-head{display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;background:#161b22;border-bottom:1px solid #30363d}
+        .term-dot{width:10px;height:10px;border-radius:50%;background:#ff5f57}
+        .term-dot:nth-child(2){background:#febc2e}
+        .term-dot:nth-child(3){background:#28c840}
+        .term-title{margin-left:.5rem;font-size:.7rem;color:#8b949e}
+        .term-body{padding:1rem;overflow-y:auto;flex:1}
+        .term-line{margin-bottom:.25rem;line-height:1.5;white-space:pre-wrap;word-break:break-word}
+        .term-line .pr{color:#58a6ff}
+        .term-line .out{color:#8b949e}
+        .term-input-line{display:flex;align-items:center;gap:.5rem}
+        .term-in{background:none;border:none;color:#c9d1d9;font-family:inherit;font-size:inherit;flex:1;outline:none;caret-color:#58a6ff}
         @media(max-width:640px){
             nav{padding:0 1.25rem}
             .nav-links{gap:1rem}
@@ -292,19 +306,63 @@
 
     <footer><p>&copy; 2026 Adrián Zapatera</p></footer>
 
+    <!-- Terminal Easter Egg -->
+    <div class="term-overlay" id="term-overlay">
+        <div class="term">
+            <div class="term-head">
+                <div class="term-dot"></div>
+                <div class="term-dot"></div>
+                <div class="term-dot"></div>
+                <span class="term-title">adrian@zapatera.xyz</span>
+            </div>
+            <div class="term-body" id="term-body">
+                <div class="term-line"><span class="out">Welcome. Type 'help' for commands.</span></div>
+                <div class="term-input-line">
+                    <span class="pr">~$</span>
+                    <input class="term-in" id="term-in" type="text" spellcheck="false" autocomplete="off">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Theme
         var tt=document.getElementById('theme-toggle'),is=document.getElementById('icon-sun'),im=document.getElementById('icon-moon');
         function applyTheme(t){document.documentElement.setAttribute('data-theme',t);if(is&&im){is.style.display=t==='dark'?'block':'none';im.style.display=t==='dark'?'none':'block';}}
         applyTheme(localStorage.getItem('theme')||'light');
         if(tt)tt.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+
+        // Counter
         var ce=document.getElementById('portfolio-counter'),counted=false;
-        if(ce){new IntersectionObserver(function(e){if(e[0].isIntersecting&&!counted){counted=true;var v=0,t=setInterval(function(){v+=8;if(v>=480){v=480;clearInterval(t);}ce.textContent='€'+v+'M+';},16);}},{threshold:.5}).observe(ce);}
+        if(ce){new IntersectionObserver(function(e){if(e[0].isIntersecting&&!counted){counted=true;var v=0,t=setInterval(function(){v+=8;if(v>=480){v=480;clearInterval(t);}ce.textContent='\u20ac'+v+'M+';},16);}},{threshold:.5}).observe(ce);}
+
+        // Lang
         var lbs=document.querySelectorAll('.lang-btn'),trs=document.querySelectorAll('[data-en]');
         function setLang(l){lbs.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});trs.forEach(function(el){var t=el.getAttribute('data-'+l);if(t)el.textContent=t;});document.documentElement.lang=l;}
         lbs.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:y,behavior:'smooth'});}});});
+
+        // Fade in
         var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.1});
         document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+
+        // Terminal
+        var to=document.getElementById('term-overlay'),tb=document.getElementById('term-body'),ti=document.getElementById('term-in');
+        var tcmds={
+            help:function(){return'Available commands:\n  whoami    \u2014 about me\n  ls        \u2014 list sections\n  projects  \u2014 list projects\n  reading   \u2014 current reads\n  open <x>  \u2014 open project (pagamenos, refinancial, now)\n  clear     \u2014 clear terminal\n  exit      \u2014 close terminal';},
+            whoami:function(){return'Adri\u00e1n Zapatera\nAsset Manager \u00b7 Real Estate Finance\nManaging \u20ac480M+ in assets. Building tools with LLMs.\nMadrid, Spain.';},
+            ls:function(){return'about/  experience/  education/  projects/  contact/  now/';},
+            projects:function(){return'RE Financial Calculator  \u2014 live    \u2014 refinancialcalculator.vercel.app\npagamenos.es            \u2014 live    \u2014 pagamenos-eight.vercel.app\nConsensus Alpha Trade   \u2014 wip\nReadings                \u2014 soon';},
+            reading:function(){return'Currently reading:\n  \u2014 Anabasis, Xenophon\n  \u2014 La Raz\u00f3n Antiliberal, Donoso Cort\u00e9s';}
+        };
+        function tOut(t){if(!t)return;var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="out">'+t.replace(/\n/g,'<br>')+'</span>';tb.insertBefore(d,tb.lastElementChild);tb.scrollTop=tb.scrollHeight;}
+        function tLine(c){var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="pr">~$</span> '+c;tb.insertBefore(d,tb.lastElementChild);}
+        function tExec(c){var s=c.trim().toLowerCase();if(s==='clear'){while(tb.children.length>1)tb.removeChild(tb.firstChild);return;}if(s==='exit'){to.classList.remove('open');return;}if(s.startsWith('open ')){var t=s.split(' ')[1],u={pagamenos:'https://pagamenos-eight.vercel.app',refinancial:'https://refinancialcalculator.vercel.app',now:'pages/now.html'};if(u[t]){window.open(u[t],'_blank');tOut('Opening '+t+'...');}else{tOut('Unknown: '+t+'. Try: pagamenos, refinancial, now');}return;}if(tcmds[s]){tOut(tcmds[s]());}else{tOut('command not found: '+s+'. Type help for commands.');}}
+        document.addEventListener('keydown',function(e){if(e.key==='`'&&!to.classList.contains('open')&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){e.preventDefault();to.classList.add('open');setTimeout(function(){ti.focus();},100);}if(e.key==='Escape'&&to.classList.contains('open')){to.classList.remove('open');}});
+        if(ti)ti.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=ti.value;if(v.trim()){tLine(v);tExec(v);ti.value='';}}});
+        if(to)to.addEventListener('click',function(e){if(e.target===to)to.classList.remove('open');});
     </script>
 </body>
 </html>
