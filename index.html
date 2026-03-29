@@ -36,6 +36,19 @@
         .theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:.35rem .45rem;cursor:pointer;color:var(--text-muted);transition:all .2s;display:flex;align-items:center}
         .theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
         .theme-toggle svg{width:15px;height:15px}
+        .hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--text);z-index:160}
+        .hamburger span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0;transition:all .3s;border-radius:1px}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+        .menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:110;opacity:0;pointer-events:none;transition:opacity .3s}
+        .menu-overlay.open{opacity:1;pointer-events:auto}
+        .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:280px;background:var(--bg);border-left:1px solid var(--border);z-index:120;transform:translateX(100%);transition:transform .3s ease;padding:5rem 2rem 2rem;display:flex;flex-direction:column;gap:0}
+        .mobile-menu.open{transform:translateX(0)}
+        .mobile-menu a{color:var(--text);text-decoration:none;font-size:1rem;font-weight:400;padding:1rem 0;border-bottom:1px solid var(--border);display:block;transition:color .2s}
+        .mobile-menu a:first-child{border-top:1px solid var(--border)}
+        .mobile-menu a:hover{color:var(--text-secondary)}
+        .mobile-menu-footer{margin-top:auto;display:flex;align-items:center;gap:1rem}
         .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative}
         .hero h1{font-size:clamp(2.5rem,7vw,4rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}
         .hero-subtitle{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--text-secondary);font-weight:300;margin-bottom:.75rem}
@@ -110,18 +123,29 @@
         .term-line .out{color:#8b949e}
         .term-input-line{display:flex;align-items:center;gap:.5rem}
         .term-in{background:none;border:none;color:#c9d1d9;font-family:inherit;font-size:inherit;flex:1;outline:none;caret-color:#58a6ff}
-        @media(max-width:640px){
+        @media(max-width:768px){
+            .hamburger{display:block}
+            .nav-links,.lang-toggle{display:none}
             nav{padding:0 1.25rem}
-            .nav-links{gap:1rem}
-            .nav-links a{font-size:.78rem}
             section{padding:3.5rem 1.5rem}
             .hero h1{font-size:2.25rem}
+            .hero-subtitle{font-size:.95rem}
+            .hero-tags{gap:.4rem}
+            .hero-tag{font-size:.65rem;padding:.25rem .6rem}
             .hero-cta{flex-direction:column;width:100%;max-width:280px}
             .hero-cta .btn{justify-content:center}
-            .timeline-item,.edu-item{grid-template-columns:1fr;gap:.25rem}
-            .timeline-date,.edu-date{font-size:.72rem}
+            .timeline-item{grid-template-columns:1fr;gap:.15rem;padding:1.25rem 0}
+            .timeline-date{font-size:.72rem;font-weight:500}
+            .edu-item{grid-template-columns:1fr;gap:.15rem;padding:1rem 0}
+            .edu-date{font-size:.72rem;font-weight:500}
             .project-header{flex-direction:column;gap:.35rem}
+            .contact-grid{grid-template-columns:1fr}
             .scroll-hint{display:none}
+            .stat-number{font-size:1.85rem}
+            section h2{font-size:1.35rem}
+            .about-text{font-size:.95rem}
+            .term{max-height:50vh;border-radius:8px}
+            .term-overlay{padding:1rem}
         }
     </style>
 </head>
@@ -144,8 +168,26 @@
                 <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
                 <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
             </button>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+
+    <div class="menu-overlay" id="menu-overlay"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" data-en="About" data-es="Sobre mí">About</a>
+        <a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a>
+        <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
+        <a href="pages/now.html" data-en="Now" data-es="Ahora">Now</a>
+        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+        <div class="mobile-menu-footer">
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
+        </div>
+    </div>
 
     <section class="hero" id="home">
         <h1>Adrián Zapatera</h1>
@@ -180,11 +222,56 @@
         <span class="section-label" data-en="Experience" data-es="Experiencia">Experience</span>
         <h2 data-en="Professional background" data-es="Trayectoria profesional">Professional background</h2>
         <div class="timeline">
-            <div class="timeline-item"><div class="timeline-date">2022 — <span data-en="Present" data-es="Actualidad">Present</span></div><div class="timeline-content"><h3>Single Home &amp; Finca Cortesín</h3><div class="role" data-en="Senior Project Developer &amp; RE Financing Manager" data-es="Director de Proyectos &amp; Responsable de Financiación Inmobiliaria">Senior Project Developer &amp; RE Financing Manager</div><div class="desc" data-en="Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort." data-es="Gestión financiera directa de activos residenciales, hoteleros y de golf por valor superior a 480M€. Enlace principal con fondos de private equity internacionales. Consultor financiero de Finca Cortesín, Hotel &amp; Resort Nº1 de Europa.">Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort.</div><span class="timeline-tag" data-en="Real Estate" data-es="Inmobiliario">Real Estate</span><span class="timeline-tag" data-en="Asset Mgmt" data-es="Gestión de Activos">Asset Mgmt</span><span class="timeline-tag" data-en="PE Relations" data-es="Relaciones PE">PE Relations</span></div></div>
-            <div class="timeline-item"><div class="timeline-date">2024 — <span data-en="Present" data-es="Actualidad">Present</span></div><div class="timeline-content"><h3>ISSEP</h3><div class="role" data-en="Adjunct Professor — Economics" data-es="Profesor Asociado — Economía">Adjunct Professor — Economics</div><div class="desc" data-en="Lecturing on Public Economics, Housing Market, and the Generational Gap." data-es="Docencia en Economía Pública, Mercado Inmobiliario y Brecha Generacional.">Lecturing on Public Economics, Housing Market, and the Generational Gap.</div><span class="timeline-tag" data-en="Academia" data-es="Academia">Academia</span></div></div>
-            <div class="timeline-item"><div class="timeline-date">2022</div><div class="timeline-content"><h3>Itnig</h3><div class="role" data-en="Financial &amp; Accounting Manager" data-es="Responsable Financiero y Contable">Financial &amp; Accounting Manager</div><div class="desc" data-en="VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation)." data-es="Gestión de fondo VC y holding de startups. Control de servicios financieros de HoldCo a Factorial (unicornio, valoración c. 1.000M€).">VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation).</div><span class="timeline-tag" data-en="Venture Capital" data-es="Capital Riesgo">Venture Capital</span><span class="timeline-tag">Fintech</span></div></div>
-            <div class="timeline-item"><div class="timeline-date">2021</div><div class="timeline-content"><h3>Accenture</h3><div class="role" data-en="Financial Management Consultant — Prague" data-es="Consultor de Gestión Financiera — Praga">Financial Management Consultant — Prague</div><div class="desc" data-en="US-GAAP accounting specialist. Managed profitability of international government contracts." data-es="Especialista contable US-GAAP. Gestión de rentabilidad de contratos gubernamentales internacionales.">US-GAAP accounting specialist. Managed profitability of international government contracts.</div><span class="timeline-tag" data-en="Consulting" data-es="Consultoría">Consulting</span><span class="timeline-tag">US-GAAP</span></div></div>
-            <div class="timeline-item"><div class="timeline-date">2019 — 2020</div><div class="timeline-content"><h3>Fundeen</h3><div class="role" data-en="Financial Analyst" data-es="Analista Financiero">Financial Analyst</div><div class="desc" data-en="First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months." data-es="Primera fintech española de proyectos fotovoltaicos financiados por crowdfunding. Promoción de becario a analista en 2 meses.">First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months.</div><span class="timeline-tag">Fintech</span><span class="timeline-tag" data-en="Renewables" data-es="Renovables">Renewables</span></div></div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022 — <span data-en="Present" data-es="Actualidad">Present</span></div>
+                <div class="timeline-content">
+                    <h3>Single Home &amp; Finca Cortesín</h3>
+                    <div class="role" data-en="Senior Project Developer &amp; RE Financing Manager" data-es="Director de Proyectos &amp; Responsable de Financiación Inmobiliaria">Senior Project Developer &amp; RE Financing Manager</div>
+                    <div class="desc" data-en="Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort." data-es="Gestión financiera directa de activos residenciales, hoteleros y de golf por valor superior a 480M€. Enlace principal con fondos de private equity internacionales. Consultor financiero de Finca Cortesín, Hotel &amp; Resort Nº1 de Europa.">Direct financial management of residential, hospitality, and golf assets worth over €480M. Primary liaison with international PE firms. Financial consultant for Finca Cortesín, Europe's No.1 Hotel &amp; Resort.</div>
+                    <span class="timeline-tag" data-en="Real Estate" data-es="Inmobiliario">Real Estate</span>
+                    <span class="timeline-tag" data-en="Asset Mgmt" data-es="Gestión de Activos">Asset Mgmt</span>
+                    <span class="timeline-tag" data-en="PE Relations" data-es="Relaciones PE">PE Relations</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2024 — <span data-en="Present" data-es="Actualidad">Present</span></div>
+                <div class="timeline-content">
+                    <h3>ISSEP</h3>
+                    <div class="role" data-en="Adjunct Professor — Economics" data-es="Profesor Asociado — Economía">Adjunct Professor — Economics</div>
+                    <div class="desc" data-en="Lecturing on Public Economics, Housing Market, and the Generational Gap." data-es="Docencia en Economía Pública, Mercado Inmobiliario y Brecha Generacional.">Lecturing on Public Economics, Housing Market, and the Generational Gap.</div>
+                    <span class="timeline-tag" data-en="Academia" data-es="Academia">Academia</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2022</div>
+                <div class="timeline-content">
+                    <h3>Itnig</h3>
+                    <div class="role" data-en="Financial &amp; Accounting Manager" data-es="Responsable Financiero y Contable">Financial &amp; Accounting Manager</div>
+                    <div class="desc" data-en="VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation)." data-es="Gestión de fondo VC y holding de startups. Control de servicios financieros de HoldCo a Factorial (unicornio, valoración c. 1.000M€).">VC fund and startup holding management. Controlled financial services from HoldCo to Factorial (unicorn, c. €1B valuation).</div>
+                    <span class="timeline-tag" data-en="Venture Capital" data-es="Capital Riesgo">Venture Capital</span>
+                    <span class="timeline-tag">Fintech</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3>Accenture</h3>
+                    <div class="role" data-en="Financial Management Consultant — Prague" data-es="Consultor de Gestión Financiera — Praga">Financial Management Consultant — Prague</div>
+                    <div class="desc" data-en="US-GAAP accounting specialist. Managed profitability of international government contracts." data-es="Especialista contable US-GAAP. Gestión de rentabilidad de contratos gubernamentales internacionales.">US-GAAP accounting specialist. Managed profitability of international government contracts.</div>
+                    <span class="timeline-tag" data-en="Consulting" data-es="Consultoría">Consulting</span>
+                    <span class="timeline-tag">US-GAAP</span>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2019 — 2020</div>
+                <div class="timeline-content">
+                    <h3>Fundeen</h3>
+                    <div class="role" data-en="Financial Analyst" data-es="Analista Financiero">Financial Analyst</div>
+                    <div class="desc" data-en="First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months." data-es="Primera fintech española de proyectos fotovoltaicos financiados por crowdfunding. Promoción de becario a analista en 2 meses.">First fintech in Spain for photovoltaic projects financed via crowdfunding. Promoted from intern to analyst in 2 months.</div>
+                    <span class="timeline-tag">Fintech</span>
+                    <span class="timeline-tag" data-en="Renewables" data-es="Renovables">Renewables</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -216,10 +303,32 @@
         <span class="section-label" data-en="Projects" data-es="Proyectos">Projects</span>
         <h2 data-en="Work &amp; ideas" data-es="Trabajo &amp; ideas">Work &amp; ideas</h2>
         <div class="projects-grid">
-            <div class="project-card"><div class="project-header"><h3 data-en="RE Investment Analyzer" data-es="Analizador de Inversión Inmobiliaria">RE Investment Analyzer</h3><a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a></div><p data-en="Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios." data-es="Calculadora de rentabilidad apalancada para inversiones inmobiliarias en España. TIR, Cash-on-Cash, DSCR, proyección de cashflows y simulación de venta anticipada con tres escenarios.">Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios.</p><div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Tailwind</span><span class="project-tag">Vite</span><span class="project-tag" data-en="Financial Modeling" data-es="Modelado Financiero">Financial Modeling</span></div></div>
-            <div class="project-card"><div class="project-header"><h3>pagamenos.es</h3><a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a></div><p data-en="Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases." data-es="Herramienta de comparación de ahorro para el consumidor español. Ayuda a los usuarios a encontrar los mejores precios y ahorrar en sus compras diarias.">Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases.</p><div class="project-tags"><span class="project-tag" data-en="Consumer Tech" data-es="Tech Consumo">Consumer Tech</span><span class="project-tag" data-en="Savings" data-es="Ahorro">Savings</span><span class="project-tag" data-en="LLM-Powered" data-es="Potenciado por LLMs">LLM-Powered</span></div></div>
-            <div class="project-card"><div class="project-header"><h3>Consensus Alpha Trade</h3></div><p data-en="Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress." data-es="Identificando oportunidades asimétricas donde el consenso de mercado está estructuralmente equivocado. Investigación activa en curso.">Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress.</p><div class="project-tags"><span class="project-tag" data-en="In progress" data-es="En progreso">In progress</span></div></div>
-            <div class="project-card"><div class="project-header"><h3 data-en="Readings" data-es="Lecturas">Readings</h3></div><p data-en="Curated reading recommendations on investing, history, philosophy, and LLMs." data-es="Recomendaciones de lectura sobre inversión, historia, filosofía y LLMs.">Curated reading recommendations on investing, history, philosophy, and LLMs.</p><div class="project-tags"><span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span></div></div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 data-en="RE Investment Analyzer" data-es="Analizador de Inversión Inmobiliaria">RE Investment Analyzer</h3>
+                    <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a>
+                </div>
+                <p data-en="Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios." data-es="Calculadora de rentabilidad apalancada para inversiones inmobiliarias en España. TIR, Cash-on-Cash, DSCR, proyección de cashflows y simulación de venta anticipada con tres escenarios.">Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios.</p>
+                <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Tailwind</span><span class="project-tag">Vite</span><span class="project-tag" data-en="Financial Modeling" data-es="Modelado Financiero">Financial Modeling</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>pagamenos.es</h3>
+                    <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a>
+                </div>
+                <p data-en="Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases." data-es="Herramienta de comparación de ahorro para el consumidor español. Ayuda a los usuarios a encontrar los mejores precios y ahorrar en sus compras diarias.">Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases.</p>
+                <div class="project-tags"><span class="project-tag" data-en="Consumer Tech" data-es="Tech Consumo">Consumer Tech</span><span class="project-tag" data-en="Savings" data-es="Ahorro">Savings</span><span class="project-tag" data-en="LLM-Powered" data-es="Potenciado por LLMs">LLM-Powered</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-header"><h3>Consensus Alpha Trade</h3></div>
+                <p data-en="Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress." data-es="Identificando oportunidades asimétricas donde el consenso de mercado está estructuralmente equivocado. Investigación activa en curso.">Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress.</p>
+                <div class="project-tags"><span class="project-tag" data-en="In progress" data-es="En progreso">In progress</span></div>
+            </div>
+            <div class="project-card">
+                <div class="project-header"><h3 data-en="Readings" data-es="Lecturas">Readings</h3></div>
+                <p data-en="Curated reading recommendations on investing, history, philosophy, and LLMs." data-es="Recomendaciones de lectura sobre inversión, historia, filosofía y LLMs.">Curated reading recommendations on investing, history, philosophy, and LLMs.</p>
+                <div class="project-tags"><span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span></div>
+            </div>
         </div>
     </section>
 
@@ -242,10 +351,16 @@
     <!-- Terminal Easter Egg -->
     <div class="term-overlay" id="term-overlay">
         <div class="term">
-            <div class="term-head"><div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div><span class="term-title">adrian@zapatera.xyz</span></div>
+            <div class="term-head">
+                <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
+                <span class="term-title">adrian@zapatera.xyz</span>
+            </div>
             <div class="term-body" id="term-body">
-                <div class="term-line"><span class="out">Welcome. Press Ctrl+K to toggle. Type 'help' for commands.</span></div>
-                <div class="term-input-line"><span class="pr">~$</span><input class="term-in" id="term-in" type="text" spellcheck="false" autocomplete="off"></div>
+                <div class="term-line"><span class="out">Welcome. Type 'help' for commands.</span></div>
+                <div class="term-input-line">
+                    <span class="pr">~$</span>
+                    <input class="term-in" id="term-in" type="text" spellcheck="false" autocomplete="off">
+                </div>
             </div>
         </div>
     </div>
@@ -256,18 +371,30 @@
         function applyTheme(t){document.documentElement.setAttribute('data-theme',t);if(is&&im){is.style.display=t==='dark'?'block':'none';im.style.display=t==='dark'?'none':'block';}}
         applyTheme(localStorage.getItem('theme')||'light');
         if(tt)tt.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+
         // Counter
         var ce=document.getElementById('portfolio-counter'),counted=false;
         if(ce){new IntersectionObserver(function(e){if(e[0].isIntersecting&&!counted){counted=true;var v=0,t=setInterval(function(){v+=8;if(v>=480){v=480;clearInterval(t);}ce.textContent='\u20ac'+v+'M+';},16);}},{threshold:.5}).observe(ce);}
+
         // Lang
         var lbs=document.querySelectorAll('.lang-btn'),trs=document.querySelectorAll('[data-en]');
         function setLang(l){lbs.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});trs.forEach(function(el){var t=el.getAttribute('data-'+l);if(t)el.textContent=t;});document.documentElement.lang=l;}
         lbs.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:y,behavior:'smooth'});}});});
+
         // Fade in
         var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.1});
         document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+
+        // Hamburger
+        var hb=document.getElementById('hamburger'),mm=document.getElementById('mobile-menu'),mo=document.getElementById('menu-overlay');
+        function toggleMenu(){var o=mm.classList.toggle('open');mo.classList.toggle('open');hb.classList.toggle('active');document.body.style.overflow=o?'hidden':'';}
+        if(hb)hb.addEventListener('click',toggleMenu);
+        if(mo)mo.addEventListener('click',toggleMenu);
+        if(mm)mm.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){if(mm.classList.contains('open'))toggleMenu();});});
+
         // Terminal
         var to=document.getElementById('term-overlay'),tb=document.getElementById('term-body'),ti=document.getElementById('term-in');
         var tcmds={
@@ -275,12 +402,12 @@
             whoami:function(){return'Adri\u00e1n Zapatera\nAsset Manager \u00b7 Real Estate Finance\nManaging \u20ac480M+ in assets. Building tools with LLMs.\nMadrid, Spain.';},
             ls:function(){return'about/  experience/  education/  projects/  contact/  now/';},
             projects:function(){return'RE Financial Calculator  \u2014 live    \u2014 refinancialcalculator.vercel.app\npagamenos.es            \u2014 live    \u2014 pagamenos-eight.vercel.app\nConsensus Alpha Trade   \u2014 wip\nReadings                \u2014 soon';},
-            reading:function(){return'Currently reading:\n  \u2014 Anabasis, Xenophon\n  \u2014 La Raz\u00f3n Antiliberal, Donoso Cort\u00e9s';}
+            reading:function(){return'Currently reading:\n  \u2014 Updating soon';}
         };
         function tOut(t){if(!t)return;var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="out">'+t.replace(/\n/g,'<br>')+'</span>';tb.insertBefore(d,tb.lastElementChild);tb.scrollTop=tb.scrollHeight;}
         function tLine(c){var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="pr">~$</span> '+c;tb.insertBefore(d,tb.lastElementChild);}
         function tExec(c){var s=c.trim().toLowerCase();if(s==='clear'){while(tb.children.length>1)tb.removeChild(tb.firstChild);return;}if(s==='exit'){to.classList.remove('open');return;}if(s.startsWith('open ')){var t=s.split(' ')[1],u={pagamenos:'https://pagamenos-eight.vercel.app',refinancial:'https://refinancialcalculator.vercel.app',now:'pages/now.html'};if(u[t]){window.open(u[t],'_blank');tOut('Opening '+t+'...');}else{tOut('Unknown: '+t+'. Try: pagamenos, refinancial, now');}return;}if(tcmds[s]){tOut(tcmds[s]());}else{tOut('command not found: '+s+'. Type help for commands.');}}
-        document.addEventListener('keydown',function(e){if(((e.ctrlKey||e.metaKey)&&e.key==='k')||e.key==='`'){if(!to.classList.contains('open')&&document.activeElement.tagName!=='INPUT'&&document.activeElement.tagName!=='TEXTAREA'){e.preventDefault();to.classList.add('open');setTimeout(function(){ti.focus();},100);}}if(e.key==='Escape'&&to.classList.contains('open')){to.classList.remove('open');}});
+        document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'&&!to.classList.contains('open')){e.preventDefault();to.classList.add('open');setTimeout(function(){ti.focus();},100);}if(e.key==='Escape'){if(to.classList.contains('open'))to.classList.remove('open');if(mm.classList.contains('open'))toggleMenu();}});
         if(ti)ti.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=ti.value;if(v.trim()){tLine(v);tExec(v);ti.value='';}}});
         if(to)to.addEventListener('click',function(e){if(e.target===to)to.classList.remove('open');});
     </script>
