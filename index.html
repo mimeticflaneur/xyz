@@ -106,7 +106,18 @@
         .contact-item svg{width:18px;height:18px;flex-shrink:0;color:var(--text-muted);transition:color .2s}
         .contact-item:hover svg{color:var(--text)}
         .vcard-section{margin-top:1.5rem}
-        footer{text-align:center;padding:3rem 2rem;color:var(--text-muted);font-size:.8rem;font-weight:300}
+        footer{background:#0f1011;color:#9ca3af;padding:0;font-size:.8rem;font-weight:300}
+        .footer-inner{max-width:var(--max-width);margin:0 auto;padding:2.5rem 2rem}
+        .footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+        .footer-logo{font-size:1rem;font-weight:600;color:#f3f4f6;letter-spacing:.05em}
+        .footer-links{display:flex;gap:.5rem;align-items:center;font-size:.78rem;color:#6b7280}
+        .footer-links a{color:#6b7280;text-decoration:none;transition:color .2s}
+        .footer-links a:hover{color:#f3f4f6}
+        .footer-links span{color:#4b5563}
+        .footer-disclaimer{text-align:center;font-size:.75rem;color:#6b7280;line-height:1.7;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+        .footer-copyright{border-top:1px solid #2e3238;padding-top:1.5rem;text-align:center;font-size:.72rem;color:#4b5563}
+        .footer-copyright a{color:#6b7280;text-decoration:underline;transition:color .2s}
+        .footer-copyright a:hover{color:#f3f4f6}
         .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
         .fade-in.visible{opacity:1;transform:translateY(0)}
         .term-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:2rem}
@@ -146,6 +157,8 @@
             .about-text{font-size:.95rem}
             .term{max-height:50vh;border-radius:8px}
             .term-overlay{padding:1rem}
+            .footer-top{flex-direction:column;gap:.75rem;text-align:center}
+            .footer-disclaimer{font-size:.7rem}
         }
     </style>
 </head>
@@ -346,7 +359,22 @@
         </div>
     </section>
 
-    <footer><p>&copy; 2026 Adrián Zapatera</p></footer>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <span class="footer-logo">AZ</span>
+                <div class="footer-links">
+                    <a href="https://zapatera.xyz">zapatera.xyz</a>
+                    <span>·</span>
+                    <a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a>
+                </div>
+            </div>
+            <p class="footer-disclaimer" data-en="The views and opinions expressed on this website are personal and do not constitute financial, investment, or professional advice. They do not represent the views of any organization the author is or has been affiliated with. Always consult a qualified professional before making investment decisions." data-es="Las opiniones expresadas en esta web son personales y no constituyen asesoramiento financiero, de inversión ni profesional. No representan las opiniones de ninguna organización con la que el autor esté o haya estado vinculado. Consulta siempre con un profesional cualificado antes de tomar decisiones de inversión.">The views and opinions expressed on this website are personal and do not constitute financial, investment, or professional advice. They do not represent the views of any organization the author is or has been affiliated with. Always consult a qualified professional before making investment decisions.</p>
+            <div class="footer-copyright">
+                <p data-en="© 2026 Adrián Zapatera. All rights reserved. Total or partial reproduction without express authorization from the author is prohibited." data-es="© 2026 Adrián Zapatera. Todos los derechos reservados. Queda prohibida la reproducción total o parcial sin autorización expresa del autor.">© 2026 Adrián Zapatera. All rights reserved. Total or partial reproduction without express authorization from the author is prohibited.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Terminal Easter Egg -->
     <div class="term-overlay" id="term-overlay">
