@@ -100,6 +100,9 @@
         .project-card p{font-size:.85rem;color:var(--text-muted);font-weight:300;margin-bottom:.75rem;line-height:1.5}
         .project-tags{display:flex;gap:.35rem;flex-wrap:wrap}
         .project-tag{font-size:.65rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);padding:.25rem .6rem;border:1px solid var(--border);border-radius:100px}
+        .project-request{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-top:.5rem}
+        .project-request a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);transition:border-color .2s}
+        .project-request a:hover{border-color:var(--text)}
         .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
         .contact-item{display:flex;align-items:center;gap:.75rem;padding:1.25rem 1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);text-decoration:none;font-size:.9rem;transition:all .2s}
         .contact-item:hover{border-color:var(--text)}
@@ -333,9 +336,10 @@
                 <div class="project-tags"><span class="project-tag" data-en="Consumer Tech" data-es="Tech Consumo">Consumer Tech</span><span class="project-tag" data-en="Savings" data-es="Ahorro">Savings</span><span class="project-tag" data-en="LLM-Powered" data-es="Potenciado por LLMs">LLM-Powered</span></div>
             </div>
             <div class="project-card">
-                <div class="project-header"><h3>Consensus Alpha Trade</h3></div>
-                <p data-en="Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress." data-es="Identificando oportunidades asimétricas donde el consenso de mercado está estructuralmente equivocado. Investigación activa en curso.">Identifying asymmetric opportunities where market consensus is structurally wrong. Active research in progress.</p>
-                <div class="project-tags"><span class="project-tag" data-en="In progress" data-es="En progreso">In progress</span></div>
+                <div class="project-header"><h3>Consensus Alpha</h3></div>
+                <p data-en="Weighted aggregation framework for alpha extraction in decentralized perpetual futures. A three-layer system — wallet scoring, consensus engine with exponential decay, and fractional Kelly execution — that synthesizes investment signals from on-chain activity on Hyperliquid." data-es="Framework de agregación ponderada para extracción de alfa en futuros perpetuos descentralizados. Un sistema de tres capas — scoring de carteras, motor de consenso con decaimiento exponencial y ejecución con Kelly fraccional — que sintetiza señales de inversión a partir de la actividad on-chain en Hyperliquid.">Weighted aggregation framework for alpha extraction in decentralized perpetual futures. A three-layer system — wallet scoring, consensus engine with exponential decay, and fractional Kelly execution — that synthesizes investment signals from on-chain activity on Hyperliquid.</p>
+                <div class="project-tags"><span class="project-tag" data-en="Working Paper" data-es="Working Paper">Working Paper</span><span class="project-tag">DeFi</span><span class="project-tag">Hyperliquid</span><span class="project-tag">LLMs</span><span class="project-tag">Kelly</span></div>
+                <p class="project-request" data-en="Paper available on request — adrian@zapatera.xyz" data-es="Paper disponible bajo petición — adrian@zapatera.xyz">Paper available on request — <a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a></p>
             </div>
             <div class="project-card">
                 <div class="project-header"><h3 data-en="Readings" data-es="Lecturas">Readings</h3></div>
@@ -429,7 +433,7 @@
             help:function(){return'Available commands:\n  whoami    \u2014 about me\n  ls        \u2014 list sections\n  projects  \u2014 list projects\n  reading   \u2014 current reads\n  open <x>  \u2014 open project (pagamenos, refinancial, now)\n  clear     \u2014 clear terminal\n  exit      \u2014 close terminal';},
             whoami:function(){return'Adri\u00e1n Zapatera\nAsset Manager \u00b7 Real Estate Finance\nManaging \u20ac480M+ in assets. Building tools with LLMs.\nMadrid, Spain.';},
             ls:function(){return'about/  experience/  education/  projects/  contact/  now/';},
-            projects:function(){return'RE Financial Calculator  \u2014 live    \u2014 refinancialcalculator.vercel.app\npagamenos.es            \u2014 live    \u2014 pagamenos-eight.vercel.app\nConsensus Alpha Trade   \u2014 wip\nReadings                \u2014 soon';},
+            projects:function(){return'RE Financial Calculator  \u2014 live    \u2014 refinancialcalculator.vercel.app\npagamenos.es            \u2014 live    \u2014 pagamenos-eight.vercel.app\nConsensus Alpha         \u2014 paper   \u2014 request via email\nReadings                \u2014 soon';},
             reading:function(){return'Currently reading:\n  \u2014 Updating soon';}
         };
         function tOut(t){if(!t)return;var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="out">'+t.replace(/\n/g,'<br>')+'</span>';tb.insertBefore(d,tb.lastElementChild);tb.scrollTop=tb.scrollHeight;}
