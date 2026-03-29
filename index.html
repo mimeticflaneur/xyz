@@ -14,7 +14,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();</script>
+    <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
+        // Toast hint (desktop only)
+        if(window.innerWidth>768&&!localStorage.getItem('toast-seen')){setTimeout(function(){var th=document.getElementById('toast-hint');if(th){th.classList.add('show');setTimeout(function(){th.classList.remove('show');localStorage.setItem('toast-seen','1');},4000);}},4000);}
+    </script>
     <style>
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         :root{--bg:#fafafa;--bg-card:#ffffff;--text:#111111;--text-secondary:#555555;--text-muted:#999999;--border:#e5e5e5;--accent-hover:#333333;--radius:12px;--max-width:720px;--nav-height:64px}
@@ -121,6 +124,9 @@
         .footer-copyright{border-top:1px solid #2e3238;padding-top:1.5rem;text-align:center;font-size:.72rem;color:#4b5563}
         .footer-copyright a{color:#6b7280;text-decoration:underline;transition:color .2s}
         .footer-copyright a:hover{color:#f3f4f6}
+        .toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1.25rem;font-size:.78rem;color:var(--text-muted);z-index:90;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+        .toast.show{opacity:1;transform:translateY(0)}
+        .toast kbd{background:var(--border);padding:.15rem .4rem;border-radius:4px;font-family:inherit;font-size:.72rem;color:var(--text);font-weight:500}
         .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
         .fade-in.visible{opacity:1;transform:translateY(0)}
         .term-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:2rem}
@@ -162,6 +168,7 @@
             .term-overlay{padding:1rem}
             .footer-top{flex-direction:column;gap:.75rem;text-align:center}
             .footer-disclaimer{font-size:.7rem}
+            .toast{display:none}
         }
     </style>
 </head>
@@ -380,6 +387,10 @@
         </div>
     </footer>
 
+    
+    <!-- Toast hint -->
+    <div class="toast" id="toast-hint"><kbd>⌘K</kbd> <span data-en="to open terminal" data-es="para abrir terminal">to open terminal</span></div>
+
     <!-- Terminal Easter Egg -->
     <div class="term-overlay" id="term-overlay">
         <div class="term">
@@ -442,6 +453,9 @@
         document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'&&!to.classList.contains('open')){e.preventDefault();to.classList.add('open');setTimeout(function(){ti.focus();},100);}if(e.key==='Escape'){if(to.classList.contains('open'))to.classList.remove('open');if(mm.classList.contains('open'))toggleMenu();}});
         if(ti)ti.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=ti.value;if(v.trim()){tLine(v);tExec(v);ti.value='';}}});
         if(to)to.addEventListener('click',function(e){if(e.target===to)to.classList.remove('open');});
+    
+        // Toast hint (desktop only)
+        if(window.innerWidth>768&&!localStorage.getItem('toast-seen')){setTimeout(function(){var th=document.getElementById('toast-hint');if(th){th.classList.add('show');setTimeout(function(){th.classList.remove('show');localStorage.setItem('toast-seen','1');},4000);}},4000);}
     </script>
 </body>
 </html>
