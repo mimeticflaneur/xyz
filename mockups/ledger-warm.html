@@ -6,7 +6,7 @@
 <title>Zapatera Oxblood</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;0,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* ============================================================
    LEDGER · WARM — design mockup for zapatera.xyz
@@ -29,7 +29,6 @@
   --rule-strong:#d9c5ae;
 
   --font-sans:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
-  --font-serif:'Newsreader',Georgia,'Times New Roman',serif;
   --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 
   --measure:680px;
@@ -140,14 +139,14 @@ header.top.stuck{border-bottom-color:var(--rule-strong)}
 }
 .eyebrow .sep{color:var(--rule-strong)}
 h1{
-  font-family:var(--font-serif);font-style:italic;font-weight:400;
-  font-size:clamp(2.3rem,6.6vw,3.35rem);line-height:1.05;letter-spacing:-.025em;
+  font-family:var(--font-mono);font-weight:400;
+  font-size:clamp(1.85rem,5.1vw,2.6rem);line-height:1.18;letter-spacing:-.035em;
   margin:0 0 26px;text-wrap:balance;
 }
-h1 b{font-weight:500;font-style:italic;color:var(--accent)}
+h1 b{font-weight:500;color:var(--accent)}
 h1::after{
-  content:"";display:inline-block;width:.09em;height:.86em;margin-left:.12em;
-  background:var(--accent);vertical-align:-.06em;animation:caret 1.15s steps(1) infinite;
+  content:"";display:inline-block;width:.5em;height:.92em;margin-left:.14em;
+  background:var(--accent);vertical-align:-.12em;animation:caret 1.15s steps(1) infinite;
 }
 @keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
 
@@ -366,8 +365,8 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
     <p class="bio" data-en="before this i ran finance across <a href='#track'>itnig</a>'s holdco — venture fund, real estate fund and portfolio companies — did US-GAAP work at accenture in prague, and started out as an analyst at fundeen, spain's first crowdfunding fintech for solar. i studied real estate economics at the LSE, and i teach public economics and the housing market at ISSEP."
        data-es="antes llevé las finanzas de toda la holdco de <a href='#track'>itnig</a> — fondo de venture, fondo inmobiliario y participadas —, hice US-GAAP en accenture en praga, y empecé como analista en fundeen, la primera fintech española de crowdfunding para solar. estudié economía inmobiliaria en la LSE, y doy clase de economía pública y mercado de la vivienda en el ISSEP.">before this i ran finance across <a href="#track">itnig</a>'s holdco — venture fund, real estate fund and portfolio companies — did US-GAAP work at accenture in prague, and started out as an analyst at fundeen, spain's first crowdfunding fintech for solar. i studied real estate economics at the LSE, and i teach public economics and the housing market at ISSEP.</p>
 
-    <p class="bio" data-en="the other half of my time goes into building things. most of it starts the same way: some piece of analysis i had redone by hand one time too many. a few turn out to be useful to people who aren't me, so those i publish — a <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>leveraged-return calculator</a> for spanish real estate, a <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>savings comparison tool</a>, and right now an open atlas of spanish agricultural data. if any of that overlaps with what you're working on, <a href='mailto:adrian@zapatera.xyz'>write me</a> — i answer."
-       data-es="la otra mitad del tiempo la dedico a construir cosas. casi todo empieza igual: algún análisis que había rehecho a mano una vez de más. algunos resultan útiles para gente que no soy yo, así que esos los publico — una <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>calculadora de rentabilidad apalancada</a> para inmobiliario español, un <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>comparador de ahorro</a>, y ahora mismo un atlas abierto de datos agropecuarios españoles. si algo de eso se cruza con lo que estás haciendo, <a href='mailto:adrian@zapatera.xyz'>escríbeme</a> — contesto.">the other half of my time goes into building things. most of it starts the same way: some piece of analysis i had redone by hand one time too many. a few turn out to be useful to people who aren't me, so those i publish — a <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">leveraged-return calculator</a> for spanish real estate, a <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener">savings comparison tool</a>, and right now an open atlas of spanish agricultural data. if any of that overlaps with what you're working on, <a href="mailto:adrian@zapatera.xyz">write me</a> — i answer.</p>
+    <p class="bio" data-en="the other half of my time goes into building things. most of it starts the same way: some process at work i had done by hand one time too many. a good part of it stays inside — internal applications i develop for the teams i work with, to take the inefficient steps out of the way. a few turn out to be useful to people who aren't me, so those i publish — a <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>leveraged-return calculator</a> for spanish real estate, a <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>savings comparison tool</a>, and right now an atlas of the spanish primary sector. if any of that overlaps with what you're working on, <a href='mailto:adrian@zapatera.xyz'>write me</a> — i answer."
+       data-es="la otra mitad del tiempo la dedico a construir cosas. casi todo empieza igual: algún proceso del trabajo que había hecho a mano una vez de más. buena parte se queda dentro — aplicaciones internas que desarrollo para los equipos con los que trabajo, para quitar de en medio los pasos ineficientes. algunas resultan útiles para gente que no soy yo, así que esas las publico — una <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>calculadora de rentabilidad apalancada</a> para inmobiliario español, un <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>comparador de ahorro</a>, y ahora mismo un atlas del sector primario español. si algo de eso se cruza con lo que estás haciendo, <a href='mailto:adrian@zapatera.xyz'>escríbeme</a> — contesto.">the other half of my time goes into building things. most of it starts the same way: some process at work i had done by hand one time too many. a good part of it stays inside — internal applications i develop for the teams i work with, to take the inefficient steps out of the way. a few turn out to be useful to people who aren't me, so those i publish — a <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">leveraged-return calculator</a> for spanish real estate, a <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener">savings comparison tool</a>, and right now an atlas of the spanish primary sector. if any of that overlaps with what you're working on, <a href="mailto:adrian@zapatera.xyz">write me</a> — i answer.</p>
 
     <div class="proof">
       <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">
@@ -425,11 +424,11 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
           <span data-en="Atlas Agropecuario Español" data-es="Atlas Agropecuario Español">Atlas Agropecuario Español</span>
           <span class="status building" data-en="in progress" data-es="en desarrollo">in progress</span>
         </h2>
-        <div class="row-meta" data-en="Open data · Mapping" data-es="Datos abiertos · Cartografía">Open data · Mapping</div>
-        <p class="row-body" data-en="An open atlas of Spanish agricultural data. Crop area, yields, holdings and land prices sit scattered across ministry releases, regional registries and EU datasets, in formats nobody can join — so I'm pulling them into one clean, documented dataset and building a map on top of it, province by province. Both halves are meant to be public: the data to download and reuse, the atlas to browse."
-           data-es="Un atlas abierto de datos agropecuarios españoles. Superficie de cultivo, rendimientos, explotaciones y precios de la tierra están repartidos entre publicaciones del ministerio, registros autonómicos y datasets europeos, en formatos que nadie puede cruzar — así que los estoy unificando en un único dataset limpio y documentado, y construyendo un mapa encima, provincia a provincia. Las dos mitades están pensadas para ser públicas: los datos para descargar y reutilizar, el atlas para explorar.">An open atlas of Spanish agricultural data. Crop area, yields, holdings and land prices sit scattered across ministry releases, regional registries and EU datasets, in formats nobody can join — so I'm pulling them into one clean, documented dataset and building a map on top of it, province by province. Both halves are meant to be public: the data to download and reuse, the atlas to browse.</p>
+        <div class="row-meta" data-en="Primary sector · Mapping" data-es="Sector primario · Cartografía">Primary sector · Mapping</div>
+        <p class="row-body" data-en="A unified dataset of the Spanish primary sector, mapped province by province and — this is the point — comparable across autonomous communities, which the source data is not. It is built to carry real work in both the public and the private side: biosecurity, public risk and mortality measurement, traceability, and the identification of holdings, censuses and owners. Access is restricted for now."
+           data-es="Un dataset unificado del sector primario español, cartografiado provincia a provincia y — esta es la clave — comparable entre comunidades autónomas, cosa que los datos de origen no permiten. Está pensado para sostener trabajo real tanto en el lado público como en el privado: bioseguridad, medición de riesgos públicos y mortandad, trazabilidad, e identificación de explotaciones, censos y propietarios. El acceso está restringido por ahora.">A unified dataset of the Spanish primary sector, mapped province by province and — this is the point — comparable across autonomous communities, which the source data is not. It is built to carry real work in both the public and the private side: biosecurity, public risk and mortality measurement, traceability, and the identification of holdings, censuses and owners. Access is restricted for now.</p>
         <div class="row-links">
-          <a href="mailto:adrian@zapatera.xyz?subject=Atlas%20Agropecuario%20Espa%C3%B1ol" data-en="Interested? Reach me" data-es="¿Te interesa? Escríbeme">Interested? Reach me</a>
+          <a href="mailto:adrian@zapatera.xyz?subject=Atlas%20Agropecuario%20Espa%C3%B1ol" data-en="Interested in access? Reach me" data-es="¿Te interesa el acceso? Escríbeme">Interested in access? Reach me</a>
         </div>
       </article>
 
