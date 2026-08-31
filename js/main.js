@@ -1,99 +1,94 @@
-/* ========================================
-   zapatera.xyz — Main JavaScript
-   ======================================== */
+/* zapatera.xyz — theme, language, motion, header state.
+   Shared by every page. The theme is also applied by a tiny inline
+   script in <head> so the page never paints the wrong colours first. */
+(function () {
+  var root = document.documentElement;
 
-// Smooth scroll for navigation
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        // Close mobile menu if open
-        closeMobileMenu();
+  /* ---- Theme: an explicit choice beats the OS in both directions ---- */
+  var toggle = document.getElementById('theme');
+  if (toggle) {
+    toggle.addEventListener('click', function () {
+      var dark = getComputedStyle(root).colorScheme.indexOf('dark') > -1;
+      var next = dark ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
     });
-});
+  }
 
-// Navbar background on scroll
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.style.background = 'rgba(10, 10, 10, 0.98)';
-    } else {
-        nav.style.background = 'rgba(10, 10, 10, 0.9)';
+  /* ---- Language ----
+     Assigning innerHTML rather than textContent, so links and emphasis
+     inside a translated string survive the switch. Every value comes
+     from this site's own markup, never from user input. */
+  var nodes = document.querySelectorAll('[data-en]');
+  var langBtns = document.querySelectorAll('[data-lang]');
+
+  function setLang(lang) {
+    nodes.forEach(function (n) {
+      var value = n.getAttribute('data-' + lang);
+      if (value !== null) n.innerHTML = value;
+    });
+    langBtns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.lang === lang));
+    });
+    root.lang = lang;
+    var title = document.querySelector('meta[name="title-' + lang + '"]');
+    if (title) document.title = title.content;
+    var desc = document.querySelector('meta[name="desc-' + lang + '"]');
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (desc && metaDesc) metaDesc.content = desc.content;
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  langBtns.forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.lang); });
+  });
+
+  var savedLang = null;
+  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+  if (savedLang && savedLang !== 'en') setLang(savedLang);
+
+  /* ---- Scroll reveal: one pass, then the observer lets go ---- */
+  var targets = document.querySelectorAll('.reveal,.stagger');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.06 });
+    targets.forEach(function (t) { io.observe(t); });
+  } else {
+    targets.forEach(function (t) { t.classList.add('in'); });
+  }
+
+  /* ---- Header gains a firmer rule once you have left the top ---- */
+  var bar = document.querySelector('header.top');
+  if (bar) {
+    var ticking = false;
+    function onScroll() {
+      bar.classList.toggle('stuck', window.scrollY > 12);
+      ticking = false;
     }
-});
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
+  }
 
-// Hamburger menu
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
-const navOverlay = document.querySelector('.nav-overlay');
-
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('open');
-        if (navOverlay) navOverlay.classList.toggle('open');
+  /* ---- Smooth in-page scrolling that clears the sticky header ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = this.getAttribute('href');
+      if (id === '#' || id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var offset = bar ? bar.offsetHeight + 8 : 0;
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+        behavior: 'smooth'
+      });
     });
-}
-
-if (navOverlay) {
-    navOverlay.addEventListener('click', closeMobileMenu);
-}
-
-function closeMobileMenu() {
-    if (hamburger) hamburger.classList.remove('active');
-    if (navLinks) navLinks.classList.remove('open');
-    if (navOverlay) navOverlay.classList.remove('open');
-}
-
-// Scroll reveal animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.animate-on-scroll').forEach(el => {
-    scrollObserver.observe(el);
-});
-
-// Active nav link highlighting
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
-
-function highlightNav() {
-    const scrollPos = window.scrollY + 150;
-
-    sections.forEach(section => {
-        const top = section.offsetTop;
-        const height = section.offsetHeight;
-        const id = section.getAttribute('id');
-
-        if (scrollPos >= top && scrollPos < top + height) {
-            navAnchors.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href') === '#' + id) {
-                    a.classList.add('active');
-                }
-            });
-        }
-    });
-}
-
-window.addEventListener('scroll', highlightNav);
-highlightNav();
-
-// Dynamic footer year
-const yearEl = document.getElementById('footer-year');
-if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-}
+  });
+})();
