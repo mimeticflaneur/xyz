@@ -3,30 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zapatera Oxblood</title>
+<title>Zapatera Pine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* ============================================================
-   LEDGER · WARM — design mockup for zapatera.xyz
-   Salmon paper, oxblood ink. One accent, hairline rules,
-   mono for anything that is data. Motion is quiet and staged.
+   LEDGER · COOL — design mockup for zapatera.xyz
+   Neutral warm paper, pine ink. Identical to the oxblood build in
+   every respect but the palette, so the two can be compared.
    ============================================================ */
 
 /* 1 · TOKENS — light is the base definition */
 :root{
-  --accent:#8c3b2e;
-  --accent-soft:rgba(140,59,46,.09);
-  --accent-glow:rgba(140,59,46,.055);
+  --accent:#166b52;
+  --accent-soft:rgba(22,107,82,.09);
+  --accent-glow:rgba(22,107,82,.05);
 
-  --paper:#fbf0e6;
-  --surface:#fffaf3;
-  --ink:#1c1614;
-  --ink-2:#59493f;
-  --ink-3:#79655a;
-  --rule:#ecdcca;
-  --rule-strong:#d9c5ae;
+  --paper:#f7f5f1;
+  --surface:#fffefb;
+  --ink:#171a18;
+  --ink-2:#4c524e;
+  --ink-3:#6b716b;
+  --rule:#e2dfd7;
+  --rule-strong:#cdc9be;
 
   --font-sans:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -41,30 +41,30 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --accent:#e08f78;
-    --accent-soft:rgba(224,143,120,.12);
-    --accent-glow:rgba(224,143,120,.07);
-    --paper:#17110f;
-    --surface:#201814;
-    --ink:#f0e6dc;
-    --ink-2:#b8a598;
-    --ink-3:#8d7d72;
-    --rule:#2e2420;
-    --rule-strong:#443530;
+    --accent:#5fc9a1;
+    --accent-soft:rgba(95,201,161,.12);
+    --accent-glow:rgba(95,201,161,.07);
+    --paper:#101210;
+    --surface:#171a18;
+    --ink:#e9e7e0;
+    --ink-2:#a8ada6;
+    --ink-3:#828880;
+    --rule:#282b27;
+    --rule-strong:#3a3e39;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --accent:#e08f78;
-  --accent-soft:rgba(224,143,120,.12);
-  --accent-glow:rgba(224,143,120,.07);
-  --paper:#17110f;
-  --surface:#201814;
-  --ink:#f0e6dc;
-  --ink-2:#b8a598;
-  --ink-3:#8d7d72;
-  --rule:#2e2420;
-  --rule-strong:#443530;
+  --accent:#5fc9a1;
+  --accent-soft:rgba(95,201,161,.12);
+  --accent-glow:rgba(95,201,161,.07);
+  --paper:#101210;
+  --surface:#171a18;
+  --ink:#e9e7e0;
+  --ink-2:#a8ada6;
+  --ink-3:#828880;
+  --rule:#282b27;
+  --rule-strong:#3a3e39;
   color-scheme:dark;
 }
 
@@ -622,13 +622,13 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
 
   /* Theme — an explicit choice beats the OS in both directions */
   var stored=null;
-  try{stored=localStorage.getItem('ledger-theme');}catch(e){}
+  try{stored=localStorage.getItem('pine-theme');}catch(e){}
   if(stored)root.setAttribute('data-theme',stored);
   document.getElementById('theme').addEventListener('click',function(){
     var dark=getComputedStyle(root).colorScheme.indexOf('dark')>-1;
     var next=dark?'light':'dark';
     root.setAttribute('data-theme',next);
-    try{localStorage.setItem('ledger-theme',next);}catch(e){}
+    try{localStorage.setItem('pine-theme',next);}catch(e){}
   });
 
   /* Language — innerHTML swap, so the links inside the bio survive it */
@@ -641,11 +641,11 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
     });
     langBtns.forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.lang===l));});
     root.lang=l;
-    try{localStorage.setItem('ledger-lang',l);}catch(e){}
+    try{localStorage.setItem('pine-lang',l);}catch(e){}
   }
   langBtns.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
   var savedLang=null;
-  try{savedLang=localStorage.getItem('ledger-lang');}catch(e){}
+  try{savedLang=localStorage.getItem('pine-lang');}catch(e){}
   if(savedLang&&savedLang!=='en')setLang(savedLang);
 
   /* Scroll reveal — one pass, then the observer lets go */
