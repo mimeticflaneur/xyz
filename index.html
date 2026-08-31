@@ -1,459 +1,337 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Zapatera</title>
-    <meta name="description" content="Adrián Zapatera — Real Estate Finance · Asset Management · Builder. LLMs, investment ops, and open-source tools.">
-    <meta name="author" content="Adrián Zapatera">
-    <meta property="og:title" content="Adrián Zapatera">
-    <meta property="og:description" content="Real Estate Finance · Asset Management · Builder. LLM-powered investment ops and open-source tools.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://zapatera.xyz">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%23111'/><text x='50' y='68' font-size='60' font-family='system-ui' font-weight='600' fill='%23fff' text-anchor='middle'>AZ</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>(function(){var t=localStorage.getItem('theme')||'light';document.documentElement.setAttribute('data-theme',t);})();
-        // Toast hint (desktop only)
-        if(window.innerWidth>768&&!localStorage.getItem('toast-seen')){setTimeout(function(){var th=document.getElementById('toast-hint');if(th){th.classList.add('show');setTimeout(function(){th.classList.remove('show');localStorage.setItem('toast-seen','1');},4000);}},4000);}
-    </script>
-    <style>
-        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-        :root{--bg:#fafafa;--bg-card:#ffffff;--text:#111111;--text-secondary:#555555;--text-muted:#999999;--border:#e5e5e5;--accent-hover:#333333;--radius:12px;--max-width:720px;--nav-height:64px}
-        [data-theme="dark"]{--bg:#0f1011;--bg-card:#1a1d20;--text:#f3f4f6;--text-secondary:#9ca3af;--text-muted:#6b7280;--border:#2e3238}
-        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-        body{font-family:'Inter',-apple-system,sans-serif;line-height:1.6;color:var(--text);background:var(--bg);min-height:100vh;transition:background-color .3s,color .3s}
-        ::selection{background:var(--text);color:var(--bg)}
-        nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);display:flex;justify-content:space-between;align-items:center;padding:0 clamp(1.5rem,5vw,3rem);background:rgba(250,250,250,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid var(--border);transition:background-color .3s,border-color .3s}
-        [data-theme="dark"] nav{background:rgba(15,16,17,.85)}
-        .logo{font-size:1rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:.05em}
-        .nav-right{display:flex;align-items:center;gap:1.25rem}
-        .nav-links{display:flex;gap:1.5rem;list-style:none}
-        .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.82rem;font-weight:400;transition:color .2s}
-        .nav-links a:hover{color:var(--text)}
-        .lang-toggle{display:flex;border:1px solid var(--border);border-radius:6px;overflow:hidden;font-size:.75rem;font-weight:500;letter-spacing:.03em}
-        .lang-btn{padding:.35rem .6rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;transition:all .2s;font-family:inherit;font-size:inherit;font-weight:inherit}
-        .lang-btn.active{background:var(--text);color:var(--bg)}
-        .lang-btn:not(.active):hover{color:var(--text)}
-        .theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:.35rem .45rem;cursor:pointer;color:var(--text-muted);transition:all .2s;display:flex;align-items:center}
-        .theme-toggle:hover{color:var(--text);border-color:var(--text-muted)}
-        .theme-toggle svg{width:15px;height:15px}
-        .hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem;color:var(--text);z-index:160}
-        .hamburger span{display:block;width:20px;height:1.5px;background:var(--text);margin:4px 0;transition:all .3s;border-radius:1px}
-        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
-        .hamburger.active span:nth-child(2){opacity:0}
-        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-        .menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:110;opacity:0;pointer-events:none;transition:opacity .3s}
-        .menu-overlay.open{opacity:1;pointer-events:auto}
-        .mobile-menu{position:fixed;top:0;right:0;bottom:0;width:280px;background:var(--bg);border-left:1px solid var(--border);z-index:120;transform:translateX(100%);transition:transform .3s ease;padding:5rem 2rem 2rem;display:flex;flex-direction:column;gap:0}
-        .mobile-menu.open{transform:translateX(0)}
-        .mobile-menu a{color:var(--text);text-decoration:none;font-size:1rem;font-weight:400;padding:1rem 0;border-bottom:1px solid var(--border);display:block;transition:color .2s}
-        .mobile-menu a:first-child{border-top:1px solid var(--border)}
-        .mobile-menu a:hover{color:var(--text-secondary)}
-        .mobile-menu-footer{margin-top:auto;display:flex;align-items:center;gap:1rem}
-        .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative}
-        .hero h1{font-size:clamp(2.5rem,7vw,4rem);font-weight:600;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}
-        .hero-subtitle{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--text-secondary);font-weight:300;margin-bottom:.75rem}
-        .hero-tags{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
-        .hero-tag{font-size:.7rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);padding:.3rem .7rem;border:1px solid var(--border);border-radius:100px}
-        .hero-cta{display:flex;gap:.75rem}
-        .scroll-hint{position:absolute;bottom:2.5rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--text-muted);font-size:.75rem;letter-spacing:.05em;text-transform:uppercase}
-        .scroll-hint::after{content:'';width:1px;height:32px;background:var(--text-muted);animation:scrollPulse 2s ease-in-out infinite}
-        @keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
-        .btn{padding:.75rem 1.75rem;font-size:.85rem;font-weight:500;font-family:inherit;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;border-radius:8px}
-        .btn:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
-        .btn-primary{background:var(--text);color:var(--bg);border-color:var(--text)}
-        .btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover)}
-        .btn svg{width:16px;height:16px}
-        .btn-sm{padding:.5rem 1rem;font-size:.8rem}
-        section{padding:5rem 2rem;max-width:var(--max-width);margin:0 auto}
-        .section-label{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1.25rem}
-        section h2{font-size:1.6rem;font-weight:600;letter-spacing:-.03em;margin-bottom:1.5rem;line-height:1.2}
-        .divider{max-width:var(--max-width);margin:0 auto;border:none;border-top:1px solid var(--border)}
-        .about-text{font-size:1.05rem;line-height:1.85;color:var(--text-secondary);font-weight:300}
-        .stat-row{margin-top:2.5rem}
-        .stat-number{font-size:2.25rem;font-weight:600;letter-spacing:-.04em;color:var(--text);line-height:1}
-        .stat-label{font-size:.7rem;color:var(--text-muted);font-weight:400;text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
-        .timeline{display:grid;gap:0}
-        .timeline-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border)}
-        .timeline-item:last-child{border-bottom:none}
-        .timeline-date{font-size:.78rem;color:var(--text-muted);font-weight:400;padding-top:.15rem;line-height:1.5}
-        .timeline-content h3{font-size:.95rem;font-weight:500;margin-bottom:.15rem}
-        .timeline-content .role{font-size:.85rem;color:var(--text-secondary);font-weight:400;margin-bottom:.35rem}
-        .timeline-content .desc{font-size:.82rem;color:var(--text-muted);font-weight:300;line-height:1.6}
-        .timeline-tag{display:inline-block;font-size:.65rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);padding:.2rem .5rem;border:1px solid var(--border);border-radius:100px;margin-top:.35rem;margin-right:.25rem}
-        .edu-grid{display:grid;gap:0}
-        .edu-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--border)}
-        .edu-item:last-child{border-bottom:none}
-        .edu-date{font-size:.78rem;color:var(--text-muted);font-weight:400;padding-top:.1rem}
-        .edu-content h3{font-size:.95rem;font-weight:500;margin-bottom:.1rem}
-        .edu-content .school{font-size:.82rem;color:var(--text-secondary);font-weight:400}
-        .edu-content .note{font-size:.78rem;color:var(--text-muted);font-weight:300;font-style:italic;margin-top:.2rem}
-        .certs{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-        .cert-tag{font-size:.72rem;font-weight:400;color:var(--text-secondary);padding:.35rem .7rem;background:var(--bg-card);border:1px solid var(--border);border-radius:100px}
-        .projects-grid{display:grid;gap:1rem}
-        .project-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:all .25s}
-        .project-card:hover{border-color:var(--text-muted);box-shadow:0 2px 12px rgba(0,0,0,.04)}
-        .project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
-        .project-header h3{font-size:1rem;font-weight:500}
-        .project-link{font-size:.78rem;color:var(--text-muted);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:.3rem}
-        .project-link:hover{color:var(--text)}
-        .project-link svg{width:14px;height:14px}
-        .project-card p{font-size:.85rem;color:var(--text-muted);font-weight:300;margin-bottom:.75rem;line-height:1.5}
-        .project-tags{display:flex;gap:.35rem;flex-wrap:wrap}
-        .project-tag{font-size:.65rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--text-muted);padding:.25rem .6rem;border:1px solid var(--border);border-radius:100px}
-        .project-request{font-size:.78rem;color:var(--text-muted);font-style:italic;margin-top:.5rem}
-        .project-request a{color:var(--text);text-decoration:none;border-bottom:1px solid var(--border);transition:border-color .2s}
-        .project-request a:hover{border-color:var(--text)}
-        .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
-        .contact-item{display:flex;align-items:center;gap:.75rem;padding:1.25rem 1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);text-decoration:none;font-size:.9rem;transition:all .2s}
-        .contact-item:hover{border-color:var(--text)}
-        .contact-item svg{width:18px;height:18px;flex-shrink:0;color:var(--text-muted);transition:color .2s}
-        .contact-item:hover svg{color:var(--text)}
-        .vcard-section{margin-top:1.5rem}
-        .kofi-section{margin-top:1.5rem}
-        .kofi-btn{border-color:var(--border);color:var(--text-muted)}
-        .kofi-btn:hover{background:#ff5e5b;color:#fff;border-color:#ff5e5b}
-        footer{background:#0f1011;color:#9ca3af;padding:0;font-size:.8rem;font-weight:300}
-        .footer-inner{max-width:var(--max-width);margin:0 auto;padding:2.5rem 2rem}
-        .footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
-        .footer-logo{font-size:1rem;font-weight:600;color:#f3f4f6;letter-spacing:.05em}
-        .footer-links{display:flex;gap:.5rem;align-items:center;font-size:.78rem;color:#6b7280}
-        .footer-links a{color:#6b7280;text-decoration:none;transition:color .2s}
-        .footer-links a:hover{color:#f3f4f6}
-        .footer-links span{color:#4b5563}
-        .footer-disclaimer{text-align:center;font-size:.75rem;color:#6b7280;line-height:1.7;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
-        .footer-copyright{border-top:1px solid #2e3238;padding-top:1.5rem;text-align:center;font-size:.72rem;color:#4b5563}
-        .footer-copyright a{color:#6b7280;text-decoration:underline;transition:color .2s}
-        .footer-copyright a:hover{color:#f3f4f6}
-        .toast{position:fixed;bottom:2rem;right:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1.25rem;font-size:.78rem;color:var(--text-muted);z-index:90;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.08)}
-        .toast.show{opacity:1;transform:translateY(0)}
-        .toast kbd{background:var(--border);padding:.15rem .4rem;border-radius:4px;font-family:inherit;font-size:.72rem;color:var(--text);font-weight:500}
-        .fade-in{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-        .fade-in.visible{opacity:1;transform:translateY(0)}
-        .term-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center;padding:2rem}
-        .term-overlay.open{display:flex}
-        .term{width:100%;max-width:640px;max-height:60vh;background:#0d1117;border:1px solid #30363d;border-radius:12px;font-family:'SF Mono',Monaco,'Cascadia Code',monospace;font-size:.82rem;color:#c9d1d9;overflow:hidden;display:flex;flex-direction:column}
-        .term-head{display:flex;align-items:center;gap:.5rem;padding:.6rem 1rem;background:#161b22;border-bottom:1px solid #30363d}
-        .term-dot{width:10px;height:10px;border-radius:50%;background:#ff5f57}
-        .term-dot:nth-child(2){background:#febc2e}
-        .term-dot:nth-child(3){background:#28c840}
-        .term-title{margin-left:.5rem;font-size:.7rem;color:#8b949e}
-        .term-body{padding:1rem;overflow-y:auto;flex:1}
-        .term-line{margin-bottom:.25rem;line-height:1.5;white-space:pre-wrap;word-break:break-word}
-        .term-line .pr{color:#58a6ff}
-        .term-line .out{color:#8b949e}
-        .term-input-line{display:flex;align-items:center;gap:.5rem}
-        .term-in{background:none;border:none;color:#c9d1d9;font-family:inherit;font-size:inherit;flex:1;outline:none;caret-color:#58a6ff}
-        @media(max-width:768px){
-            .hamburger{display:block}
-            .nav-links,.lang-toggle{display:none}
-            nav{padding:0 1.25rem}
-            section{padding:3.5rem 1.5rem}
-            .hero h1{font-size:2.25rem}
-            .hero-subtitle{font-size:.95rem}
-            .hero-tags{gap:.4rem}
-            .hero-tag{font-size:.65rem;padding:.25rem .6rem}
-            .hero-cta{flex-direction:column;width:100%;max-width:280px}
-            .hero-cta .btn{justify-content:center}
-            .timeline-item{grid-template-columns:1fr;gap:.15rem;padding:1.25rem 0}
-            .timeline-date{font-size:.72rem;font-weight:500}
-            .edu-item{grid-template-columns:1fr;gap:.15rem;padding:1rem 0}
-            .edu-date{font-size:.72rem;font-weight:500}
-            .project-header{flex-direction:column;gap:.35rem}
-            .contact-grid{grid-template-columns:1fr}
-            .scroll-hint{display:none}
-            .stat-number{font-size:1.85rem}
-            section h2{font-size:1.35rem}
-            .about-text{font-size:.95rem}
-            .term{max-height:50vh;border-radius:8px}
-            .term-overlay{padding:1rem}
-            .footer-top{flex-direction:column;gap:.75rem;text-align:center}
-            .footer-disclaimer{font-size:.7rem}
-            .toast{display:none}
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adrián Zapatera</title>
+<meta name="description" content="Adrián Zapatera — real estate finance and asset management in Madrid. I build tools for investment ops with LLMs, and publish the ones that are useful to anyone else.">
+<meta name="author" content="Adrián Zapatera">
+<link rel="canonical" href="https://zapatera.xyz/">
+
+<!-- swapped in by the language toggle -->
+<meta name="title-en" content="Adrián Zapatera">
+<meta name="title-es" content="Adrián Zapatera">
+<meta name="desc-en" content="Adrián Zapatera — real estate finance and asset management in Madrid. I build tools for investment ops with LLMs, and publish the ones that are useful to anyone else.">
+<meta name="desc-es" content="Adrián Zapatera — finanzas inmobiliarias y gestión de activos en Madrid. Construyo herramientas para operaciones de inversión con LLMs, y publico las que le sirven a alguien más.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zapatera.xyz/">
+<meta property="og:title" content="Adrián Zapatera">
+<meta property="og:description" content="Real estate finance and asset management in Madrid. I build tools for investment ops with LLMs, and publish the ones that are useful to anyone else.">
+<meta property="og:image" content="https://zapatera.xyz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Adrián Zapatera">
+<meta name="twitter:description" content="Real estate finance and asset management in Madrid. I build tools for investment ops with LLMs.">
+<meta name="twitter:image" content="https://zapatera.xyz/og.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%23171a18'/><text x='50' y='69' font-size='54' font-family='ui-monospace,monospace' font-weight='500' fill='%235fc9a1' text-anchor='middle'>az</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+<script>
+  /* Paint the right theme before first paint, so there is never a flash. */
+  (function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;}catch(e){}})();
+</script>
 </head>
 <body>
-    <nav>
-        <a href="#" class="logo">AZ</a>
-        <div class="nav-right">
-            <ul class="nav-links">
-                <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
-                <li><a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a></li>
-                <li><a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a></li>
-                <li><a href="pages/now.html" data-en="Now" data-es="Ahora">Now</a></li>
-                <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-            </ul>
-            <div class="lang-toggle">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="es">ES</button>
-            </div>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"/></svg>
-                <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"/></svg>
-            </button>
-            <button class="hamburger" id="hamburger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="#top">adrián zapatera<span class="dot">.</span>xyz</a>
+    <nav aria-label="Sections">
+      <a href="#work" data-en="work" data-es="proyectos">work</a>
+      <a href="#path" data-en="path" data-es="trayectoria">path</a>
+      <a href="#education" data-en="education" data-es="formación">education</a>
+      <a href="pages/now.html" data-en="now" data-es="ahora">now</a>
+      <a href="#contact" data-en="contact" data-es="contacto">contact</a>
     </nav>
-
-    <div class="menu-overlay" id="menu-overlay"></div>
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#about" data-en="About" data-es="Sobre mí">About</a>
-        <a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a>
-        <a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a>
-        <a href="pages/now.html" data-en="Now" data-es="Ahora">Now</a>
-        <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-        <div class="mobile-menu-footer">
-            <div class="lang-toggle">
-                <button class="lang-btn active" data-lang="en">EN</button>
-                <button class="lang-btn" data-lang="es">ES</button>
-            </div>
-        </div>
+    <div class="social">
+      <a href="mailto:adrian@zapatera.xyz" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6 9-6"/></svg>
+      </a>
+      <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.53-1.35-1.29-1.71-1.29-1.71-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.22 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+      </a>
     </div>
-
-    <section class="hero" id="home">
-        <h1>Adrián Zapatera</h1>
-        <p class="hero-subtitle" data-en="Real Estate Finance · Asset Management · Builder" data-es="Finanzas Inmobiliarias · Gestión de Activos · Builder">Real Estate Finance · Asset Management · Builder</p>
-        <div class="hero-tags">
-            <span class="hero-tag" data-en="LLMs &amp; Applied Tech" data-es="LLMs &amp; Applied Tech">LLMs &amp; Applied Tech</span>
-            <span class="hero-tag" data-en="Investment Ops" data-es="Investment Ops">Investment Ops</span>
-            <span class="hero-tag" data-en="Product Building" data-es="Product Building">Product Building</span>
-        </div>
-        <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary" data-en="View Projects" data-es="Ver Proyectos">View Projects</a>
-            <a href="#contact" class="btn" data-en="Get in Touch" data-es="Contactar">Get in Touch</a>
-        </div>
-        <div class="scroll-hint" data-en="Scroll" data-es="Scroll">Scroll</div>
-    </section>
-
-    <hr class="divider">
-
-    <section id="about" class="fade-in">
-        <span class="section-label" data-en="About" data-es="Sobre mí">About</span>
-        <h2 data-en="Numbers in, products out" data-es="Numbers in, products out">Numbers in, products out</h2>
-        <p class="about-text" data-en="Real Estate Finance and Asset Management consultant with experience across luxury residential, hospitality, and venture capital — currently overseeing a multi-asset portfolio spanning residential, hospitality, and golf course developments. I also build tools that automate the low-value-add work most analysts do by hand, and publish what I can so others can use them too." data-es="Consultor de Finanzas Inmobiliarias y Gestión de Activos con experiencia en residencial de lujo, hostelería y capital riesgo — actualmente supervisando una cartera multi-activo que abarca desarrollos residenciales, hoteleros y de campos de golf. También construyo herramientas que automatizan el trabajo de bajo valor añadido que la mayoría de analistas hacen a mano, y publico lo que puedo para que otros también las usen.">Real Estate Finance and Asset Management consultant with experience across luxury residential, hospitality, and venture capital — currently overseeing a multi-asset portfolio spanning residential, hospitality, and golf course developments. I also build tools that automate the low-value-add work most analysts do by hand, and publish what I can so others can use them too.</p>
-    </section>
-
-    <hr class="divider">
-
-    <section id="experience" class="fade-in">
-        <span class="section-label" data-en="Experience" data-es="Experiencia">Experience</span>
-        <h2 data-en="Professional background" data-es="Trayectoria profesional">Professional background</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2022 — <span data-en="Present" data-es="Actualidad">Present</span></div>
-                <div class="timeline-content">
-                    <h3>Single Home &amp; Finca Cortesín</h3>
-                    <div class="role" data-en="Senior Project Developer &amp; RE Financing Manager" data-es="Director de Proyectos &amp; Responsable de Financiación Inmobiliaria">Senior Project Developer &amp; RE Financing Manager</div>
-                    <div class="desc" data-en="End-to-end financial oversight of luxury residential, hospitality, and golf assets. Primary liaison with international PE firms. Embedded finance lead for Finca Cortesín, Europe's No.1 Hotel &amp; Resort." data-es="Supervisión financiera integral de activos residenciales de lujo, hoteleros y de golf. Enlace principal con fondos de private equity internacionales. Responsable financiero integrado en Finca Cortesín, Hotel &amp; Resort Nº1 de Europa.">End-to-end financial oversight of luxury residential, hospitality, and golf assets. Primary liaison with international PE firms. Embedded finance lead for Finca Cortesín, Europe's No.1 Hotel &amp; Resort.</div>
-                    <span class="timeline-tag" data-en="Real Estate" data-es="Inmobiliario">Real Estate</span>
-                    <span class="timeline-tag" data-en="Asset Mgmt" data-es="Gestión de Activos">Asset Mgmt</span>
-                    <span class="timeline-tag" data-en="PE Relations" data-es="Relaciones PE">PE Relations</span>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2024 — <span data-en="Present" data-es="Actualidad">Present</span></div>
-                <div class="timeline-content">
-                    <h3>ISSEP</h3>
-                    <div class="role" data-en="Adjunct Professor — Economics" data-es="Profesor Asociado — Economía">Adjunct Professor — Economics</div>
-                    <div class="desc" data-en="Lecturing on Public Economics, Housing Market, and the Generational Gap." data-es="Docencia en Economía Pública, Mercado Inmobiliario y Brecha Generacional.">Lecturing on Public Economics, Housing Market, and the Generational Gap.</div>
-                    <span class="timeline-tag" data-en="Academia" data-es="Academia">Academia</span>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2022</div>
-                <div class="timeline-content">
-                    <h3>Itnig</h3>
-                    <div class="role" data-en="Financial &amp; Accounting Manager" data-es="Responsable Financiero y Contable">Financial &amp; Accounting Manager</div>
-                    <div class="desc" data-en="Financial operations across the full HoldCo structure — venture fund, real estate fund, and portfolio companies including Factorial (~€1B valuation)." data-es="Operaciones financieras en toda la estructura de la HoldCo — fondo de venture, fondo inmobiliario y participadas, incluyendo Factorial (~1.000M€ de valoración).">Financial operations across the full HoldCo structure — venture fund, real estate fund, and portfolio companies including Factorial (~€1B valuation).</div>
-                    <span class="timeline-tag" data-en="Venture Capital" data-es="Capital Riesgo">Venture Capital</span>
-                    <span class="timeline-tag">Fintech</span>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2021</div>
-                <div class="timeline-content">
-                    <h3>Accenture</h3>
-                    <div class="role" data-en="Financial Management Consultant — Prague" data-es="Consultor de Gestión Financiera — Praga">Financial Management Consultant — Prague</div>
-                    <div class="desc" data-en="US-GAAP accounting specialist. Managed profitability of international government contracts." data-es="Especialista contable US-GAAP. Gestión de rentabilidad de contratos gubernamentales internacionales.">US-GAAP accounting specialist. Managed profitability of international government contracts.</div>
-                    <span class="timeline-tag" data-en="Consulting" data-es="Consultoría">Consulting</span>
-                    <span class="timeline-tag">US-GAAP</span>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2019 — 2020</div>
-                <div class="timeline-content">
-                    <h3>Fundeen</h3>
-                    <div class="role" data-en="Financial Analyst" data-es="Analista Financiero">Financial Analyst</div>
-                    <div class="desc" data-en="Spain's first crowdfunding fintech for photovoltaic investment. Earned a full analyst seat two months in." data-es="Primera fintech española de crowdfunding para inversión fotovoltaica. Me gané el puesto de analista a los dos meses.">Spain's first crowdfunding fintech for photovoltaic investment. Earned a full analyst seat two months in.</div>
-                    <span class="timeline-tag">Fintech</span>
-                    <span class="timeline-tag" data-en="Renewables" data-es="Renovables">Renewables</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <hr class="divider">
-
-    <section id="education" class="fade-in">
-        <span class="section-label" data-en="Education" data-es="Formación">Education</span>
-        <h2 data-en="Academic background" data-es="Formación académica">Academic background</h2>
-        <div class="edu-grid">
-            <div class="edu-item"><div class="edu-date">2023 — 2024</div><div class="edu-content"><h3 data-en="Real Estate, Economics &amp; Finance" data-es="Inmobiliaria, Economía y Finanzas">Real Estate, Economics &amp; Finance</h3><div class="school">London School of Economics</div></div></div>
-            <div class="edu-item"><div class="edu-date">2022 — 2023</div><div class="edu-content"><h3 data-en="Master in Leadership &amp; Governance" data-es="Máster en Liderazgo y Gobernanza">Master in Leadership &amp; Governance</h3><div class="school">ISSEP — Madrid</div><div class="note" data-en="Best academic record · Nominee best thesis" data-es="Mejor expediente · Nominado mejor tesis">Best academic record · Nominee best thesis</div></div></div>
-            <div class="edu-item"><div class="edu-date">2015 — 2019</div><div class="edu-content"><h3 data-en="Bachelor in Business Administration" data-es="Grado en ADE">Bachelor in Business Administration</h3><div class="school">Universidad Católica de Ávila</div></div></div>
-            <div class="edu-item"><div class="edu-date">2018</div><div class="edu-content"><h3 data-en="International Scholarship" data-es="Beca Internacional">International Scholarship</h3><div class="school">San Diego State University</div><div class="note" data-en="Ranked 1st in private international scholarship program" data-es="1º clasificado en programa de becas internacionales">Ranked 1st in private international scholarship program</div></div></div>
-            <div class="edu-item"><div class="edu-date">2017</div><div class="edu-content"><h3 data-en="Erasmus Scholarship" data-es="Beca Erasmus">Erasmus Scholarship</h3><div class="school">Technische Hochschule Köln</div></div></div>
-        </div>
-        <div class="certs">
-            <span class="cert-tag">Economics of Money &amp; Banking — Columbia</span>
-            <span class="cert-tag">Financial Markets — Yale</span>
-            <span class="cert-tag">Narrative Economics — Yale</span>
-            <span class="cert-tag">LLMs &amp; Machine Learning</span>
-            <span class="cert-tag">Excel for Finance — CFI</span>
-            <span class="cert-tag">Philosophy — Edinburgh</span>
-        </div>
-    </section>
-
-    <hr class="divider">
-
-    <section id="projects" class="fade-in">
-        <span class="section-label" data-en="Projects" data-es="Proyectos">Projects</span>
-        <h2 data-en="Work &amp; ideas" data-es="Trabajo &amp; ideas">Work &amp; ideas</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <h3 data-en="RE Investment Analyzer" data-es="Analizador de Inversión Inmobiliaria">RE Investment Analyzer</h3>
-                    <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a>
-                </div>
-                <p data-en="Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios." data-es="Calculadora de rentabilidad apalancada para inversiones inmobiliarias en España. TIR, Cash-on-Cash, DSCR, proyección de cashflows y simulación de venta anticipada con tres escenarios.">Leveraged profitability calculator for Spanish real estate investments. IRR, Cash-on-Cash, DSCR, cashflow projections, and early sale simulation with three scenarios.</p>
-                <div class="project-tags"><span class="project-tag">React</span><span class="project-tag">Tailwind</span><span class="project-tag">Vite</span><span class="project-tag" data-en="Financial Modeling" data-es="Modelado Financiero">Financial Modeling</span></div>
-            </div>
-            <div class="project-card">
-                <div class="project-header">
-                    <h3>pagamenos.es</h3>
-                    <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener" class="project-link"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>Web</a>
-                </div>
-                <p data-en="Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases." data-es="Herramienta de comparación de ahorro para el consumidor español. Ayuda a los usuarios a encontrar los mejores precios y ahorrar en sus compras diarias.">Consumer savings comparison tool for the Spanish market. Helping users find the best prices and save money on everyday purchases.</p>
-                <div class="project-tags"><span class="project-tag" data-en="Consumer Tech" data-es="Tech Consumo">Consumer Tech</span><span class="project-tag" data-en="Savings" data-es="Ahorro">Savings</span><span class="project-tag" data-en="LLM-Powered" data-es="Potenciado por LLMs">LLM-Powered</span></div>
-            </div>
-            <div class="project-card">
-                <div class="project-header"><h3>Consensus Alpha</h3></div>
-                <p data-en="Weighted aggregation framework for alpha extraction in decentralized perpetual futures. A three-layer system — wallet scoring, consensus engine with exponential decay, and fractional Kelly execution — that synthesizes investment signals from on-chain activity on Hyperliquid." data-es="Framework de agregación ponderada para extracción de alfa en futuros perpetuos descentralizados. Un sistema de tres capas — scoring de carteras, motor de consenso con decaimiento exponencial y ejecución con Kelly fraccional — que sintetiza señales de inversión a partir de la actividad on-chain en Hyperliquid.">Weighted aggregation framework for alpha extraction in decentralized perpetual futures. A three-layer system — wallet scoring, consensus engine with exponential decay, and fractional Kelly execution — that synthesizes investment signals from on-chain activity on Hyperliquid.</p>
-                <div class="project-tags"><span class="project-tag" data-en="Working Paper" data-es="Working Paper">Working Paper</span><span class="project-tag">DeFi</span><span class="project-tag">Hyperliquid</span><span class="project-tag">LLMs</span><span class="project-tag">Kelly</span></div>
-                <p class="project-request" data-en="Paper available on request in English and Spanish — adrian@zapatera.xyz" data-es="Paper disponible bajo petición en inglés y en español — adrian@zapatera.xyz">Paper available on request in English and Spanish — <a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a></p>
-            </div>
-            <div class="project-card">
-                <div class="project-header"><h3 data-en="Readings" data-es="Lecturas">Readings</h3></div>
-                <p data-en="Curated reading recommendations on investing, history, philosophy, and LLMs." data-es="Recomendaciones de lectura sobre inversión, historia, filosofía y LLMs.">Curated reading recommendations on investing, history, philosophy, and LLMs.</p>
-                <div class="project-tags"><span class="project-tag" data-en="Coming soon" data-es="Próximamente">Coming soon</span></div>
-            </div>
-        </div>
-    </section>
-
-    <hr class="divider">
-
-    <section id="contact" class="fade-in">
-        <span class="section-label" data-en="Contact" data-es="Contacto">Contact</span>
-        <h2 data-en="Let's connect" data-es="Conectemos">Let's connect</h2>
-        <div class="contact-grid">
-            <a href="mailto:adrian@zapatera.xyz" class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>adrian@zapatera.xyz</a>
-            <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener" class="contact-item"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
-        </div>
-        <div class="vcard-section">
-            <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AAdri%C3%A1n%20Zapatera%0AN%3AZapatera%3BAdri%C3%A1n%0ATITLE%3AReal%20Estate%20Finance%20%26%20Asset%20Management%0AEMAIL%3Aadrian%40zapatera.xyz%0AURL%3Ahttps%3A%2F%2Fzapatera.xyz%0AURL%3Ahttps%3A%2F%2Flinkedin.com%2Fin%2Fadrianzapatera%0AEND%3AVCARD" download="Adrian_Zapatera.vcf" class="btn btn-sm"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg><span data-en="Save Contact (vCard)" data-es="Guardar Contacto (vCard)">Save Contact (vCard)</span></a>
-        </div>
-        <div class="kofi-section">
-            <a href="https://ko-fi.com/azptr" target="_blank" rel="noopener" class="btn btn-sm kofi-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"/></svg><span data-en="Buy me a coffee" data-es="Invitame a un cafe">Buy me a coffee</span></a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-top">
-                <span class="footer-logo">AZ</span>
-                <div class="footer-links">
-                    <a href="https://zapatera.xyz">zapatera.xyz</a>
-                    <span>·</span>
-                    <a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a>
-                </div>
-            </div>
-            <p class="footer-disclaimer" data-en="Personal website. Views are my own and do not represent any organization." data-es="Página personal. Las opiniones son propias y no representan a ninguna organización.">Personal website. Views are my own and do not represent any organization.</p>
-            <div class="footer-copyright">
-                <p data-en="© 2026 Adrián Zapatera. All rights reserved. Total or partial reproduction without express authorization from the author is prohibited." data-es="© 2026 Adrián Zapatera. Todos los derechos reservados. Queda prohibida la reproducción total o parcial sin autorización expresa del autor.">© 2026 Adrián Zapatera. All rights reserved. Total or partial reproduction without express authorization from the author is prohibited.</p>
-            </div>
-        </div>
-    </footer>
-
-    
-    <!-- Toast hint -->
-    <div class="toast" id="toast-hint"><kbd>⌘K</kbd> <span data-en="to open terminal" data-es="para abrir terminal">to open terminal</span></div>
-
-    <!-- Terminal Easter Egg -->
-    <div class="term-overlay" id="term-overlay">
-        <div class="term">
-            <div class="term-head">
-                <div class="term-dot"></div><div class="term-dot"></div><div class="term-dot"></div>
-                <span class="term-title">adrian@zapatera.xyz</span>
-            </div>
-            <div class="term-body" id="term-body">
-                <div class="term-line"><span class="out">Welcome. Type 'help' for commands.</span></div>
-                <div class="term-input-line">
-                    <span class="pr">~$</span>
-                    <input class="term-in" id="term-in" type="text" spellcheck="false" autocomplete="off">
-                </div>
-            </div>
-        </div>
+    <div class="ctrls">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <button class="icon-btn" id="theme" type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 15A9.75 9.75 0 0 1 9 2.25 9.75 9.75 0 1 0 21.75 15Z"/></svg>
+      </button>
     </div>
+  </div>
+</header>
 
-    <script>
-        // Theme
-        var tt=document.getElementById('theme-toggle'),is=document.getElementById('icon-sun'),im=document.getElementById('icon-moon');
-        function applyTheme(t){document.documentElement.setAttribute('data-theme',t);if(is&&im){is.style.display=t==='dark'?'block':'none';im.style.display=t==='dark'?'none':'block';}}
-        applyTheme(localStorage.getItem('theme')||'light');
-        if(tt)tt.addEventListener('click',function(){var n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';localStorage.setItem('theme',n);applyTheme(n);});
+<main class="shell" id="top">
 
-        // Lang
-        var lbs=document.querySelectorAll('.lang-btn'),trs=document.querySelectorAll('[data-en]');
-        function setLang(l){lbs.forEach(function(b){b.classList.toggle('active',b.dataset.lang===l);});trs.forEach(function(el){var t=el.getAttribute('data-'+l);if(t)el.textContent=t;});document.documentElement.lang=l;}
-        lbs.forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.lang);});});
+  <section class="hero enter">
+    <p class="eyebrow">
+      <span>madrid</span><span class="sep">/</span><span data-en="real estate finance × software" data-es="finanzas inmobiliarias × software">real estate finance × software</span>
+    </p>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(this.getAttribute('href'));if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:y,behavior:'smooth'});}});});
+    <h1 class="caret" data-en="hey! i'm <b>adrián</b>." data-es="¡hola! soy <b>adrián</b>.">hey! i'm <b>adrián</b>.</h1>
 
-        // Fade in
-        var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.1});
-        document.querySelectorAll('.fade-in').forEach(function(el){obs.observe(el);});
+    <p class="bio" data-en="i work in real estate finance and asset management out of madrid. right now i run the end-to-end financial oversight of a multi-asset portfolio — luxury residential, hospitality and golf — and i'm usually the person sitting across the table from the international PE firms that fund it."
+       data-es="trabajo en finanzas inmobiliarias y gestión de activos desde madrid. ahora mismo llevo la supervisión financiera integral de una cartera multi-activo — residencial de lujo, hostelería y golf — y suelo ser quien se sienta al otro lado de la mesa con los fondos de private equity internacionales que la financian.">i work in real estate finance and asset management out of madrid. right now i run the end-to-end financial oversight of a multi-asset portfolio — luxury residential, hospitality and golf — and i'm usually the person sitting across the table from the international PE firms that fund it.</p>
 
-        // Hamburger
-        var hb=document.getElementById('hamburger'),mm=document.getElementById('mobile-menu'),mo=document.getElementById('menu-overlay');
-        function toggleMenu(){var o=mm.classList.toggle('open');mo.classList.toggle('open');hb.classList.toggle('active');document.body.style.overflow=o?'hidden':'';}
-        if(hb)hb.addEventListener('click',toggleMenu);
-        if(mo)mo.addEventListener('click',toggleMenu);
-        if(mm)mm.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){if(mm.classList.contains('open'))toggleMenu();});});
+    <p class="bio" data-en="before this i ran finance across <a href='#path'>itnig</a>'s holdco — venture fund, real estate fund and portfolio companies — did US-GAAP work at accenture in prague, and started out as an analyst at fundeen, spain's first crowdfunding fintech for solar. i studied real estate economics at the LSE, and i teach public economics and the housing market at ISSEP."
+       data-es="antes llevé las finanzas de toda la holdco de <a href='#path'>itnig</a> — fondo de venture, fondo inmobiliario y participadas —, hice US-GAAP en accenture en praga, y empecé como analista en fundeen, la primera fintech española de crowdfunding para solar. estudié economía inmobiliaria en la LSE, y doy clase de economía pública y mercado de la vivienda en el ISSEP.">before this i ran finance across <a href="#path">itnig</a>'s holdco — venture fund, real estate fund and portfolio companies — did US-GAAP work at accenture in prague, and started out as an analyst at fundeen, spain's first crowdfunding fintech for solar. i studied real estate economics at the LSE, and i teach public economics and the housing market at ISSEP.</p>
 
-        // Terminal
-        var to=document.getElementById('term-overlay'),tb=document.getElementById('term-body'),ti=document.getElementById('term-in');
-        var tcmds={
-            help:function(){return'Available commands:\n  whoami    \u2014 about me\n  ls        \u2014 list sections\n  projects  \u2014 list projects\n  reading   \u2014 current reads\n  open <x>  \u2014 open project (pagamenos, refinancial, now)\n  clear     \u2014 clear terminal\n  exit      \u2014 close terminal';},
-            whoami:function(){return'Adri\u00e1n Zapatera\nAsset Manager \u00b7 Real Estate Finance\nBuilding tools with LLMs.\nMadrid, Spain.';},
-            ls:function(){return'about/  experience/  education/  projects/  contact/  now/';},
-            projects:function(){return'RE Financial Calculator  \u2014 live    \u2014 refinancialcalculator.vercel.app\npagamenos.es            \u2014 live    \u2014 pagamenos-eight.vercel.app\nConsensus Alpha         \u2014 paper   \u2014 request via email\nReadings                \u2014 soon';},
-            reading:function(){return'Currently reading:\n  \u2014 Updating soon';}
-        };
-        function tOut(t){if(!t)return;var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="out">'+t.replace(/\n/g,'<br>')+'</span>';tb.insertBefore(d,tb.lastElementChild);tb.scrollTop=tb.scrollHeight;}
-        function tLine(c){var d=document.createElement('div');d.className='term-line';d.innerHTML='<span class="pr">~$</span> '+c;tb.insertBefore(d,tb.lastElementChild);}
-        function tExec(c){var s=c.trim().toLowerCase();if(s==='clear'){while(tb.children.length>1)tb.removeChild(tb.firstChild);return;}if(s==='exit'){to.classList.remove('open');return;}if(s.startsWith('open ')){var t=s.split(' ')[1],u={pagamenos:'https://pagamenos-eight.vercel.app',refinancial:'https://refinancialcalculator.vercel.app',now:'pages/now.html'};if(u[t]){window.open(u[t],'_blank');tOut('Opening '+t+'...');}else{tOut('Unknown: '+t+'. Try: pagamenos, refinancial, now');}return;}if(tcmds[s]){tOut(tcmds[s]());}else{tOut('command not found: '+s+'. Type help for commands.');}}
-        document.addEventListener('keydown',function(e){if((e.ctrlKey||e.metaKey)&&e.key==='k'&&!to.classList.contains('open')){e.preventDefault();to.classList.add('open');setTimeout(function(){ti.focus();},100);}if(e.key==='Escape'){if(to.classList.contains('open'))to.classList.remove('open');if(mm.classList.contains('open'))toggleMenu();}});
-        if(ti)ti.addEventListener('keydown',function(e){if(e.key==='Enter'){var v=ti.value;if(v.trim()){tLine(v);tExec(v);ti.value='';}}});
-        if(to)to.addEventListener('click',function(e){if(e.target===to)to.classList.remove('open');});
-    
-        // Toast hint (desktop only)
-        if(window.innerWidth>768&&!localStorage.getItem('toast-seen')){setTimeout(function(){var th=document.getElementById('toast-hint');if(th){th.classList.add('show');setTimeout(function(){th.classList.remove('show');localStorage.setItem('toast-seen','1');},4000);}},4000);}
-    </script>
+    <p class="bio" data-en="the other half of my time goes into building things. most of it starts the same way: some process at work i had done by hand one time too many. a good part of it stays inside — internal applications i develop for the teams i work with, to take the inefficient steps out of the way. a few turn out to be useful to people who aren't me, so those i publish — a <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>leveraged-return calculator</a> for spanish real estate, a <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>savings comparison tool</a>, and right now an atlas of the spanish primary sector. if any of that overlaps with what you're working on, <a href='mailto:adrian@zapatera.xyz'>write me</a> — i answer."
+       data-es="la otra mitad del tiempo la dedico a construir cosas. casi todo empieza igual: algún proceso del trabajo que había hecho a mano una vez de más. buena parte se queda dentro — aplicaciones internas que desarrollo para los equipos con los que trabajo, para quitar de en medio los pasos ineficientes. algunas resultan útiles para gente que no soy yo, así que esas las publico — una <a href='https://refinancialcalculator.vercel.app' target='_blank' rel='noopener'>calculadora de rentabilidad apalancada</a> para inmobiliario español, un <a href='https://pagamenos-eight.vercel.app/' target='_blank' rel='noopener'>comparador de ahorro</a>, y ahora mismo un atlas del sector primario español. si algo de eso se cruza con lo que estás haciendo, <a href='mailto:adrian@zapatera.xyz'>escríbeme</a> — contesto.">the other half of my time goes into building things. most of it starts the same way: some process at work i had done by hand one time too many. a good part of it stays inside — internal applications i develop for the teams i work with, to take the inefficient steps out of the way. a few turn out to be useful to people who aren't me, so those i publish — a <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">leveraged-return calculator</a> for spanish real estate, a <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener">savings comparison tool</a>, and right now an atlas of the spanish primary sector. if any of that overlaps with what you're working on, <a href="mailto:adrian@zapatera.xyz">write me</a> — i answer.</p>
+  </section>
+
+  <section id="work" class="reveal">
+    <p class="sec-label" data-en="work" data-es="proyectos">work</p>
+    <div class="stagger">
+
+      <article class="row">
+        <h2 class="row-title">
+          <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener">RE Investment Analyzer</a>
+          <span class="status live" data-en="live" data-es="online">live</span>
+        </h2>
+        <div class="row-meta">React · Tailwind · Vite</div>
+        <p class="row-body" data-en="Leveraged profitability calculator for Spanish real estate. IRR, cash-on-cash, DSCR, full cashflow projection and early-exit simulation across three scenarios — the model I was rebuilding in Excel every time, made permanent."
+           data-es="Calculadora de rentabilidad apalancada para inmobiliario español. TIR, cash-on-cash, DSCR, proyección completa de cashflows y simulación de venta anticipada en tres escenarios — el modelo que rehacía en Excel cada vez, hecho permanente.">Leveraged profitability calculator for Spanish real estate. IRR, cash-on-cash, DSCR, full cashflow projection and early-exit simulation across three scenarios — the model I was rebuilding in Excel every time, made permanent.</p>
+        <div class="row-links">
+          <a href="https://refinancialcalculator.vercel.app" target="_blank" rel="noopener" data-en="Open the tool" data-es="Abrir la herramienta">Open the tool</a>
+          <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener" data-en="Source" data-es="Código">Source</a>
+        </div>
+      </article>
+
+      <article class="row">
+        <h2 class="row-title">
+          <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener">pagamenos.es</a>
+          <span class="status live" data-en="live" data-es="online">live</span>
+        </h2>
+        <div class="row-meta" data-en="LLM-powered · Consumer" data-es="Con LLMs · Consumo">LLM-powered · Consumer</div>
+        <p class="row-body" data-en="Consumer savings comparison for the Spanish market. Finds better prices on everyday purchases, with the comparison logic handled by language models instead of a hand-maintained ruleset."
+           data-es="Comparador de ahorro para el consumidor español. Encuentra mejores precios en las compras del día a día, con la lógica de comparación resuelta por modelos de lenguaje en vez de por reglas mantenidas a mano.">Consumer savings comparison for the Spanish market. Finds better prices on everyday purchases, with the comparison logic handled by language models instead of a hand-maintained ruleset.</p>
+        <div class="row-links">
+          <a href="https://pagamenos-eight.vercel.app/" target="_blank" rel="noopener" data-en="Open the tool" data-es="Abrir la herramienta">Open the tool</a>
+        </div>
+      </article>
+
+      <article class="row">
+        <h2 class="row-title">
+          <span>Atlas Agropecuario Español</span>
+          <span class="status building" data-en="in progress" data-es="en desarrollo">in progress</span>
+        </h2>
+        <div class="row-meta" data-en="Primary sector · Mapping" data-es="Sector primario · Cartografía">Primary sector · Mapping</div>
+        <p class="row-body" data-en="A unified dataset of the Spanish primary sector, mapped province by province and — this is the point — comparable across autonomous communities, which the source data is not. It is built to carry real work on both the public and the private side: biosecurity, public risk and mortality measurement, traceability, and the identification of holdings, censuses and owners. Access is restricted for now."
+           data-es="Un dataset unificado del sector primario español, cartografiado provincia a provincia y — esta es la clave — comparable entre comunidades autónomas, cosa que los datos de origen no permiten. Está pensado para sostener trabajo real tanto en el lado público como en el privado: bioseguridad, medición de riesgos públicos y mortandad, trazabilidad, e identificación de explotaciones, censos y propietarios. El acceso está restringido por ahora.">A unified dataset of the Spanish primary sector, mapped province by province and — this is the point — comparable across autonomous communities, which the source data is not. It is built to carry real work on both the public and the private side: biosecurity, public risk and mortality measurement, traceability, and the identification of holdings, censuses and owners. Access is restricted for now.</p>
+        <div class="row-links">
+          <a href="mailto:adrian@zapatera.xyz?subject=Atlas%20Agropecuario%20Espa%C3%B1ol" data-en="Interested in access? Reach me" data-es="¿Te interesa el acceso? Escríbeme">Interested in access? Reach me</a>
+        </div>
+      </article>
+
+      <article class="row">
+        <h2 class="row-title">
+          <span>Consensus Alpha</span>
+          <span class="status" data-en="working paper" data-es="working paper">working paper</span>
+        </h2>
+        <div class="row-meta">DeFi · Hyperliquid · Kelly</div>
+        <p class="row-body" data-en="A weighted aggregation framework for alpha extraction in decentralised perpetual futures. Three layers — wallet scoring, a consensus engine with exponential decay, and fractional Kelly execution — that turn raw on-chain activity on Hyperliquid into position sizing."
+           data-es="Framework de agregación ponderada para extracción de alfa en futuros perpetuos descentralizados. Tres capas — scoring de carteras, motor de consenso con decaimiento exponencial y ejecución con Kelly fraccional — que convierten actividad on-chain en Hyperliquid en tamaño de posición.">A weighted aggregation framework for alpha extraction in decentralised perpetual futures. Three layers — wallet scoring, a consensus engine with exponential decay, and fractional Kelly execution — that turn raw on-chain activity on Hyperliquid into position sizing.</p>
+        <div class="row-links">
+          <a href="mailto:adrian@zapatera.xyz?subject=Consensus%20Alpha%20paper" data-en="Request the paper — EN &amp; ES" data-es="Pedir el paper — EN y ES">Request the paper — EN &amp; ES</a>
+        </div>
+      </article>
+
+      <article class="row">
+        <h2 class="row-title">
+          <span data-en="Readings" data-es="Lecturas">Readings</span>
+          <span class="status" data-en="on the shelf" data-es="en la mesilla">on the shelf</span>
+        </h2>
+        <div class="row-meta" data-en="Notes" data-es="Notas">Notes</div>
+        <p class="row-body" data-en="What I'm reading right now. The write-ups — investing, history, philosophy and language models — are still coming; the shelf is already here."
+           data-es="Lo que estoy leyendo ahora mismo. Las reseñas — inversión, historia, filosofía y modelos de lenguaje — todavía están por llegar; la mesilla ya está aquí.">What I'm reading right now. The write-ups — investing, history, philosophy and language models — are still coming; the shelf is already here.</p>
+        <div class="shelf">
+          <div class="shelf-item">
+            <span class="shelf-title" data-en="The Odyssey" data-es="La Odisea">The Odyssey</span>
+            <span class="shelf-author" data-en="Homer" data-es="Homero">Homer</span>
+          </div>
+          <div class="shelf-item">
+            <span class="shelf-title" data-en="Inside the Third Reich" data-es="Memorias">Inside the Third Reich</span>
+            <span class="shelf-author">Albert Speer</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="path" class="reveal">
+    <p class="sec-label" data-en="path" data-es="trayectoria">path</p>
+    <div class="stagger">
+      <div class="tr">
+        <div class="tr-date">2022 — <span data-en="now" data-es="hoy">now</span></div>
+        <div>
+          <p class="tr-org">Single Home &amp; Finca Cortesín</p>
+          <p class="tr-role" data-en="Senior Project Developer &amp; RE Financing Manager" data-es="Director de Proyectos y Responsable de Financiación Inmobiliaria">Senior Project Developer &amp; RE Financing Manager</p>
+          <p class="tr-note" data-en="End-to-end financial oversight of luxury residential, hospitality and golf assets. Primary liaison with international PE firms; embedded finance lead at Finca Cortesín, Europe's No.1 Hotel &amp; Resort."
+             data-es="Supervisión financiera integral de activos residenciales de lujo, hoteleros y de golf. Enlace principal con fondos de private equity internacionales; responsable financiero integrado en Finca Cortesín, Hotel &amp; Resort Nº1 de Europa.">End-to-end financial oversight of luxury residential, hospitality and golf assets. Primary liaison with international PE firms; embedded finance lead at Finca Cortesín, Europe's No.1 Hotel &amp; Resort.</p>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="tr-date">2024 — <span data-en="now" data-es="hoy">now</span></div>
+        <div>
+          <p class="tr-org">ISSEP</p>
+          <p class="tr-role" data-en="Adjunct Professor, Economics" data-es="Profesor Asociado, Economía">Adjunct Professor, Economics</p>
+          <p class="tr-note" data-en="Public economics, the housing market, and the generational gap." data-es="Economía pública, mercado inmobiliario y brecha generacional.">Public economics, the housing market, and the generational gap.</p>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="tr-date">2022</div>
+        <div>
+          <p class="tr-org">Itnig</p>
+          <p class="tr-role" data-en="Financial &amp; Accounting Manager" data-es="Responsable Financiero y Contable">Financial &amp; Accounting Manager</p>
+          <p class="tr-note" data-en="Financial operations across the whole HoldCo — venture fund, real estate fund and portfolio companies, Factorial among them."
+             data-es="Operaciones financieras de toda la HoldCo — fondo de venture, fondo inmobiliario y participadas, Factorial entre ellas.">Financial operations across the whole HoldCo — venture fund, real estate fund and portfolio companies, Factorial among them.</p>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="tr-date">2021</div>
+        <div>
+          <p class="tr-org">Accenture <span class="tr-city">· Prague</span></p>
+          <p class="tr-role" data-en="Financial Management Consultant" data-es="Consultor de Gestión Financiera">Financial Management Consultant</p>
+          <p class="tr-note" data-en="US-GAAP specialist. Ran profitability on international government contracts." data-es="Especialista en US-GAAP. Gestión de rentabilidad de contratos gubernamentales internacionales.">US-GAAP specialist. Ran profitability on international government contracts.</p>
+        </div>
+      </div>
+      <div class="tr">
+        <div class="tr-date">2019 — 2020</div>
+        <div>
+          <p class="tr-org">Fundeen</p>
+          <p class="tr-role" data-en="Financial Analyst" data-es="Analista Financiero">Financial Analyst</p>
+          <p class="tr-note" data-en="Spain's first crowdfunding fintech for photovoltaic investment. Earned a full analyst seat two months in."
+             data-es="Primera fintech española de crowdfunding para inversión fotovoltaica. Me gané el puesto de analista a los dos meses.">Spain's first crowdfunding fintech for photovoltaic investment. Earned a full analyst seat two months in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="reveal">
+    <p class="sec-label" data-en="education" data-es="formación">education</p>
+    <div class="stagger">
+      <div class="edu-row">
+        <div class="edu-when">2023 — 2024</div>
+        <div>
+          <p class="edu-what" data-en="Real Estate, Economics &amp; Finance" data-es="Inmobiliaria, Economía y Finanzas">Real Estate, Economics &amp; Finance</p>
+          <span class="edu-where">London School of Economics</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-when">2022 — 2023</div>
+        <div>
+          <p class="edu-what" data-en="MA, Leadership &amp; Governance" data-es="Máster en Liderazgo y Gobernanza">MA, Leadership &amp; Governance</p>
+          <span class="edu-where">ISSEP Madrid</span>
+          <div class="edu-hon" data-en="best academic record · nominee, best thesis" data-es="mejor expediente · nominado a mejor tesis">best academic record · nominee, best thesis</div>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-when">2015 — 2019</div>
+        <div>
+          <p class="edu-what" data-en="BBA, Business Administration" data-es="Grado en ADE">BBA, Business Administration</p>
+          <span class="edu-where">Universidad Católica de Ávila</span>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-when">2018</div>
+        <div>
+          <p class="edu-what" data-en="International Scholarship" data-es="Beca Internacional">International Scholarship</p>
+          <span class="edu-where">San Diego State University</span>
+          <div class="edu-hon" data-en="ranked 1st in the programme" data-es="1º clasificado del programa">ranked 1st in the programme</div>
+        </div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-when">2017</div>
+        <div>
+          <p class="edu-what" data-en="Erasmus Scholarship" data-es="Beca Erasmus">Erasmus Scholarship</p>
+          <span class="edu-where">Technische Hochschule Köln</span>
+        </div>
+      </div>
+      <div class="chips">
+        <span class="chip">Economics of Money &amp; Banking — Columbia</span>
+        <span class="chip">Financial Markets — Yale</span>
+        <span class="chip">Narrative Economics — Yale</span>
+        <span class="chip">LLMs &amp; Machine Learning</span>
+        <span class="chip">Excel for Finance — CFI</span>
+        <span class="chip">Philosophy — Edinburgh</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <p class="sec-label" data-en="contact" data-es="contacto">contact</p>
+    <div class="contact">
+      <a href="mailto:adrian@zapatera.xyz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6 9-6"/></svg>
+        <span><span class="sub">Email</span>adrian@zapatera.xyz</span>
+      </a>
+      <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.53-1.35-1.29-1.71-1.29-1.71-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.22 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+        <span><span class="sub">Source</span>github.com/mimeticflaneur</span>
+      </a>
+      <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+        <span><span class="sub">Network</span>LinkedIn</span>
+      </a>
+      <a href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3AAdri%C3%A1n%20Zapatera%0AN%3AZapatera%3BAdri%C3%A1n%0ATITLE%3AReal%20Estate%20Finance%20%26%20Asset%20Management%0AEMAIL%3Aadrian%40zapatera.xyz%0AURL%3Ahttps%3A%2F%2Fzapatera.xyz%0AURL%3Ahttps%3A%2F%2Flinkedin.com%2Fin%2Fadrianzapatera%0AEND%3AVCARD" download="Adrian_Zapatera.vcf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15.75a7.5 7.5 0 0 0-5.98 2.98"/><circle cx="12" cy="9.75" r="3"/><circle cx="12" cy="12" r="9.25"/></svg>
+        <span><span class="sub" data-en="Card" data-es="Ficha">Card</span><span data-en="Save contact (vCard)" data-es="Guardar contacto (vCard)">Save contact (vCard)</span></span>
+      </a>
+      <a href="pages/now.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9.25"/><path d="M12 6.75V12l3.5 2"/></svg>
+        <span><span class="sub" data-en="Right now" data-es="Ahora mismo">Right now</span><span data-en="What I'm up to" data-es="En qué ando">What I'm up to</span></span>
+      </a>
+      <a href="https://ko-fi.com/azptr" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h11v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z"/><path d="M15 9h2a2.5 2.5 0 0 1 0 5h-2"/><path d="M4 21h13"/></svg>
+        <span><span class="sub" data-en="Support" data-es="Apoyo">Support</span><span data-en="Buy me a coffee" data-es="Invítame a un café">Buy me a coffee</span></span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>adrián zapatera · madrid</span>
+      <span><a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a> · <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener">github</a> · <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener">linkedin</a></span>
+    </div>
+    <p class="foot-note" data-en="Personal site. Views are my own and do not represent any organization. © 2026 Adrián Zapatera."
+       data-es="Página personal. Las opiniones son propias y no representan a ninguna organización. © 2026 Adrián Zapatera.">Personal site. Views are my own and do not represent any organization. © 2026 Adrián Zapatera.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast-hint"><kbd>⌘K</kbd> <span data-en="to open the terminal" data-es="para abrir la terminal">to open the terminal</span></div>
+
+<div class="term-overlay" id="term-overlay">
+  <div class="term">
+    <div class="term-head">
+      <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+      <span class="term-title">adrian@zapatera.xyz</span>
+    </div>
+    <div class="term-body" id="term-body">
+      <div class="term-line"><span class="out">Welcome. Type 'help' for commands.</span></div>
+      <div class="term-input-line">
+        <span class="pr">~$</span>
+        <input class="term-in" id="term-in" type="text" spellcheck="false" autocomplete="off" aria-label="Terminal input">
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/terminal.js"></script>
 </body>
 </html>
