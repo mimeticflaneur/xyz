@@ -231,20 +231,6 @@ section{padding:44px 0}
 .row-links a:hover{color:var(--ink)}
 .row-links a:hover::before{transform:translateX(4px)}
 
-/* the reading shelf */
-.shelf{grid-column:1/-1;margin-top:12px;display:flex;flex-direction:column;gap:0}
-.shelf-item{
-  display:flex;align-items:baseline;gap:10px;padding:7px 0;
-  border-top:1px solid var(--rule);font-size:.86rem;
-}
-.shelf-item:first-child{border-top:none}
-.shelf-item::before{content:"\2014";color:var(--accent);font-family:var(--font-mono);font-size:.75rem}
-.shelf-title{font-weight:500;color:var(--ink)}
-.shelf-author{
-  font-family:var(--font-mono);font-size:.73rem;color:var(--ink-3);
-  margin-left:auto;white-space:nowrap;
-}
-
 /* 7 · TRACK RECORD */
 .tr{display:grid;grid-template-columns:118px 1fr;gap:0 20px;border-bottom:1px solid var(--rule);padding:18px 0}
 .tr:last-of-type{border-bottom:none}
@@ -256,6 +242,14 @@ section{padding:44px 0}
 .tr-city{color:var(--ink-3);font-weight:400}
 .tr-role{font-size:.88rem;color:var(--ink-2);margin:1px 0 0}
 .tr-note{font-size:.86rem;color:var(--ink-3);margin:7px 0 0;line-height:1.65;max-width:58ch}
+
+/* employers and institutions link out, quietly */
+.tr-org a,.edu-where a{
+  color:inherit;text-decoration:none;
+  border-bottom:1px solid var(--rule-strong);
+  transition:color var(--speed) var(--ease),border-color var(--speed) var(--ease);
+}
+.tr-org a:hover,.edu-where a:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
 /* 8 · EDUCATION */
 .edu-row{display:grid;grid-template-columns:118px 1fr;gap:0 20px;padding:12px 0;border-bottom:1px solid var(--rule)}
@@ -420,8 +414,6 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .tr,.edu-row{grid-template-columns:1fr;gap:2px}
   .tr-date,.edu-when{font-weight:500}
   .contact{grid-template-columns:1fr}
-  .shelf-item{flex-wrap:wrap;gap:4px 10px}
-  .shelf-author{margin-left:0;width:100%}
   .term{max-height:52vh}
   .term-overlay{padding:1rem}
   .toast{display:none}

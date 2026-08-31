@@ -12,7 +12,6 @@
         '  whoami    — about me\n' +
         '  ls        — list sections\n' +
         '  work      — what I have built\n' +
-        '  reading   — what is on the shelf\n' +
         '  open <x>  — open a project (pagamenos, refinancial, now, github)\n' +
         '  clear     — clear the terminal\n' +
         '  exit      — close the terminal';
@@ -30,13 +29,7 @@
       return 'RE Investment Analyzer    live          refinancialcalculator.vercel.app\n' +
         'pagamenos.es              live          pagamenos.es\n' +
         'Atlas Agropecuario        in progress   access on request\n' +
-        'Consensus Alpha           paper         available on request\n' +
-        'Readings                  notes         soon';
-    },
-    reading: function () {
-      return 'On the shelf:\n' +
-        '  — The Odyssey, Homer\n' +
-        '  — Inside the Third Reich, Albert Speer';
+        'Consensus Alpha           paper         available on request';
     }
   };
 
