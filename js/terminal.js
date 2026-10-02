@@ -12,7 +12,7 @@
         '  whoami    — about me\n' +
         '  ls        — list sections\n' +
         '  work      — what I have built\n' +
-        '  open <x>  — open a project (pagamenos, refinancial, now, github)\n' +
+        '  open <x>  — open a project (pagasdemas, refinancial, now, github)\n' +
         '  clear     — clear the terminal\n' +
         '  exit      — close the terminal';
     },
@@ -27,14 +27,14 @@
     },
     work: function () {
       return 'RE Investment Analyzer    live          refinancialcalculator.vercel.app\n' +
-        'pagamenos.es              live          pagamenos.es\n' +
+        'pagasdemas                live          pagamenos-eight.vercel.app\n' +
         'Atlas Agropecuario        in progress   access on request\n' +
         'Consensus Alpha           paper         available on request';
     }
   };
 
   var targets = {
-    pagamenos: 'https://pagamenos-eight.vercel.app/',
+    pagasdemas: 'https://pagamenos-eight.vercel.app/',
     refinancial: 'https://refinancialcalculator.vercel.app',
     github: 'https://github.com/mimeticflaneur',
     now: 'pages/now.html'
@@ -80,7 +80,7 @@
         window.open(targets[name], '_blank', 'noopener');
         print('Opening ' + name + '…');
       } else {
-        print('Unknown: ' + name + '. Try: pagamenos, refinancial, now, github');
+        print('Unknown: ' + name + '. Try: pagasdemas, refinancial, now, github');
       }
       return;
     }
