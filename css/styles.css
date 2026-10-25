@@ -155,6 +155,7 @@ h1.caret::after{
 
 .bio{font-size:1rem;line-height:1.8;color:var(--ink-2);margin:0 0 16px;max-width:64ch}
 .bio:last-child{margin-bottom:0}
+.hero-updated{margin-top:22px}
 .bio strong{color:var(--ink);font-weight:600}
 .bio a{
   color:var(--ink);text-decoration:none;
@@ -177,23 +178,50 @@ section{padding:44px 0}
 }
 .sec-label::before{content:"// ";color:var(--accent)}
 
-/* 6 · WORK — ledger rows */
-.row{
+/* 6 · WORK — one card per project. The figure on top gives the project
+   its context at a glance; it is drawn from tokens, so it re-skins with
+   the theme. Figures are illustrative, never data. */
+.cards{display:flex;flex-direction:column;gap:18px}
+.card{
+  background:var(--surface);border:1px solid var(--rule);border-radius:4px;overflow:hidden;
+  transition:border-color var(--speed) var(--ease),transform var(--speed) var(--ease);
+}
+.card:hover{border-color:var(--rule-strong);transform:translateY(-2px)}
+.card-viz{
+  margin:0;position:relative;border-bottom:1px solid var(--rule);padding-bottom:16px;
+  background-color:var(--paper);
+  background-image:radial-gradient(var(--rule) 1px,transparent 1px);
+  background-size:14px 14px;
+}
+.card-viz svg{display:block;width:100%;height:168px}
+.card-viz figcaption{
+  position:absolute;right:10px;bottom:5px;
+  font-family:var(--font-mono);font-size:.6rem;color:var(--ink-3);letter-spacing:.04em;
+}
+.card-in{
   display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:baseline;
-  padding:22px 0;border-bottom:1px solid var(--rule);position:relative;
+  padding:20px 22px 22px;
 }
-.row::before{
-  content:"";position:absolute;left:-24px;top:-1px;width:2px;height:calc(100% + 1px);
-  background:var(--accent);transform:scaleY(0);transform-origin:top;
-  transition:transform 340ms var(--ease);
-}
-.row:hover::before{transform:scaleY(1)}
+/* figure strokes and fills */
+.v-ink{stroke:var(--ink-3);fill:none}
+.v-rule{stroke:var(--rule-strong);fill:none}
+.v-acc{stroke:var(--accent);fill:none}
+.v-fill{fill:var(--ink-3);stroke:none}
+.v-fill-soft{fill:var(--rule-strong);stroke:none}
+.v-fill-acc{fill:var(--accent);stroke:none}
+.v-text{font-family:var(--font-mono);font-size:10px;fill:var(--ink-3)}
+.v-text.acc{fill:var(--accent)}
+.m0{fill:var(--rule-strong)}
+.m1{fill:var(--accent);opacity:.3}
+.m2{fill:var(--accent);opacity:.6}
+.m3{fill:var(--accent)}
+.v-draw{stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 1.4s var(--ease) .2s}
+.in .v-draw{stroke-dashoffset:0}
+
 .row-title{
   font-size:1.02rem;font-weight:600;letter-spacing:-.01em;margin:0;
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-  transition:transform var(--speed) var(--ease);
 }
-.row:hover .row-title{transform:translateX(3px)}
 .row-title a{
   text-decoration:none;border-bottom:1.5px solid transparent;
   transition:border-color var(--speed) var(--ease),color var(--speed) var(--ease);
@@ -219,7 +247,19 @@ section{padding:44px 0}
   grid-column:1/-1;font-size:.92rem;line-height:1.72;color:var(--ink-2);
   margin:8px 0 0;max-width:63ch;
 }
-.row-links{grid-column:1/-1;display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
+/* key facts: a small ledger under the description */
+.facts{
+  grid-column:1/-1;margin:14px 0 0;display:grid;grid-template-columns:repeat(2,1fr);
+  border-top:1px solid var(--rule);
+}
+.facts div{padding:8px 0;border-bottom:1px solid var(--rule)}
+.facts div:nth-child(odd){padding-right:14px}
+.facts dt{
+  font-family:var(--font-mono);font-size:.62rem;color:var(--ink-3);
+  letter-spacing:.07em;text-transform:uppercase;
+}
+.facts dd{margin:1px 0 0;font-family:var(--font-mono);font-size:.78rem;color:var(--ink)}
+.row-links{grid-column:1/-1;display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
 .row-links a{
   font-family:var(--font-mono);font-size:.74rem;color:var(--ink-2);text-decoration:none;
   display:inline-flex;align-items:center;gap:6px;transition:color var(--speed) var(--ease);
@@ -230,6 +270,24 @@ section{padding:44px 0}
 }
 .row-links a:hover{color:var(--ink)}
 .row-links a:hover::before{transform:translateX(4px)}
+
+/* 6b · WRITING — a plain index: title, one line, then the small print */
+.post{
+  display:block;padding:18px 0;border-bottom:1px solid var(--rule);text-decoration:none;
+}
+.post:last-child{border-bottom:none}
+.post-title{font-size:.98rem;font-weight:600;letter-spacing:-.01em;margin:0}
+.post-title::after{
+  content:" \2192";color:var(--accent);display:inline-block;margin-left:4px;
+  transition:transform var(--speed) var(--spring);
+}
+.post:hover .post-title{color:var(--accent)}
+.post:hover .post-title::after{transform:translateX(4px)}
+.post-desc{font-size:.88rem;color:var(--ink-2);margin:4px 0 0;max-width:60ch;line-height:1.65}
+.post-meta{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--ink-3);margin-top:6px;
+  display:flex;gap:10px;flex-wrap:wrap;
+}
 
 /* 7 · TRACK RECORD */
 .tr{display:grid;grid-template-columns:118px 1fr;gap:0 20px;border-bottom:1px solid var(--rule);padding:18px 0}
@@ -312,6 +370,20 @@ section{padding:44px 0}
 }
 .now-note a{color:var(--ink-2);transition:color var(--speed) var(--ease)}
 .now-note a:hover{color:var(--accent)}
+
+/* 10b · LONG-FORM — handbook and writing pages */
+.prose{font-size:.96rem;line-height:1.8;color:var(--ink-2)}
+.prose p{margin:0 0 14px;max-width:64ch}
+.prose ul{margin:0 0 14px;padding-left:1.1em}
+.prose li{margin:0 0 8px;max-width:62ch}
+.prose li::marker{color:var(--accent)}
+.prose strong{color:var(--ink);font-weight:600}
+.prose a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--accent)}
+.prose a:hover{background:var(--accent-soft)}
+.prose blockquote{
+  margin:0 0 16px;padding:2px 0 2px 16px;border-left:2px solid var(--accent);
+  color:var(--ink);font-size:1rem;
+}
 
 /* 11 · FOOTER */
 footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
@@ -410,8 +482,12 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .hero{padding:44px 0 30px}
   .bio{line-height:1.7}
   .now-head{padding:40px 0 8px}
-  .row{grid-template-columns:1fr}
+  .card-in{grid-template-columns:1fr;padding:18px 18px 20px}
   .row-meta{text-align:left}
+  .card-viz svg{height:140px}
+  .v-text{font-size:13px}
+  .facts{grid-template-columns:1fr}
+  .facts div:nth-child(odd){padding-right:0}
   .tr,.edu-row{grid-template-columns:1fr;gap:2px}
   .tr-date,.edu-when{font-weight:500}
   .contact{grid-template-columns:1fr}

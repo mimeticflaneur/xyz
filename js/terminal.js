@@ -12,7 +12,9 @@
         '  whoami    — about me\n' +
         '  ls        — list sections\n' +
         '  work      — what I have built\n' +
-        '  open <x>  — open a project (pagasdemas, refinancial, now, github)\n' +
+        '  writing   — things I have written\n' +
+        '  handbook  — how I work, in five lines\n' +
+        '  open <x>  — open a page (pagasdemas, refinancial, handbook, paper, now, github)\n' +
         '  clear     — clear the terminal\n' +
         '  exit      — close the terminal';
     },
@@ -23,13 +25,25 @@
         'Madrid, Spain.';
     },
     ls: function () {
-      return 'work/  path/  education/  contact/  now/';
+      return 'work/  writing/  path/  education/  contact/  now/  handbook/';
     },
     work: function () {
       return 'RE Investment Analyzer    live          refinancialcalculator.vercel.app\n' +
         'pagasdemas                live          pagamenos-eight.vercel.app\n' +
         'Atlas Agropecuario        in progress   access on request\n' +
         'Consensus Alpha           paper         available on request';
+    },
+    writing: function () {
+      return '2026  Consensus Alpha, in plain words     open paper\n' +
+        '2026  Handbook: working with me           open handbook';
+    },
+    handbook: function () {
+      return 'If I rebuild something twice, it becomes a tool.\n' +
+        'Numbers first, then the story.\n' +
+        'Language models for the rules, people for the judgement.\n' +
+        'Publish what is useful.\n' +
+        'Email, ask in the first line: adrian@zapatera.xyz\n' +
+        '→ open handbook for the rest';
     }
   };
 
@@ -37,6 +51,8 @@
     pagasdemas: 'https://pagamenos-eight.vercel.app/',
     refinancial: 'https://refinancialcalculator.vercel.app',
     github: 'https://github.com/mimeticflaneur',
+    handbook: 'pages/handbook.html',
+    paper: 'pages/consensus-alpha.html',
     now: 'pages/now.html'
   };
 
@@ -80,7 +96,7 @@
         window.open(targets[name], '_blank', 'noopener');
         print('Opening ' + name + '…');
       } else {
-        print('Unknown: ' + name + '. Try: pagasdemas, refinancial, now, github');
+        print('Unknown: ' + name + '. Try: pagasdemas, refinancial, handbook, paper, now, github');
       }
       return;
     }
