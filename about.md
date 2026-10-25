@@ -54,10 +54,11 @@ Adjunct Professor, Economics. Public economics, the housing market, and the gene
 
 ## How he works
 
+- Usually asked for help with valuation and problem-solving.
+- Works best with autonomy and clear objectives; enjoys teamwork and multitasking.
 - If he rebuilds something twice, it becomes a tool.
-- Numbers first, then the story.
-- Language models for the rules, people for the judgement.
 - Publishes what is useful to others; most of the rest stays in-house.
+- Values trust, honesty and good rapport above all in the people he works with.
 
 More: https://zapatera.xyz/pages/handbook.html
 

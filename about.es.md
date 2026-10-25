@@ -16,7 +16,7 @@
 
 ### Single Home & Finca Cortesín — 2022 a hoy
 
-Director de Proyectos y Responsable de Financiación Inmobiliaria. Supervisión financiera de más de 300 M€ en desarrollos y 230 M€ en gestión de activos: residencial de lujo, hostelería y golf. Refinanciaciones y reporting a inversores con private equity internacional. Responsable financiero en Finca Cortesín, Hotel & Resort Nº1 de Europa.
+Director de Proyectos y Responsable de Financiación Inmobiliaria. Supervisión financiera de más de 300 M€ en desarrollos y 230 M€ en gestión de activos: residencial de lujo, hostelería y golf. Refinanciaciones y reporting a inversores con private equity internacional. Responsable financiero en Finca Cortesín, Hotel & Resort Nº1 de Europa.
 
 - https://www.singlehome.es/
 - https://www.fincacortesin.com
@@ -27,7 +27,7 @@ Profesor Asociado de Economía. Economía pública, mercado inmobiliario y brech
 
 ### Antes
 
-- **Itnig (2022)** — Responsable Financiero y Contable. Operaciones financieras de toda la HoldCo: fondo de venture, fondo inmobiliario y participadas (incl. Factorial, ~1.000 M€ de valoración). Tesorería, consolidación y cumplimiento fiscal.
+- **Itnig (2022)** — Responsable Financiero y Contable. Operaciones financieras de toda la HoldCo: fondo de venture, fondo inmobiliario y participadas (incl. Factorial, ~1.000 M€ de valoración). Tesorería, consolidación y cumplimiento fiscal.
 - **Accenture, Praga (2021)** — Consultor de Gestión Financiera. Especialista en US-GAAP en cuentas de gobiernos nacionales; rentabilidad de contratos gubernamentales internacionales.
 - **Fundeen (2019–2020)** — Analista Financiero. Modelización financiera en la primera fintech española de crowdfunding para inversión fotovoltaica. De becario a analista en dos meses.
 
@@ -54,10 +54,11 @@ Profesor Asociado de Economía. Economía pública, mercado inmobiliario y brech
 
 ## Cómo trabaja
 
+- Suelen pedirle ayuda en valoración y resolución de problemas.
+- Trabaja mejor con autonomía y objetivos claros; disfruta del trabajo en equipo y la multitarea.
 - Si rehace algo dos veces, se convierte en herramienta.
-- Primero los números, luego el relato.
-- Modelos de lenguaje para las reglas, personas para el criterio.
 - Publica lo que le sirve a otros; casi todo lo demás se queda en casa.
+- Lo que más valora en la gente con la que trabaja: confianza, honestidad y buen feeling.
 
 Más: https://zapatera.xyz/pages/handbook.html
 
