@@ -8,7 +8,7 @@ Last updated: October 2026. Spanish version: https://zapatera.xyz/about.es.md
 
 - **Name:** Adrián Zapatera
 - **Based in:** Madrid, Spain
-- **Languages:** Spanish, English
+- **Languages:** Spanish (native), English (C1), Catalan (B2), German (A2)
 - **Contact:** adrian@zapatera.xyz
 - **Site:** https://zapatera.xyz
 
@@ -27,18 +27,23 @@ Adjunct Professor, Economics. Public economics, the housing market, and the gene
 
 ### Earlier
 
-- **Itnig (2022)** — Financial & Accounting Manager. Financial operations across the whole HoldCo: venture fund, real estate fund and portfolio companies, Factorial among them.
-- **Accenture, Prague (2021)** — Financial Management Consultant. US-GAAP specialist; ran profitability on international government contracts.
-- **Fundeen (2019–2020)** — Financial Analyst at Spain's first crowdfunding fintech for photovoltaic investment. Earned a full analyst seat two months in.
+- **Itnig (2022)** — Financial & Accounting Manager. Financial operations across the HoldCo: venture fund, real estate fund and portfolio (incl. Factorial, ~€1B valuation). Treasury, consolidation and tax compliance.
+- **Accenture, Prague (2021)** — Financial Management Consultant. US-GAAP specialist on national-government accounts; profitability of international government contracts.
+- **Fundeen (2019–2020)** — Financial Analyst. Financial modelling at Spain's first crowdfunding fintech for photovoltaic investment. Promoted from intern to analyst in two months.
 
 ## Education
 
 - **London School of Economics (2023–2024)** — Real Estate, Economics & Finance
-- **ISSEP Madrid (2022–2023)** — MA, Leadership & Governance. Best academic record; nominee, best thesis
-- **Universidad Católica de Ávila (2015–2019)** — BBA, Business Administration
-- **San Diego State University (2018)** — International scholarship; ranked 1st in the programme
-- **Technische Hochschule Köln (2017)** — Erasmus scholarship
+- **ISSEP Madrid (2022–2023)** — MSc, Leadership & Governance. Top of cohort; thesis nominee: “Economic and Social Analysis of the Generational Gap in Spain”
+- **Universidad Católica de Ávila (2015–2019)** — BSc, Business Administration. Founder, economics reading club
+- **San Diego State University (2018)** — Economics & Business Administration (exchange). International scholarship; ranked 1st in the selection programme
+- **Technische Hochschule Köln (2017)** — Business Administration (exchange). Erasmus scholarship
 - Courses: Economics of Money & Banking (Columbia), Financial Markets (Yale), Narrative Economics (Yale), LLMs & Machine Learning, Excel for Finance (CFI), Philosophy (Edinburgh)
+
+## Skills
+
+- **Finance:** valuation, cash-flow modelling, refinancing structures, due diligence, investor relations, US-GAAP
+- **Stack:** Python, SQL, Excel/VBA, TypeScript, React
 
 ## Projects
 

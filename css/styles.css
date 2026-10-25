@@ -336,6 +336,8 @@ section{padding:44px 0}
   letter-spacing:.07em;text-transform:uppercase;
 }
 .facts dd{margin:1px 0 0;font-family:var(--font-mono);font-size:.78rem;color:var(--ink)}
+.facts-wide{grid-template-columns:1fr;margin-top:22px}
+.facts-wide div:nth-child(odd){padding-right:0}
 .row-links{grid-column:1/-1;display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
 .row-links a{
   font-family:var(--font-mono);font-size:.74rem;color:var(--ink-2);text-decoration:none;

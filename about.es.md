@@ -8,7 +8,7 @@
 
 - **Nombre:** Adrián Zapatera
 - **Vive en:** Madrid, España
-- **Idiomas:** español, inglés
+- **Idiomas:** español (nativo), inglés (C1), catalán (B2), alemán (A2)
 - **Contacto:** adrian@zapatera.xyz
 - **Web:** https://zapatera.xyz
 
@@ -27,18 +27,23 @@ Profesor Asociado de Economía. Economía pública, mercado inmobiliario y brech
 
 ### Antes
 
-- **Itnig (2022)** — Responsable Financiero y Contable. Operaciones financieras de toda la HoldCo: fondo de venture, fondo inmobiliario y participadas, Factorial entre ellas.
-- **Accenture, Praga (2021)** — Consultor de Gestión Financiera. Especialista en US-GAAP; gestión de rentabilidad de contratos gubernamentales internacionales.
-- **Fundeen (2019–2020)** — Analista Financiero en la primera fintech española de crowdfunding para inversión fotovoltaica. Se ganó el puesto de analista a los dos meses.
+- **Itnig (2022)** — Responsable Financiero y Contable. Operaciones financieras de toda la HoldCo: fondo de venture, fondo inmobiliario y participadas (incl. Factorial, ~1.000 M€ de valoración). Tesorería, consolidación y cumplimiento fiscal.
+- **Accenture, Praga (2021)** — Consultor de Gestión Financiera. Especialista en US-GAAP en cuentas de gobiernos nacionales; rentabilidad de contratos gubernamentales internacionales.
+- **Fundeen (2019–2020)** — Analista Financiero. Modelización financiera en la primera fintech española de crowdfunding para inversión fotovoltaica. De becario a analista en dos meses.
 
 ## Formación
 
 - **London School of Economics (2023–2024)** — Inmobiliaria, Economía y Finanzas
-- **ISSEP Madrid (2022–2023)** — Máster en Liderazgo y Gobernanza. Mejor expediente; nominado a mejor tesis
-- **Universidad Católica de Ávila (2015–2019)** — Grado en ADE
-- **San Diego State University (2018)** — Beca internacional; 1º clasificado del programa
-- **Technische Hochschule Köln (2017)** — Beca Erasmus
+- **ISSEP Madrid (2022–2023)** — Máster (MSc) en Liderazgo y Gobernanza. Número uno de la promoción; tesis nominada: «Análisis económico y social de la brecha generacional en España»
+- **Universidad Católica de Ávila (2015–2019)** — Grado en ADE. Fundador del club de lectura de economía
+- **San Diego State University (2018)** — Economía y ADE (intercambio). Beca internacional; 1º en el proceso de selección
+- **Technische Hochschule Köln (2017)** — ADE (intercambio). Beca Erasmus
 - Cursos: Economics of Money & Banking (Columbia), Financial Markets (Yale), Narrative Economics (Yale), LLMs y Machine Learning, Excel for Finance (CFI), Filosofía (Edimburgo)
+
+## Competencias
+
+- **Finanzas:** valoración, modelización de cash flows, estructuras de refinanciación, due diligence, relación con inversores, US-GAAP
+- **Stack:** Python, SQL, Excel/VBA, TypeScript, React
 
 ## Proyectos
 
