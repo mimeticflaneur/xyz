@@ -135,7 +135,30 @@ header.top.stuck{border-bottom-color:var(--rule-strong)}
 .icon-btn svg{width:15px;height:15px;transition:transform var(--speed) var(--spring)}
 
 /* 4 · HERO */
-.hero{padding:70px 0 34px}
+.hero{padding:70px 0 34px;position:relative}
+
+/* generative signature — a dot field and one J-curve, new on every visit */
+.sig{
+  position:absolute;top:62px;right:0;width:120px;padding:0;margin:0;
+  background:none;border:none;cursor:pointer;color:inherit;
+  display:flex;flex-direction:column;align-items:flex-end;gap:4px;
+}
+.sig-art{display:block;width:120px;height:120px}
+.sig-art svg{display:block;width:100%;height:100%;overflow:visible}
+.sig-art circle{animation:sig-dot 520ms var(--ease) backwards;transform-box:fill-box;transform-origin:center}
+@keyframes sig-dot{from{opacity:0;transform:scale(.2)}}
+.sig-curve{
+  fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;
+  transition:stroke-dashoffset 1.3s var(--ease) .25s;
+}
+.sig-end{fill:var(--paper);stroke:var(--ink);stroke-width:1.6}
+.sig-seed{
+  font-family:var(--font-mono);font-size:.6rem;color:var(--ink-3);letter-spacing:.04em;
+  transition:color var(--speed) var(--ease);
+}
+.sig:hover .sig-seed{color:var(--accent)}
+.sig:hover .sig-art{transform:rotate(-3deg)}
+.sig-art{transition:transform var(--speed) var(--spring)}
 .eyebrow{
   font-family:var(--font-mono);font-size:.73rem;color:var(--ink-3);
   margin:0 0 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;
@@ -168,6 +191,47 @@ h1.caret::after{
   color:var(--accent);background-size:100% 100%;
   background-image:linear-gradient(var(--accent-soft),var(--accent-soft));
 }
+
+/* 4b · PROTOTYPE — the hero as a terminal (js/hero-terminal.js, ?hero=terminal).
+   Unlike the ⌘K overlay it follows the page theme, so it reads as the page. */
+.ht-wrap{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+.ht-wrap .sig{position:static}
+.ht{
+  background:var(--surface);border:1px solid var(--rule-strong);border-radius:4px;
+  font-family:var(--font-mono);font-size:.82rem;line-height:1.7;color:var(--ink-2);
+  min-height:300px;display:flex;flex-direction:column;cursor:text;
+}
+.ht-head{
+  padding:7px 14px;border-bottom:1px solid var(--rule);font-size:.66rem;color:var(--ink-3);
+  display:flex;align-items:center;gap:6px;
+}
+.ht-head::before{content:"\25CF \25CF \25CF";color:var(--rule-strong);letter-spacing:2px;margin-right:6px}
+.ht-log{padding:14px 16px 4px;flex:1}
+.ht-line{margin:0 0 6px;white-space:pre-wrap;word-break:break-word}
+.ht-cmd{color:var(--ink)}
+.ht-pr{color:var(--accent);font-weight:500}
+.ht-out a{color:var(--ink);text-decoration:none;border-bottom:1.5px solid var(--accent)}
+.ht-out a:hover{background:var(--accent-soft)}
+.ht-h1{
+  font-family:var(--font-mono);font-weight:400;font-size:clamp(1.5rem,4vw,2.05rem);
+  line-height:1.2;letter-spacing:-.035em;color:var(--ink);margin:6px 0 12px;
+}
+.ht-h1 b{font-weight:500;color:var(--accent)}
+.ht-ls{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:4px}
+.ht-ls button{
+  font:inherit;font-size:.78rem;color:var(--ink);background:var(--paper);cursor:pointer;
+  border:1px solid var(--rule);border-radius:2px;padding:2px 9px;
+  transition:border-color var(--speed) var(--ease),color var(--speed) var(--ease),background var(--speed) var(--ease);
+}
+.ht-ls button:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.ht-input-line{display:flex;align-items:center;gap:8px;padding:6px 16px 14px}
+.ht-in{
+  flex:1;background:none;border:none;outline:none;font:inherit;color:var(--ink);
+  caret-color:var(--accent);min-width:0;
+}
+.ht-in::placeholder{color:var(--ink-3);opacity:.7}
+.ht-note{font-family:var(--font-mono);font-size:.66rem;color:var(--ink-3);margin:10px 0 0}
+.ht-note a{color:var(--ink-2)}
 
 /* 5 · SECTIONS — the mono label is the heading; there is no second title */
 section{padding:44px 0}
@@ -480,6 +544,12 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
 @media (max-width:640px){
   .shell{padding:0 20px}
   .hero{padding:44px 0 30px}
+  .sig{top:38px;width:56px}
+  .sig-art{width:56px;height:56px}
+  .sig-seed{display:none}
+  .ht-wrap{grid-template-columns:1fr}
+  .ht-wrap .sig{display:none}
+  .ht{min-height:0}
   .bio{line-height:1.7}
   .now-head{padding:40px 0 8px}
   .card-in{grid-template-columns:1fr;padding:18px 18px 20px}
