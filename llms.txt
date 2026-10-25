@@ -1,0 +1,27 @@
+# Adrián Zapatera
+
+> Real estate finance and asset management in Madrid — luxury residential, hospitality and golf, backed by international private equity. Adjunct professor of economics at ISSEP. Builds tools for investment operations with large language models, and publishes the ones that are useful to anyone else.
+
+This site is bilingual (English and Spanish). The files below are plain-text versions meant for language models and other readers that do not run JavaScript.
+
+## About
+
+- [About Adrián (English)](https://zapatera.xyz/about.md): Biography, career, education, projects and how to get in touch
+- [Sobre Adrián (español)](https://zapatera.xyz/about.es.md): La misma biografía, en español
+- [Structured bio (JSON)](https://zapatera.xyz/bio.json): Machine-readable bio in the schema.org Person shape
+- [CV (PDF)](https://zapatera.xyz/cv/Adrian_Zapatera_CV.pdf): One-page CV in English; personal phone number omitted
+- [Handbook](https://zapatera.xyz/pages/handbook.html): How he works and how best to reach him
+- [Now](https://zapatera.xyz/pages/now.html): What he is building and thinking about right now
+
+## Projects
+
+- [RE Investment Analyzer](https://refinancialcalculator.vercel.app): Leveraged profitability calculator for Spanish real estate — IRR, cash-on-cash, DSCR, full cashflow projection and early-exit simulation across three scenarios. React, Tailwind, Vite
+- [pagasdemas](https://pagamenos-eight.vercel.app/): Consumer savings comparison for the Spanish market, with the comparison logic handled by language models
+- Atlas Agropecuario Español: A unified, province-level dataset of the Spanish primary sector, comparable across autonomous communities. In progress; access restricted, on request
+- [Consensus Alpha](https://zapatera.xyz/pages/consensus-alpha.html): Working paper on alpha extraction in decentralised perpetual futures on Hyperliquid — wallet scoring, a consensus engine with exponential decay, and fractional Kelly execution. Full paper on request, in English and Spanish
+
+## Profiles
+
+- [GitHub (mimeticflaneur)](https://github.com/mimeticflaneur)
+- [LinkedIn](https://linkedin.com/in/adrianzapatera)
+- [Email](mailto:adrian@zapatera.xyz)

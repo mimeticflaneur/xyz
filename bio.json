@@ -1,0 +1,95 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://zapatera.xyz/#adrian",
+  "name": "Adrián Zapatera",
+  "givenName": "Adrián",
+  "familyName": "Zapatera",
+  "url": "https://zapatera.xyz/",
+  "image": "https://zapatera.xyz/og.png",
+  "email": "mailto:adrian@zapatera.xyz",
+  "jobTitle": "Senior Project Developer & RE Financing Manager",
+  "description": "Real estate finance and asset management in Madrid: luxury residential, hospitality and golf, backed by international private equity. Builds tools for investment operations with LLMs.",
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Single Home",
+      "url": "https://www.singlehome.es/"
+    },
+    {
+      "@type": "Organization",
+      "name": "Finca Cortesín",
+      "url": "https://www.fincacortesin.com"
+    }
+  ],
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Adjunct Professor, Economics",
+    "description": "Public economics, the housing market and the generational gap, at ISSEP Madrid."
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "London School of Economics",
+      "url": "https://www.lse.ac.uk"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "ISSEP Madrid",
+      "url": "https://issep.es/"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Católica de Ávila",
+      "url": "https://www.ucavila.es/"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "San Diego State University",
+      "url": "https://www.sdsu.edu"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Technische Hochschule Köln",
+      "url": "https://www.th-koeln.de"
+    }
+  ],
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Madrid, Spain"
+  },
+  "knowsLanguage": [
+    "es",
+    "en"
+  ],
+  "knowsAbout": [
+    "Real estate finance",
+    "Asset management",
+    "Residential development",
+    "Hospitality assets",
+    "Private equity",
+    "Financial modelling",
+    "Large language models",
+    "Public economics",
+    "Housing markets"
+  ],
+  "sameAs": [
+    "https://github.com/mimeticflaneur",
+    "https://linkedin.com/in/adrianzapatera"
+  ],
+  "subjectOf": [
+    {
+      "@type": "WebPage",
+      "url": "https://zapatera.xyz/about.md",
+      "encodingFormat": "text/markdown",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "url": "https://zapatera.xyz/about.es.md",
+      "encodingFormat": "text/markdown",
+      "inLanguage": "es"
+    }
+  ],
+  "dateModified": "2026-10-25"
+}

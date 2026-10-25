@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consensus Alpha, in plain words — Adrián Zapatera</title>
+<meta name="description" content="A plain-words summary of Consensus Alpha, a working paper on alpha extraction in decentralised perpetual futures.">
+<link rel="canonical" href="https://zapatera.xyz/pages/consensus-alpha.html">
+
+<meta name="title-en" content="Consensus Alpha, in plain words — Adrián Zapatera">
+<meta name="title-es" content="Consensus Alpha, en claro — Adrián Zapatera">
+<meta name="desc-en" content="A plain-words summary of Consensus Alpha, a working paper on alpha extraction in decentralised perpetual futures.">
+<meta name="desc-es" content="Resumen en claro de Consensus Alpha, un working paper sobre extracción de alfa en futuros perpetuos descentralizados.">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://zapatera.xyz/pages/consensus-alpha.html">
+<meta property="og:title" content="Consensus Alpha, in plain words — Adrián Zapatera">
+<meta property="og:description" content="A plain-words summary of Consensus Alpha, a working paper on alpha extraction in decentralised perpetual futures.">
+<meta property="og:image" content="https://zapatera.xyz/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zapatera.xyz/og.png">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='18' width='100' height='100' fill='%23171a18'/><text x='50' y='69' font-size='54' font-family='ui-monospace,monospace' font-weight='500' fill='%235fc9a1' text-anchor='middle'>az</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../css/styles.css">
+<script>
+  (function(){try{var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('lang');if(l)document.documentElement.lang=l;}catch(e){}})();
+</script>
+</head>
+<body>
+<a class="skip" href="#idea">Skip to content</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="../index.html">adrián zapatera<span class="dot">.</span>xyz</a>
+    <nav aria-label="Sections">
+      <a href="../index.html#work" data-en="work" data-es="proyectos">work</a>
+      <a href="../index.html#writing" data-en="writing" data-es="escritos">writing</a>
+      <a href="../index.html#path" data-en="path" data-es="trayectoria">path</a>
+      <a href="../index.html#education" data-en="education" data-es="formación">education</a>
+      <a href="now.html" data-en="now" data-es="ahora">now</a>
+      <a href="../index.html#contact" data-en="contact" data-es="contacto">contact</a>
+    </nav>
+    <div class="social">
+      <a href="mailto:adrian@zapatera.xyz" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6 9-6"/></svg>
+      </a>
+      <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.36-3.88-1.36-.53-1.35-1.29-1.71-1.29-1.71-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.22 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.86-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13Zm1.78 13.02H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+      </a>
+    </div>
+    <div class="ctrls">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+      <button class="icon-btn" data-theme-toggle type="button" aria-label="Switch theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.75 15A9.75 9.75 0 0 1 9 2.25 9.75 9.75 0 1 0 21.75 15Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="shell">
+
+  <div class="now-head enter">
+    <p class="eyebrow"><span data-en="writing" data-es="escritos">writing</span><span class="sep">/</span><span>2026</span><span class="sep">/</span><span data-en="2 min read" data-es="2 min de lectura">2 min read</span></p>
+    <h1 class="caret" data-en="consensus alpha, in plain words." data-es="consensus alpha, en claro.">consensus alpha, in plain words.</h1>
+    <p class="now-updated"><time datetime="2026-10-25" data-en="last updated october 2026" data-es="última actualización octubre 2026">last updated october 2026</time></p>
+  </div>
+
+  <section id="idea" class="reveal">
+    <p class="sec-label" data-en="the idea" data-es="la idea">the idea</p>
+    <div class="prose">
+      <p data-en="<strong>Consensus Alpha</strong> is a working paper on extracting alpha from decentralised perpetual futures. Its question is simple: where is market consensus structurally wrong, and how large a position should you take against it?"
+         data-es="<strong>Consensus Alpha</strong> es un working paper sobre extracción de alfa en futuros perpetuos descentralizados. La pregunta es sencilla: ¿dónde se equivoca estructuralmente el consenso del mercado, y qué tamaño de posición conviene tomar en contra?"><strong>Consensus Alpha</strong> is a working paper on extracting alpha from decentralised perpetual futures. Its question is simple: where is market consensus structurally wrong, and how large a position should you take against it?</p>
+      <p data-en="Hyperliquid makes this tractable because its activity is on-chain: every wallet's positions are public. The paper turns that raw activity into a sizing decision in three layers."
+         data-es="Hyperliquid lo hace abordable porque su actividad está on-chain: las posiciones de cada cartera son públicas. El paper convierte esa actividad en bruto en una decisión de tamaño, en tres capas.">Hyperliquid makes this tractable because its activity is on-chain: every wallet's positions are public. The paper turns that raw activity into a sizing decision in three layers.</p>
+    </div>
+  </section>
+
+  <section id="layers" class="reveal">
+    <p class="sec-label" data-en="three layers" data-es="tres capas">three layers</p>
+    <ul class="now-list stagger">
+      <li data-en="<strong>1 · Wallet scoring.</strong> Not every wallet deserves the same weight. Each one is scored on its on-chain history, so the signal is a weighted vote rather than a headcount."
+          data-es="<strong>1 · Scoring de carteras.</strong> No todas las carteras merecen el mismo peso. Cada una se puntúa por su historial on-chain, de modo que la señal es un voto ponderado y no un recuento."><strong>1 · Wallet scoring.</strong> Not every wallet deserves the same weight. Each one is scored on its on-chain history, so the signal is a weighted vote rather than a headcount.</li>
+      <li data-en="<strong>2 · Consensus engine.</strong> The weighted positions are aggregated into a consensus, with exponential decay, so a position opened today counts for more than one opened weeks ago."
+          data-es="<strong>2 · Motor de consenso.</strong> Las posiciones ponderadas se agregan en un consenso con decaimiento exponencial, para que una posición abierta hoy cuente más que una abierta hace semanas."><strong>2 · Consensus engine.</strong> The weighted positions are aggregated into a consensus, with exponential decay, so a position opened today counts for more than one opened weeks ago.</li>
+      <li data-en="<strong>3 · Fractional Kelly execution.</strong> The consensus becomes a position size through the Kelly criterion, scaled down to a fraction of full Kelly to trade some growth for much lower variance."
+          data-es="<strong>3 · Ejecución con Kelly fraccional.</strong> El consenso se traduce en tamaño de posición mediante el criterio de Kelly, reducido a una fracción del Kelly completo para cambiar algo de crecimiento por mucha menos varianza."><strong>3 · Fractional Kelly execution.</strong> The consensus becomes a position size through the Kelly criterion, scaled down to a fraction of full Kelly to trade some growth for much lower variance.</li>
+    </ul>
+  </section>
+
+  <section id="paper" class="reveal">
+    <p class="sec-label" data-en="the full paper" data-es="el paper completo">the full paper</p>
+    <div class="prose">
+      <p data-en="The full version, with the method in detail, is available in English and Spanish. <a href='mailto:adrian@zapatera.xyz?subject=Consensus%20Alpha%20paper'>Ask me for it</a>."
+         data-es="La versión completa, con el método en detalle, está disponible en inglés y en español. <a href='mailto:adrian@zapatera.xyz?subject=Consensus%20Alpha%20paper'>Pídemela</a>.">The full version, with the method in detail, is available in English and Spanish. <a href='mailto:adrian@zapatera.xyz?subject=Consensus%20Alpha%20paper'>Ask me for it</a>.</p>
+    </div>
+
+    <p class="now-note" data-en="Not investment advice. <a href='../index.html#writing'>← all writing</a>"
+       data-es="No es asesoramiento de inversión. <a href='../index.html#writing'>← todos los escritos</a>">Not investment advice. <a href="../index.html#writing">← all writing</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span>adrián zapatera · madrid · <time datetime="2026-10-25" data-en="updated oct 2026" data-es="actualizado oct 2026">updated oct 2026</time></span>
+      <span><a href="mailto:adrian@zapatera.xyz">adrian@zapatera.xyz</a> · <a href="https://github.com/mimeticflaneur" target="_blank" rel="noopener">github</a> · <a href="https://linkedin.com/in/adrianzapatera" target="_blank" rel="noopener">linkedin</a></span>
+    </div>
+    <p class="foot-note" data-en="Personal site. Views are my own and do not represent any organization. © 2026 Adrián Zapatera."
+       data-es="Página personal. Las opiniones son propias y no representan a ninguna organización. © 2026 Adrián Zapatera.">Personal site. Views are my own and do not represent any organization. © 2026 Adrián Zapatera.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
