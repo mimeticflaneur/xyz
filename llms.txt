@@ -1,6 +1,6 @@
 # Adrián Zapatera
 
-> Real estate finance and asset management in Madrid — luxury residential, hospitality and golf, backed by international private equity. Adjunct professor of economics at ISSEP. Builds tools for investment operations with large language models, and publishes the ones that are useful to anyone else.
+> Real estate finance and asset management in Madrid — €300M+ in developments and €230M in assets under management across luxury residential, hospitality and golf, alongside international private equity. Adjunct professor of economics at ISSEP. Builds tools for investment operations with large language models, and publishes the ones that are useful to anyone else.
 
 This site is bilingual (English and Spanish). The files below are plain-text versions meant for language models and other readers that do not run JavaScript.
 

@@ -16,7 +16,7 @@
 
 ### Single Home & Finca Cortesín — 2022 a hoy
 
-Director de Proyectos y Responsable de Financiación Inmobiliaria. Supervisión financiera integral de activos residenciales de lujo, hoteleros y de golf. Enlace principal con fondos de private equity internacionales; responsable financiero integrado en Finca Cortesín, Hotel & Resort Nº1 de Europa.
+Director de Proyectos y Responsable de Financiación Inmobiliaria. Supervisión financiera de más de 300 M€ en desarrollos y 230 M€ en gestión de activos: residencial de lujo, hostelería y golf. Refinanciaciones y reporting a inversores con private equity internacional. Responsable financiero en Finca Cortesín, Hotel & Resort Nº1 de Europa.
 
 - https://www.singlehome.es/
 - https://www.fincacortesin.com

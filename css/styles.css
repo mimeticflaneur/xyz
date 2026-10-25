@@ -522,7 +522,7 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .tl-body{padding:16px 16px 18px}
   .tl-row{grid-template-columns:1fr;gap:0}
   .tl-row + .tl-row{margin-top:4px}
-  .tl-opt{grid-template-columns:2ch 9ch 1fr;gap:0 8px}
+  .tl-opt{grid-template-columns:2ch 10ch 1fr;gap:0 8px}
   .tl-desc{font-size:.72rem}
   .card-in{grid-template-columns:1fr;padding:18px 18px 20px}
   .row-meta{text-align:left}

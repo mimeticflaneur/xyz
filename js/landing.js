@@ -25,9 +25,9 @@
 
   var T = {
     en: {
-      help: 'go to:  work · writing · education · contact · path · handbook · now · other\n' +
+      help: 'go to:  projects · experience · writing · education · contact · handbook · now · other\n' +
         'also:   cv · whoami · ls · open <project> · lang en|es · theme · clear',
-      ls: 'work/  writing/  education/  contact/  other/',
+      ls: 'projects/  experience/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — real estate finance × software, madrid.',
       open: 'open what? try: refinancial, pagasdemas, paper, github, linkedin',
       missing: 'command not found: ',
@@ -37,9 +37,9 @@
       placeholder: 'type a command, or pick one above'
     },
     es: {
-      help: 'ir a:    work · writing · education · contact · path · handbook · now · other\n' +
+      help: 'ir a:    projects · experience · writing · education · contact · handbook · now · other\n' +
         'además:  cv · whoami · ls · open <proyecto> · lang en|es · theme · clear',
-      ls: 'work/  writing/  education/  contact/  other/',
+      ls: 'projects/  experience/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — finanzas inmobiliarias × software, madrid.',
       open: '¿abrir qué? prueba: refinancial, pagasdemas, paper, github, linkedin',
       missing: 'comando no encontrado: ',
@@ -51,7 +51,8 @@
   };
   function t() { return T[root.lang === 'es' ? 'es' : 'en']; }
 
-  var sections = ['work', 'writing', 'education', 'contact', 'path'];
+  var sections = ['projects', 'experience', 'writing', 'education', 'contact'];
+  var aliases = { work: 'projects', path: 'experience' };
   var pages = { handbook: 'pages/handbook.html', now: 'pages/now.html' };
   var projects = {
     refinancial: 'https://refinancialcalculator.vercel.app',
@@ -181,6 +182,7 @@
     if (!cmd) return;
     if (cmd === 'clear') { log.innerHTML = ''; return; }
     echo(raw.trim());
+    cmd = aliases[cmd] || cmd;
     if (sections.indexOf(cmd) > -1) return go(cmd);
     if (pages[cmd]) return visit(pages[cmd]);
     if (cmd === 'other') {

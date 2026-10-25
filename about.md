@@ -16,7 +16,7 @@ Last updated: October 2026. Spanish version: https://zapatera.xyz/about.es.md
 
 ### Single Home & Finca Cortesín — 2022 to now
 
-Senior Project Developer & RE Financing Manager. End-to-end financial oversight of luxury residential, hospitality and golf assets. Primary liaison with international private equity firms; embedded finance lead at Finca Cortesín, Europe's No.1 Hotel & Resort.
+Senior Project Developer & RE Financing Manager. Financial oversight of €300M+ in developments and €230M in assets under management across luxury residential, hospitality and golf. Refinancing and investor reporting with international private equity. Finance lead at Finca Cortesín, Europe's No.1 Hotel & Resort.
 
 - https://www.singlehome.es/
 - https://www.fincacortesin.com
