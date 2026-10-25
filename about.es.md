@@ -56,6 +56,10 @@ Profesor Asociado de Economía. Economía pública, mercado inmobiliario y brech
 
 Más: https://zapatera.xyz/pages/handbook.html
 
+## CV
+
+CV de una página, en inglés (PDF): https://zapatera.xyz/cv/Adrian_Zapatera_CV.pdf
+
 ## Perfiles
 
 - GitHub: https://github.com/mimeticflaneur

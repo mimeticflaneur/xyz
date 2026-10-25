@@ -9,6 +9,7 @@ This site is bilingual (English and Spanish). The files below are plain-text ver
 - [About Adrián (English)](https://zapatera.xyz/about.md): Biography, career, education, projects and how to get in touch
 - [Sobre Adrián (español)](https://zapatera.xyz/about.es.md): La misma biografía, en español
 - [Structured bio (JSON)](https://zapatera.xyz/bio.json): Machine-readable bio in the schema.org Person shape
+- [CV (PDF)](https://zapatera.xyz/cv/Adrian_Zapatera_CV.pdf): One-page CV in English; personal phone number omitted
 - [Handbook](https://zapatera.xyz/pages/handbook.html): How he works and how best to reach him
 - [Now](https://zapatera.xyz/pages/now.html): What he is building and thinking about right now
 

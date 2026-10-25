@@ -56,6 +56,10 @@ Adjunct Professor, Economics. Public economics, the housing market, and the gene
 
 More: https://zapatera.xyz/pages/handbook.html
 
+## CV
+
+One-page CV in English (PDF): https://zapatera.xyz/cv/Adrian_Zapatera_CV.pdf
+
 ## Profiles
 
 - GitHub: https://github.com/mimeticflaneur

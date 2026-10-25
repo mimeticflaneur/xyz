@@ -26,24 +26,26 @@
   var T = {
     en: {
       help: 'go to:  work · writing · education · contact · path · handbook · now · other\n' +
-        'also:   whoami · ls · open <project> · lang en|es · theme · clear',
+        'also:   cv · whoami · ls · open <project> · lang en|es · theme · clear',
       ls: 'work/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — real estate finance × software, madrid.',
       open: 'open what? try: refinancial, pagasdemas, paper, github, linkedin',
       missing: 'command not found: ',
       tryHelp: '. type help',
       sudo: 'nice try.',
+      cv: 'downloading Adrian_Zapatera_CV.pdf…',
       placeholder: 'type a command, or pick one above'
     },
     es: {
       help: 'ir a:    work · writing · education · contact · path · handbook · now · other\n' +
-        'además:  whoami · ls · open <proyecto> · lang en|es · theme · clear',
+        'además:  cv · whoami · ls · open <proyecto> · lang en|es · theme · clear',
       ls: 'work/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — finanzas inmobiliarias × software, madrid.',
       open: '¿abrir qué? prueba: refinancial, pagasdemas, paper, github, linkedin',
       missing: 'comando no encontrado: ',
       tryHelp: '. escribe help',
       sudo: 'buen intento.',
+      cv: 'descargando Adrian_Zapatera_CV.pdf…',
       placeholder: 'escribe un comando, o elige uno arriba'
     }
   };
@@ -185,6 +187,10 @@
       other.open = true;
       other.querySelector('.tl-sub .tl-opt').focus();
       return;
+    }
+    if (cmd === 'cv') {
+      line(t().cv, 'out');
+      return term.querySelector('.tl-opt[download]').click();
     }
     if (cmd === 'help') return line(t().help, 'out');
     if (cmd === 'ls') return line(t().ls, 'out');
