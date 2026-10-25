@@ -3,7 +3,8 @@
    line by line, then `ls` lists where to go. Everything it shows is
    already in the HTML, so crawlers and readers without JavaScript get the
    full text; this script only stages it. Any key or click skips to the
-   end. Cmd/Ctrl+K brings you back to the prompt from anywhere. */
+   end. The red and yellow window controls fold it away; Cmd/Ctrl+K
+   brings you back to the prompt from anywhere. */
 (function () {
   var term = document.getElementById('tl');
   if (!term) return;
@@ -244,13 +245,49 @@
   });
 
   function landingInView() {
-    return term.getBoundingClientRect().bottom > 0;
+    return !folded() && term.getBoundingClientRect().bottom > 0;
   }
+
+  /* ---------------- window controls ---------------- */
+
+  /* Red and yellow fold the window down to its title bar and hand the
+     page to what follows; green, a click on the folded bar, or Cmd/Ctrl+K
+     opens it again. */
+  var landing = term.closest('.landing');
+  var fold = term.querySelector('.tl-fold');
+  var zoom = term.querySelector('[data-win="zoom"]');
+
+  function folded() { return landing.classList.contains('is-folded'); }
+  function setFolded(on) {
+    finish();
+    if (on && fold.contains(document.activeElement)) document.activeElement.blur();
+    landing.classList.toggle('is-folded', on);
+    fold.inert = on;
+    /* green is only live while folded; keep keyboard focus on the controls */
+    var wasZoom = document.activeElement === zoom;
+    zoom.disabled = !on;
+    if (wasZoom) term.querySelector('[data-win="minimise"]').focus();
+    window.scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' });
+  }
+  term.querySelectorAll('[data-win="close"], [data-win="minimise"]').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setFolded(true);
+    });
+  });
+  zoom.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setFolded(false);
+  });
+  term.querySelector('.tl-head').addEventListener('click', function (e) {
+    if (folded() && !e.target.closest('button')) setFolded(false);
+  });
 
   document.addEventListener('keydown', function (e) {
     /* Cmd/Ctrl+K: back to the prompt from anywhere on the page */
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
+      if (folded()) setFolded(false);
       finish();
       window.scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' });
       input.focus({ preventScroll: true });

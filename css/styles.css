@@ -176,13 +176,40 @@ h1.caret::after{
   display:flex;align-items:center;gap:12px;padding:8px 12px 8px 14px;
   background:var(--paper);border-bottom:1px solid var(--rule);
 }
+/* window controls: red and yellow fold the window to its title bar,
+   green opens it again; the glyphs appear on hover, as in macOS */
 .tl-dots{display:flex;gap:8px}
-.tl-dots i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
-.tl-dots i:nth-child(1){background:var(--mac-close)}
-.tl-dots i:nth-child(2){background:var(--mac-minimise)}
-.tl-dots i:nth-child(3){background:var(--mac-zoom)}
+.tl-dot{
+  width:12px;height:12px;padding:0;border:none;border-radius:50%;cursor:pointer;
+  box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18);
+  display:grid;place-items:center;color:rgba(0,0,0,.6);
+  font:600 10px/1 var(--font-sans);
+}
+.tl-dot[data-win="close"]{background:var(--mac-close)}
+.tl-dot[data-win="minimise"]{background:var(--mac-minimise)}
+.tl-dot[data-win="zoom"]{background:var(--mac-zoom)}
+.tl-dot:disabled{cursor:default}
+.tl-dot::after{opacity:0;transition:opacity var(--speed) var(--ease)}
+.tl-dot[data-win="close"]::after{content:"\00d7"}
+.tl-dot[data-win="minimise"]::after{content:"\2212"}
+.tl-dot[data-win="zoom"]::after{content:"+"}
+.tl-dots:hover .tl-dot:not(:disabled)::after,.tl-dot:focus-visible::after{opacity:1}
+.tl-dot:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .tl-title{flex:1;text-align:center;font-size:.7rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tl-title .dot{color:var(--accent)}
+.tl-reopen{display:none;color:var(--accent);margin-left:.7em}
+
+/* folded: the window closes down to its title bar and the page carries on */
+.landing{transition:min-height var(--slow) var(--ease),padding var(--slow) var(--ease)}
+.tl-fold{display:grid;grid-template-rows:1fr;transition:grid-template-rows var(--slow) var(--ease)}
+.tl-fold > .tl-body{min-height:0;overflow:hidden;transition:padding var(--slow) var(--ease)}
+.landing.is-folded{min-height:0;padding-top:18px;padding-bottom:18px}
+.is-folded .tl-fold{grid-template-rows:0fr}
+.is-folded .tl-fold > .tl-body{padding-top:0;padding-bottom:0}
+.is-folded .tl-head{border-bottom-color:transparent;cursor:pointer}
+.is-folded .tl-reopen{display:inline}
+/* the header right below carries language and theme; no need for them twice */
+.is-folded .tl-ctrls{display:none}
 .tl-ctrls{display:flex;align-items:center;gap:4px}
 .tl-body{padding:20px 26px 24px;cursor:default}
 
@@ -520,6 +547,9 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .landing{padding:14px 12px;align-items:flex-start}
   .tl{font-size:.8rem}
   .tl-title{display:none}
+  .is-folded .tl-title{display:block;text-align:left}
+  .is-folded .tl-host{display:none}
+  .tl-reopen{margin-left:0}
   .tl-ctrls{margin-left:auto}
   .tl-body{padding:16px 16px 18px}
   .tl-row{grid-template-columns:1fr;gap:0}

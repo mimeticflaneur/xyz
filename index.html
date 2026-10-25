@@ -89,8 +89,12 @@
 <section class="landing" id="top" aria-label="Introduction">
   <div class="tl" id="tl">
     <div class="tl-head">
-      <span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="tl-title">adrian@zapatera<span class="dot">.</span>xyz: ~</span>
+      <div class="tl-dots">
+        <button class="tl-dot" type="button" data-win="close" aria-label="Close the terminal"></button>
+        <button class="tl-dot" type="button" data-win="minimise" aria-label="Minimise the terminal"></button>
+        <button class="tl-dot" type="button" data-win="zoom" aria-label="Open the terminal again" disabled></button>
+      </div>
+      <span class="tl-title"><span class="tl-host">adrian@zapatera<span class="dot">.</span>xyz: ~</span><span class="tl-reopen" data-en="click to reopen" data-es="pulsa para reabrir">click to reopen</span></span>
       <div class="tl-ctrls">
         <div class="lang" role="group" aria-label="Language">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -102,6 +106,7 @@
       </div>
     </div>
 
+    <div class="tl-fold">
     <div class="tl-body">
       <p class="tl-login"><time datetime="2026-10-25" data-en="last update: october 2026 · madrid" data-es="última actualización: octubre 2026 · madrid">last update: october 2026 · madrid</time></p>
 
@@ -150,6 +155,7 @@
       <p class="tl-hint tl-stage" hidden data-en="↑ ↓ to move · enter to open · or type <kbd>help</kbd>" data-es="↑ ↓ para moverte · enter para abrir · o escribe <kbd>help</kbd>">↑ ↓ to move · enter to open · or type <kbd>help</kbd></p>
       <div class="tl-log" aria-live="polite"></div>
       <label class="tl-cmd tl-live tl-stage" hidden><span class="tl-pr" aria-hidden="true">~$</span><input class="tl-in" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Terminal input"></label>
+    </div>
     </div>
   </div>
 </section>
