@@ -5,15 +5,14 @@
   var root = document.documentElement;
 
   /* ---- Theme: an explicit choice beats the OS in both directions ---- */
-  var toggle = document.getElementById('theme');
-  if (toggle) {
+  document.querySelectorAll('[data-theme-toggle]').forEach(function (toggle) {
     toggle.addEventListener('click', function () {
       var dark = getComputedStyle(root).colorScheme.indexOf('dark') > -1;
       var next = dark ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
-  }
+  });
 
   /* ---- Language ----
      Assigning innerHTML rather than textContent, so links and emphasis
@@ -62,12 +61,14 @@
     targets.forEach(function (t) { t.classList.add('in'); });
   }
 
-  /* ---- Header gains a firmer rule once you have left the top ---- */
+  /* ---- Header gains a firmer rule once it is pinned to the top.
+     On the home page it starts below the landing, so position decides,
+     not scroll distance alone. ---- */
   var bar = document.querySelector('header.top');
   if (bar) {
     var ticking = false;
     function onScroll() {
-      bar.classList.toggle('stuck', window.scrollY > 12);
+      bar.classList.toggle('stuck', window.scrollY > 12 && bar.getBoundingClientRect().top <= 0);
       ticking = false;
     }
     window.addEventListener('scroll', function () {
