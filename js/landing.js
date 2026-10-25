@@ -29,7 +29,7 @@
         'also:   cv · whoami · ls · open <project> · lang en|es · theme · clear',
       ls: 'projects/  experience/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — real estate finance × software, madrid.',
-      open: 'open what? try: refinancial, pagasdemas, paper, github, linkedin',
+      open: 'open what? try: refinancial, bills, paper, github, linkedin',
       missing: 'command not found: ',
       tryHelp: '. type help',
       sudo: 'nice try.',
@@ -41,7 +41,7 @@
         'además:  cv · whoami · ls · open <proyecto> · lang en|es · theme · clear',
       ls: 'projects/  experience/  writing/  education/  contact/  other/',
       whoami: 'adrián zapatera — finanzas inmobiliarias × software, madrid.',
-      open: '¿abrir qué? prueba: refinancial, pagasdemas, paper, github, linkedin',
+      open: '¿abrir qué? prueba: refinancial, bills, paper, github, linkedin',
       missing: 'comando no encontrado: ',
       tryHelp: '. escribe help',
       sudo: 'buen intento.',
@@ -56,7 +56,7 @@
   var pages = { handbook: 'pages/handbook.html', now: 'pages/now.html' };
   var projects = {
     refinancial: 'https://refinancialcalculator.vercel.app',
-    pagasdemas: 'https://pagamenos-eight.vercel.app/',
+    bills: 'https://pagamenos-eight.vercel.app/',
     paper: 'pages/consensus-alpha.html',
     github: 'https://github.com/mimeticflaneur',
     linkedin: 'https://linkedin.com/in/adrianzapatera'

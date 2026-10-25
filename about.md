@@ -48,7 +48,7 @@ Adjunct Professor, Economics. Public economics, the housing market, and the gene
 ## Projects
 
 - **RE Investment Analyzer** (live) — Leveraged profitability calculator for Spanish real estate. IRR, cash-on-cash, DSCR, full cashflow projection and early-exit simulation across three scenarios. React, Tailwind, Vite. https://refinancialcalculator.vercel.app
-- **pagasdemas** (live) — Consumer savings comparison for the Spanish market. Finds better prices on everyday purchases, with the comparison logic handled by language models instead of a hand-maintained ruleset. https://pagamenos-eight.vercel.app/
+- **Utility bill comparator** (live) — Compares electricity, gas and mobile bills for Spanish households, with the comparison logic handled by language models instead of a hand-maintained ruleset. https://pagamenos-eight.vercel.app/
 - **Atlas Agropecuario Español** (in progress) — A unified dataset of the Spanish primary sector, mapped province by province and comparable across autonomous communities, which the source data is not. Built for biosecurity, public risk and mortality measurement, traceability, and the identification of holdings, censuses and owners. Access restricted; on request.
 - **Consensus Alpha** (working paper) — A weighted aggregation framework for alpha extraction in decentralised perpetual futures: wallet scoring, a consensus engine with exponential decay, and fractional Kelly execution, turning on-chain activity on Hyperliquid into position sizing. Summary: https://zapatera.xyz/pages/consensus-alpha.html. Full paper on request, English and Spanish.
 

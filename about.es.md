@@ -48,7 +48,7 @@ Profesor Asociado de Economía. Economía pública, mercado inmobiliario y brech
 ## Proyectos
 
 - **RE Investment Analyzer** (online) — Calculadora de rentabilidad apalancada para inmobiliario español. TIR, cash-on-cash, DSCR, proyección completa de cashflows y simulación de venta anticipada en tres escenarios. React, Tailwind, Vite. https://refinancialcalculator.vercel.app
-- **pagasdemas** (online) — Comparador de ahorro para el consumidor español. Encuentra mejores precios en las compras del día a día, con la lógica de comparación resuelta por modelos de lenguaje. https://pagamenos-eight.vercel.app/
+- **Comparador de facturas** (online) — Compara facturas de luz, gas y móvil para hogares españoles, con la lógica de comparación resuelta por modelos de lenguaje en vez de por reglas mantenidas a mano. https://pagamenos-eight.vercel.app/
 - **Atlas Agropecuario Español** (en desarrollo) — Dataset unificado del sector primario español, cartografiado provincia a provincia y comparable entre comunidades autónomas, cosa que los datos de origen no permiten. Pensado para bioseguridad, medición de riesgos públicos y mortandad, trazabilidad, e identificación de explotaciones, censos y propietarios. Acceso restringido, bajo petición.
 - **Consensus Alpha** (working paper) — Framework de agregación ponderada para extracción de alfa en futuros perpetuos descentralizados: scoring de carteras, motor de consenso con decaimiento exponencial y ejecución con Kelly fraccional, que convierten actividad on-chain en Hyperliquid en tamaño de posición. Resumen: https://zapatera.xyz/pages/consensus-alpha.html. Paper completo bajo petición, en inglés y español.
 
