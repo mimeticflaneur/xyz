@@ -24,6 +24,11 @@
   --font-sans:'Archivo',ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;
   --font-mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 
+  /* window controls, as macOS draws them — the same in both themes */
+  --mac-close:#ff5f57;
+  --mac-minimise:#febc2e;
+  --mac-zoom:#28c840;
+
   --measure:680px;
   --speed:200ms;
   --slow:560ms;
@@ -171,9 +176,11 @@ h1.caret::after{
   display:flex;align-items:center;gap:12px;padding:8px 12px 8px 14px;
   background:var(--paper);border-bottom:1px solid var(--rule);
 }
-.tl-dots{display:flex;gap:6px}
-.tl-dots i{width:10px;height:10px;border-radius:50%;background:var(--rule-strong)}
-.tl-dots i:first-child{background:var(--accent)}
+.tl-dots{display:flex;gap:8px}
+.tl-dots i{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.18)}
+.tl-dots i:nth-child(1){background:var(--mac-close)}
+.tl-dots i:nth-child(2){background:var(--mac-minimise)}
+.tl-dots i:nth-child(3){background:var(--mac-zoom)}
 .tl-title{flex:1;text-align:center;font-size:.7rem;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tl-title .dot{color:var(--accent)}
 .tl-ctrls{display:flex;align-items:center;gap:4px}
