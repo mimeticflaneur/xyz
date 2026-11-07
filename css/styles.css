@@ -242,6 +242,7 @@ h1.caret::after{
 .tl-live .tl-cursor{margin:0}
 .tl-live:focus-within .tl-cursor{display:none}
 .tl-wait{visibility:hidden}
+.tl-grow .tl-wait{display:none}
 
 /* the regular header waits below the fold and sticks once you get there */
 .landing + header.top{border-top:1px solid var(--rule)}
@@ -498,6 +499,17 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .reveal,.stagger > *,.enter > *{opacity:1!important;transform:none!important}
 }
 
+/* on a wide screen the work cards break out of the reading column and sit
+   two by two, so the four projects read at a glance */
+@media (min-width:1120px){
+  #work .cards{
+    display:grid;grid-template-columns:1fr 1fr;align-items:start;
+    margin-inline:calc(50% - min(540px, 50vw - 24px));
+  }
+  #work .card-in{grid-template-columns:1fr}
+  #work .row-meta{text-align:left}
+}
+
 /* 14 · RESPONSIVE
    The nav drops to its own scrollable row rather than vanishing, so every
    section and the now page stay reachable on a phone. */
@@ -517,8 +529,7 @@ footer{border-top:1px solid var(--rule);margin-top:34px;padding:26px 0 46px}
   .now-head{padding:40px 0 8px}
   .landing{padding:14px 12px;align-items:flex-start}
   .tl{font-size:.8rem}
-  .tl-title{display:none}
-  .tl-ctrls{margin-left:auto}
+  .tl-title{font-size:.64rem}
   .tl-body{padding:16px 16px 18px}
   .tl-row{grid-template-columns:1fr;gap:0}
   .tl-row + .tl-row{margin-top:4px}

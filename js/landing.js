@@ -2,8 +2,8 @@
    The home page opens as a terminal: it types `whoami`, fills in the bio
    line by line, then `ls` lists where to go. Everything it shows is
    already in the HTML, so crawlers and readers without JavaScript get the
-   full text; this script only stages it. Any key or click skips to the
-   end. Cmd/Ctrl+K brings you back to the prompt from anywhere. */
+   full text; this script only stages it. Any key, click or scroll skips
+   to the end, and a returning visitor gets it already typed. Cmd/Ctrl+K brings you back to the prompt from anywhere. */
 (function () {
   var term = document.getElementById('tl');
   if (!term) return;
@@ -99,9 +99,9 @@
   function show(el, ms) {
     return function (next) { reveal(el); timer = setTimeout(next, ms); };
   }
-  var human = function () { return 70 + Math.random() * 70; };
-  var steady = function () { return 38; };
-  var quick = function () { return 9 + Math.random() * 10; };
+  var human = function () { return 40 + Math.random() * 35; };
+  var steady = function () { return 22; };
+  var quick = function () { return 6 + Math.random() * 6; };
 
   function finish() {
     if (done) return;
@@ -111,6 +111,7 @@
     term.querySelectorAll('.tl-wait').forEach(function (n) { n.classList.remove('tl-wait'); });
     body.style.minHeight = '';
     live.insertBefore(cursor, input);
+    term.classList.remove('tl-grow');
     term.classList.add('is-ready');
   }
 
@@ -120,23 +121,30 @@
   live.hidden = false;
   input.placeholder = t().placeholder;
 
-  if (still) {
+  /* the opening plays once per visit; storage may be off, so ask carefully */
+  var seen = false;
+  try { seen = sessionStorage.getItem('tl-seen') === '1'; sessionStorage.setItem('tl-seen', '1'); } catch (e) {}
+
+  if (still || seen) {
     finish();
   } else {
     stages.forEach(function (n) { n.classList.add('tl-wait'); });
-    /* hold the window at its final height, so it fills up instead of growing */
-    body.style.minHeight = body.offsetHeight + 'px';
+    /* hold the window at its final height, so it fills up instead of
+       growing; on a phone that height runs past the screen, so there the
+       window grows with the text instead */
+    if (term.getBoundingClientRect().bottom < window.innerHeight) body.style.minHeight = body.offsetHeight + 'px';
+    else term.classList.add('tl-grow');
 
-    var steps = [wait(450), typeInto(types[0], human, 1), wait(320),
-      typeInto(term.querySelector('.tl-h1'), steady, 1), wait(260)];
+    var steps = [wait(250), typeInto(types[0], human, 1), wait(180),
+      typeInto(term.querySelector('.tl-h1'), steady, 1), wait(150)];
     term.querySelectorAll('.tl-row').forEach(function (row) {
       /* the row (and its key) appears with the first typed character */
-      steps.push(typeInto(row.querySelector('dd'), quick, 2), wait(110));
+      steps.push(typeInto(row.querySelector('dd'), quick, 4), wait(60));
     });
-    steps.push(wait(260), typeInto(types[1], human, 1), wait(240));
+    steps.push(wait(150), typeInto(types[1], human, 1), wait(140));
     menu.querySelectorAll(':scope > .tl-opt, :scope > .tl-other').forEach(function (opt) {
       opt.classList.add('tl-wait');
-      steps.push(show(opt, 70));
+      steps.push(show(opt, 45));
     });
     steps.push(show(hint, 120), finish);
 
@@ -262,6 +270,7 @@
   });
 
   term.addEventListener('pointerdown', function () { finish(); });
+  window.addEventListener('scroll', function () { finish(); }, { once: true, passive: true });
 
   /* a click on the window itself puts you at the prompt — unless you were
      selecting text, or on a touch screen, where it would raise a keyboard */
